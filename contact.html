@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Must stay inline and run before first paint: it arms the pre-animation
+     hidden state for .reveal elements. Content is visible without it, so the
+     fade-in stays progressive enhancement. Do not move to main.js. -->
+<script>document.documentElement.classList.add("js-reveal");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Silicon Badgers</title>
+<meta name="description" content="Get in touch with Silicon Badgers, UW-Madison's chip design club.">
+<link rel="canonical" href="https://siliconbadgers.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Silicon Badgers">
+<meta property="og:description" content="Get in touch with Silicon Badgers, UW-Madison's chip design club.">
+<meta property="og:url" content="https://siliconbadgers.com/contact.html">
+<meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<meta property="og:site_name" content="Silicon Badgers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — Silicon Badgers">
+<meta name="twitter:description" content="Get in touch with Silicon Badgers, UW-Madison's chip design club.">
+<meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/styles.css?v=5">
+<script defer src="assets/js/main.js?v=3"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Silicon Badgers",
+  "alternateName": "SiliconBadgers",
+  "url": "https://siliconbadgers.com/",
+  "logo": "https://siliconbadgers.com/assets/img/logo.png",
+  "description": "Silicon Badgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source mini-TPU accelerator.",
+  "email": "rsharma232@wisc.edu",
+  "sameAs": [
+    "https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg"
+  ]
+}
+</script>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="circuit-bg"></div>
+<div class="circuit-glow"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" width="60" height="60" alt="Silicon Badgers logo">
+      SILICON BADGERS
+    </a>
+    <input type="checkbox" id="navCheck" class="nav-check">
+    <label for="navCheck" class="navtoggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#leadership">Leadership</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="nav-cta" href="index.html#signup">Join Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="contact" class="reveal">
+  <h2>Contact</h2>
+  <form id="contactForm" class="contact-form">
+    <div class="form-row">
+      <label for="contactName">Name</label>
+      <input type="text" id="contactName" name="name" required>
+    </div>
+    <div class="form-row">
+      <label for="contactEmail">Email <span class="optional">(if you're a UW-Madison student, please use your school email)</span></label>
+      <input type="email" id="contactEmail" name="email" required>
+    </div>
+    <div class="form-row">
+      <label for="contactMessage">Message</label>
+      <textarea id="contactMessage" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="contactSubmit">Send</button>
+    <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+  </form>
+</section>
+<footer>
+  <a class="brand" href="index.html">
+    <img src="assets/img/logo.png" width="54" height="54" alt="Silicon Badgers logo">
+    SILICON BADGERS
+  </a>
+  <div class="flinks">
+    <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Sign-Up Form</a>
+    <a href="https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg" target="_blank" rel="noopener">Slack</a>
+  </div>
+  <p class="fine">© 2026 Silicon Badgers · UW-Madison Chip Design Club</p>
+</footer>
+
+</body>
+</html>

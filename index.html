@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- deploy retry -->
+<head>
+<!-- Must stay inline and run before first paint: it arms the pre-animation
+     hidden state for .reveal elements. Content is visible without it, so the
+     fade-in stays progressive enhancement. Do not move to main.js. -->
+<script>document.documentElement.classList.add("js-reveal");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silicon Badgers — Chip Design Club @ UW-Madison</title>
+<meta name="description" content="Silicon Badgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source mini-TPU accelerator.">
+<link rel="canonical" href="https://siliconbadgers.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Silicon Badgers — Chip Design Club @ UW-Madison">
+<meta property="og:description" content="Silicon Badgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source mini-TPU accelerator.">
+<meta property="og:url" content="https://siliconbadgers.com/">
+<meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<meta property="og:site_name" content="Silicon Badgers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Silicon Badgers — Chip Design Club @ UW-Madison">
+<meta name="twitter:description" content="Silicon Badgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source mini-TPU accelerator.">
+<meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/styles.css?v=5">
+<script defer src="assets/js/main.js?v=3"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Silicon Badgers",
+  "alternateName": "SiliconBadgers",
+  "url": "https://siliconbadgers.com/",
+  "logo": "https://siliconbadgers.com/assets/img/logo.png",
+  "description": "Silicon Badgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source mini-TPU accelerator.",
+  "email": "rsharma232@wisc.edu",
+  "sameAs": [
+    "https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need prior experience to join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at all. Our goal is to take students who may not even know what a chip is and teach them the skills needed to eventually contribute to designing and verifying one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this open to all majors and class years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. While the material draws on electrical/computer engineering and computer science concepts, we welcome students from any major and any year, undergrad or grad, who are interested in chip design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fill out the Google Form and join the Slack."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who do I contact if I have questions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the contact form."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="circuit-bg"></div>
+<div class="circuit-glow"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="#top">
+      <img src="assets/img/logo.png" width="60" height="60" alt="Silicon Badgers logo">
+      SILICON BADGERS
+    </a>
+    <input type="checkbox" id="navCheck" class="nav-check">
+    <label for="navCheck" class="navtoggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="nav-cta" href="#signup">Join Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="top"></div>
+
+<section class="hero section-full">
+  <div class="hero-inner">
+    <div class="logo-wrap">
+      <div class="logo-circuit-dense"></div>
+      <img class="logo" src="assets/img/logo.png" width="320" height="320" alt="Silicon Badgers logo">
+    </div>
+    <h1>UW-Madison's First Chip Design Club</h1>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#signup">Sign Up Now</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="reveal about-compact">
+  <h2>What We Do</h2>
+  <div class="about-grid about-grid-single">
+    <div class="about-text">
+      <p>Chip design is one of the world’s most important and fastest-growing fields, yet it has a high barrier to entry that makes hands-on experience difficult to get in college. SiliconBadgers will make chip design accessible to students of all experience levels. We will teach the fundamentals of digital design, verification, and the chip-development process, while bringing in guest speakers from companies like NVIDIA, Apple, AMD, and Intel to share their experiences in the industry and help members build connections.</p>
+      <p>Our first major project is a small open-source machine-learning accelerator: a homemade mini-TPU running on an FPGA, with a custom instruction set, compiler, simulator, and Python runtime built around it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Skills You Can Build</h2>
+  <p class="section-intro">SiliconBadgers is designed to take you from the basics to contributing to a real chip-design project.</p>
+  <div class="skills-grid reveal-stagger">
+    <div class="skill-card">
+      <div class="skill-icon">01</div>
+      <h3>Digital Design</h3>
+      <p>Learn digital logic, computer architecture, SystemVerilog, and RTL—the hardware code used to design digital circuits.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">02</div>
+      <h3>Verification</h3>
+      <p>Create testbenches, find bugs, and make sure hardware designs work correctly through simulation and debugging.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">03</div>
+      <h3>FPGA Development</h3>
+      <p>Implement designs on real FPGA hardware, then learn synthesis, timing analysis, and how to measure resource usage.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">04</div>
+      <h3>Software &amp; Machine Learning</h3>
+      <p>Work on instruction-set design, Python tools, compilers, and machine-learning models that run on our accelerator.</p>
+    </div>
+  </div>
+</section>
+
+<section id="leadership" class="reveal">
+  <h2>Leadership</h2>
+  <div class="lead-grid reveal-stagger">
+    <div class="lead-card">
+      <div class="avatar">
+        <img src="assets/img/rohan-sharma.jpg" width="256" height="256" loading="lazy" alt="Rohan Sharma">
+      </div>
+      <h3>Rohan Sharma</h3>
+      <span class="role-badge">Founder / President</span>
+      <p class="lead-email"><a href="mailto:rsharma232@wisc.edu">rsharma232@wisc.edu</a></p>
+    </div>
+    <div class="lead-card">
+      <div class="avatar">
+        <img src="assets/img/bilal-usman.jpg" width="256" height="256" loading="lazy" alt="Bilal Usman">
+      </div>
+      <h3>Bilal Usman</h3>
+      <span class="role-badge">Co-Founder / Vice President</span>
+      <p class="lead-email"><a href="mailto:busman4@wisc.edu">busman4@wisc.edu</a></p>
+    </div>
+    <div class="lead-card">
+      <div class="avatar">
+        <img src="assets/img/aaron-diong.jpg" width="256" height="256" loading="lazy" alt="Aaron Diong">
+      </div>
+      <h3>Aaron Diong</h3>
+      <span class="role-badge">Co-Founder / Vice President</span>
+      <p class="lead-email"><a href="mailto:diong@wisc.edu">diong@wisc.edu</a></p>
+    </div>
+    <div class="lead-card">
+      <div class="avatar">
+        <img src="assets/img/soham-gupta.jpg" width="256" height="256" loading="lazy" alt="Soham Gupta">
+      </div>
+      <h3>Soham Gupta</h3>
+      <span class="role-badge">Co-Founder / Vice President</span>
+      <p class="lead-email"><a href="mailto:sgupta422@wisc.edu">sgupta422@wisc.edu</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="reveal">
+  <h2>FAQ</h2>
+  <div class="faq-list reveal-stagger">
+    <div class="faq-item">
+      <div class="faq-q">Do I need prior experience to join? <span class="plus">+</span></div>
+      <div class="faq-a">Not at all. Our goal is to take students who may not even know what a chip is and teach them the skills needed to eventually contribute to designing and verifying one.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this open to all majors and class years? <span class="plus">+</span></div>
+      <div class="faq-a">Yes. While the material draws on electrical/computer engineering and computer science concepts, we welcome students from any major and any year — undergrad or grad — who are interested in chip design.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I join? <span class="plus">+</span></div>
+      <div class="faq-a">Fill out the <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Google Form</a> and join the <a href="https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg" target="_blank" rel="noopener">Slack</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who do I contact if I have questions? <span class="plus">+</span></div>
+      <div class="faq-a">Use the <a href="contact.html">contact form</a>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="signup" class="reveal section-full">
+  <div class="signup">
+    <div class="signup-inner">
+      <h2>Join Us</h2>
+      <p>To join, please fill out the Google Form AND Join our Slack.</p>
+      <div class="signup-btns">
+        <a class="btn btn-primary" href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Sign Up — Google Form</a>
+        <a class="btn btn-slack" href="https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg" target="_blank" rel="noopener">Join our Slack</a>
+      </div>
+      <p class="signup-note">Have a question first? <a href="contact.html">Contact us</a>.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <a class="brand" href="index.html">
+    <img src="assets/img/logo.png" width="54" height="54" alt="Silicon Badgers logo">
+    SILICON BADGERS
+  </a>
+  <div class="flinks">
+    <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Sign-Up Form</a>
+    <a href="https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg" target="_blank" rel="noopener">Slack</a>
+  </div>
+  <p class="fine">© 2026 Silicon Badgers · UW-Madison Chip Design Club</p>
+</footer>
+
+</body>
+</html>
