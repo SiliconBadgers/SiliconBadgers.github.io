@@ -455,7 +455,7 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 }
 .signup-inner{position:relative;}
 .signup-note{
-  margin-top:20px;
+  margin-top:36px;
   font-size:0.88rem;
   color:var(--muted);
 }
