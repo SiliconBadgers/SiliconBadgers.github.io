@@ -7,7 +7,7 @@
    4.  Header / nav
    5.  Hero
    6.  Shared section rules
-   7.  Components (about, why-join, leadership, FAQ, signup, footer)
+   7.  Components (news, about, why-join, leadership, FAQ, signup, footer)
    8.  Scroll reveal & animations
    9.  Cursor-reactive glow system
    10. Media queries
@@ -272,6 +272,67 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
    7. Components
    ========================================================================== */
 
+/* ---- news ---- */
+/* Sits directly under the hero, so it carries the tighter top padding that
+   .about-compact used to have as the first section on the page. */
+.news-section{padding-top:44px; padding-bottom:14px;}
+.news-card{
+  position:relative;
+  display:grid; grid-template-columns:1.4fr 0.6fr; gap:34px; align-items:center;
+  background:linear-gradient(160deg, rgba(43,5,5,0.35), rgba(13,8,8,0.35));
+  border:1px solid var(--border); border-radius:14px;
+  padding:30px 30px 28px;
+  overflow:hidden;
+  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+/* Accent bar goes on ::after, not ::before: ::before is the cursor-glow
+   cover (section 9) and would paint straight over it. */
+.news-card::after{
+  content:""; position:absolute; top:0; left:0; right:0; height:3px; z-index:2;
+  background:linear-gradient(90deg, var(--uw-red), var(--uw-red-bright));
+  opacity:0.85;
+}
+.news-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--uw-red);
+  box-shadow:0 12px 40px rgba(197,5,12,0.25);
+}
+.news-tag{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:0.66rem; letter-spacing:1.2px;
+  text-transform:uppercase; color:#ffb3b3;
+  background:rgba(197,5,12,0.15); border:1px solid var(--border);
+  border-radius:999px; padding:5px 13px; margin-bottom:14px;
+}
+.news-tag::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  background:var(--uw-red-bright);
+  box-shadow:0 0 8px 1px rgba(255,42,42,0.9);
+  animation:newsBlink 2s ease-in-out infinite;
+}
+@keyframes newsBlink{
+  0%,100%{opacity:1;}
+  50%{opacity:0.25;}
+}
+.news-body h3{
+  font-size:1.4rem; font-weight:800; letter-spacing:-0.3px;
+  color:var(--white); margin-bottom:10px;
+}
+.news-body p{color:#d3bdbd; font-size:0.96rem; line-height:1.55;}
+.news-note{margin-top:12px; font-size:0.87rem!important; color:var(--muted)!important;}
+.news-note a{color:var(--uw-red-bright); text-decoration:underline;}
+.news-note a:hover{color:var(--white);}
+.news-when{
+  display:grid; gap:14px;
+  border-left:1px solid var(--border); padding-left:28px;
+}
+.news-label{
+  display:block; font-family:var(--mono); font-size:0.64rem;
+  letter-spacing:1.2px; text-transform:uppercase; color:#a87b7b;
+  margin-bottom:3px;
+}
+.news-value{display:block; color:var(--white); font-weight:700; font-size:1rem; line-height:1.35;}
+
 /* ---- about ---- */
 .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:start;}
 .about-grid-single{grid-template-columns:1fr; max-width:800px;}
@@ -521,7 +582,7 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
    Each surface gets a black cover on ::before whose opacity is driven by
    --glow-fade, written per-element by main.js based on cursor distance.
    Direct children are lifted above the cover so they stay readable. */
-.why-card::before, .lead-card::before,
+.why-card::before, .lead-card::before, .news-card::before,
 .signup::before, footer::before{
   content:""; position:absolute; inset:0; z-index:0;
   background:#000;
@@ -530,7 +591,7 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
   transition:opacity 0.15s linear;
   pointer-events:none;
 }
-.why-card > *, .lead-card > *,
+.why-card > *, .lead-card > *, .news-card > *,
 .signup > *, footer > *{
   position:relative; z-index:1;
 }
@@ -542,6 +603,12 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
 @media(max-width:900px){
   .why-grid{grid-template-columns:1fr;}
   .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .news-card{grid-template-columns:1fr; gap:24px;}
+  .news-when{
+    border-left:none; border-top:1px solid var(--border);
+    padding-left:0; padding-top:22px;
+    grid-template-columns:repeat(3,1fr); gap:18px;
+  }
 }
 
 @media(max-width:560px){
@@ -568,6 +635,9 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
     border-radius:0; text-align:center;
   }
   section{padding:60px 20px;}
+  .news-section{padding-top:36px; padding-bottom:10px;}
+  .news-card{padding:26px 22px 24px;}
+  .news-when{grid-template-columns:1fr; gap:14px;}
   .signup{padding:44px 24px;}
 }
 
@@ -577,15 +647,17 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
 @media (hover:none){
   /* cursor:pointer nudges iOS Safari into treating these as tappable so
      :active actually engages without any JS */
-  .logo-wrap, header, .why-card,
+  .logo-wrap, header, .why-card, .news-card,
   .lead-card, .signup, footer{ cursor:pointer; }
   .logo-wrap:active::before{opacity:0.12;}
   header:active::before{opacity:0.15;}
   .why-card:active::before, .lead-card:active::before,
+  .news-card:active::before,
   .signup:active::before, footer:active::before{opacity:0.15;}
 }
 
 @media (prefers-reduced-motion: reduce){
-  .circuit-bg, .hero img.logo, .hero::before, .signup{animation:none!important;}
+  .circuit-bg, .hero img.logo, .hero::before, .signup,
+  .news-tag::before{animation:none!important;}
   .reveal, .reveal-stagger > *{opacity:1!important; transform:none!important; transition:none!important;}
 }
