@@ -231,6 +231,18 @@ nav{
   color:var(--white);
 }
 .hero-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+.sponsor-banner{
+  display:flex; align-items:center; gap:18px;
+  width:fit-content; max-width:100%; margin:28px auto 0; padding:12px 20px 12px 12px;
+  background:rgba(13,8,8,0.85); border:1px solid var(--border); border-radius:12px;
+  text-align:left; text-decoration:none;
+  transition:border-color .2s ease, background .2s ease;
+}
+.sponsor-banner:hover{border-color:var(--uw-red-bright); background:var(--surface-2);}
+.sponsor-banner:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
+.sponsor-banner img{width:88px; height:88px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
+.sponsor-eyebrow{display:block; color:var(--muted); font-family:var(--mono); font-size:0.875rem; margin-bottom:5px;}
+.sponsor-banner-name{display:block; color:var(--white); font-size:1rem; font-weight:700;}
 
 
 /* ==========================================================================
@@ -315,7 +327,7 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
   50%{opacity:0.25;}
 }
 .news-body h3{
-  font-size:1.4rem; font-weight:800; letter-spacing:-0.3px;
+  font-size:clamp(1.8rem, 3.5vw, 2.35rem); line-height:1.2; font-weight:800; letter-spacing:-0.3px;
   color:var(--white); margin-bottom:10px;
 }
 .news-body p{color:#d3bdbd; font-size:0.96rem; line-height:1.55;}
@@ -360,6 +372,23 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 }
 .why-card h3{font-size:1.1rem; margin-bottom:10px; font-weight:700; color:var(--white);}
 .why-card p{color:var(--muted); font-size:0.94rem;}
+
+/* ---- sponsors ---- */
+.sponsor-feature{
+  text-decoration:none; transition:border-color .2s ease;
+  display:grid; grid-template-columns:280px minmax(0,1fr); gap:40px; align-items:center;
+  padding:32px; background:rgba(13,8,8,0.85);
+  border:1px solid var(--border); border-radius:14px;
+}
+.sponsor-feature:hover{border-color:var(--uw-red-bright);}
+.sponsor-feature:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
+.sponsor-logo-panel{background:#fff; border-radius:10px; padding:16px;}
+.sponsor-logo-panel img{display:block; width:100%; height:auto;}
+.sponsor-feature-copy h3{font-size:clamp(1.5rem,3vw,2rem); line-height:1.25; color:var(--white); margin-bottom:16px;}
+.sponsor-feature-copy p{font-size:1rem; color:#d3bdbd; max-width:520px;}
+.sponsor-invitation{max-width:780px; margin:28px 0 0; text-align:left; font-size:1rem; color:#d3bdbd;}
+.sponsor-invitation a{color:var(--white); text-decoration:underline; text-underline-offset:3px;}
+.sponsor-invitation a:hover{color:var(--uw-red-bright);}
 
 /* ---- leadership ---- */
 /* 240px min: narrow enough for 4-up on a wide screen, wide enough that
@@ -616,7 +645,21 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
 }
 
 @media(max-width:760px){
+  .sponsor-feature{grid-template-columns:1fr; gap:26px; padding:24px; text-align:center;}
+  .sponsor-logo-panel{width:100%; max-width:280px; margin:0 auto;}
+  .sponsor-feature-copy p{margin:0 auto;}
+  .sponsor-banner{gap:12px; padding:10px;}
+  .sponsor-banner img{width:64px; height:64px;}
+  .sponsor-banner-name{font-size:0.9rem;}
   .about-grid{grid-template-columns:1fr;}
+  section{padding:60px 20px;}
+  .news-section{padding-top:36px; padding-bottom:10px;}
+  .news-card{padding:26px 22px 24px;}
+  .news-when{grid-template-columns:1fr; gap:14px;}
+  .signup{padding:44px 24px;}
+}
+
+@media(max-width:1100px){
   .navtoggle{display:flex;}
   .navlinks{
     position:absolute; top:100%; left:0; right:0;
@@ -625,7 +668,7 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
     max-height:0; overflow:hidden; opacity:0;
     transition:max-height .3s ease, opacity .25s ease;
   }
-  .navlinks.open, .nav-check:checked ~ .navlinks{max-height:400px; opacity:1;}
+  .navlinks.open, .nav-check:checked ~ .navlinks{max-height:min(520px, calc(100dvh - 90px)); overflow-y:auto; opacity:1;}
   .navlinks li{width:100%;}
   .navlinks a{
     display:block; padding:16px 24px; border-bottom:1px solid var(--border);
@@ -634,11 +677,6 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
   .nav-cta{
     border-radius:0; text-align:center;
   }
-  section{padding:60px 20px;}
-  .news-section{padding-top:36px; padding-bottom:10px;}
-  .news-card{padding:26px 22px 24px;}
-  .news-when{grid-template-columns:1fr; gap:14px;}
-  .signup{padding:44px 24px;}
 }
 
 /* Touch-only fallback: works even with no JS at all. JS gives a smooth
