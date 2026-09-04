@@ -240,7 +240,9 @@ nav{
 }
 .sponsor-banner:hover{border-color:var(--uw-red-bright); background:var(--surface-2);}
 .sponsor-banner:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
-.sponsor-banner img{width:88px; height:88px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
+.sponsor-banner-partner{display:flex; align-items:center; gap:12px;}
+.sponsor-banner img{width:72px; height:72px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
+.sponsor-banner-divider{width:1px; height:50px; background:var(--border);}
 .sponsor-eyebrow{display:block; color:var(--muted); font-family:var(--mono); font-size:0.875rem; margin-bottom:5px;}
 .sponsor-banner-name{display:block; color:var(--white); font-size:1rem; font-weight:700;}
 
@@ -374,6 +376,8 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 .why-card p{color:var(--muted); font-size:0.94rem;}
 
 /* ---- sponsors ---- */
+.sponsor-thanks{max-width:780px; margin:0 0 28px; color:#d3bdbd; font-size:1rem;}
+.sponsor-list{display:grid; gap:24px;}
 .sponsor-feature{
   text-decoration:none; transition:border-color .2s ease;
   display:grid; grid-template-columns:280px minmax(0,1fr); gap:40px; align-items:center;
@@ -382,8 +386,8 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 }
 .sponsor-feature:hover{border-color:var(--uw-red-bright);}
 .sponsor-feature:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
-.sponsor-logo-panel{background:#fff; border-radius:10px; padding:16px;}
-.sponsor-logo-panel img{display:block; width:100%; height:auto;}
+.sponsor-logo-panel{display:flex; align-items:center; justify-content:center; height:250px; background:#fff; border-radius:10px; padding:16px;}
+.sponsor-logo-panel img{display:block; width:100%; max-height:100%; object-fit:contain;}
 .sponsor-feature-copy h3{font-size:clamp(1.5rem,3vw,2rem); line-height:1.25; color:var(--white); margin-bottom:16px;}
 .sponsor-feature-copy p{font-size:1rem; color:#d3bdbd; max-width:520px;}
 .sponsor-invitation{max-width:780px; margin:28px 0 0; text-align:left; font-size:1rem; color:#d3bdbd;}
@@ -648,8 +652,11 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
   .sponsor-feature{grid-template-columns:1fr; gap:26px; padding:24px; text-align:center;}
   .sponsor-logo-panel{width:100%; max-width:280px; margin:0 auto;}
   .sponsor-feature-copy p{margin:0 auto;}
-  .sponsor-banner{gap:12px; padding:10px;}
+  .sponsor-banner{display:grid; grid-template-columns:1fr 1fr; gap:10px 14px; width:100%; padding:14px;}
+  .sponsor-banner > .sponsor-eyebrow{grid-column:1/-1; margin:0; text-align:center;}
+  .sponsor-banner-partner{flex-direction:column; gap:7px; text-align:center;}
   .sponsor-banner img{width:64px; height:64px;}
+  .sponsor-banner-divider{display:none;}
   .sponsor-banner-name{font-size:0.9rem;}
   .about-grid{grid-template-columns:1fr;}
   section{padding:60px 20px;}
