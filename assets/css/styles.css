@@ -232,7 +232,7 @@ nav{
 }
 .hero-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
 .sponsor-banner{
-  display:flex; align-items:center; gap:18px;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
   width:fit-content; max-width:100%; margin:28px auto 0; padding:12px 20px 12px 12px;
   background:rgba(13,8,8,0.85); border:1px solid var(--border); border-radius:12px;
   text-align:left; text-decoration:none;
@@ -240,11 +240,12 @@ nav{
 }
 .sponsor-banner:hover{border-color:var(--uw-red-bright); background:var(--surface-2);}
 .sponsor-banner:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
+.sponsor-banner > .sponsor-eyebrow{margin:0; text-align:center;}
+.sponsor-banner-partners{display:flex; align-items:center; gap:18px;}
 .sponsor-banner-partner{display:flex; align-items:center; gap:12px;}
-.sponsor-banner img{width:72px; height:72px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
+.sponsor-banner img{width:82px; height:82px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
 .sponsor-banner-divider{width:1px; height:50px; background:var(--border);}
 .sponsor-eyebrow{display:block; color:var(--muted); font-family:var(--mono); font-size:0.875rem; margin-bottom:5px;}
-.sponsor-banner-name{display:block; color:var(--white); font-size:1rem; font-weight:700;}
 
 
 /* ==========================================================================
@@ -652,12 +653,11 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
   .sponsor-feature{grid-template-columns:1fr; gap:26px; padding:24px; text-align:center;}
   .sponsor-logo-panel{width:100%; max-width:280px; margin:0 auto;}
   .sponsor-feature-copy p{margin:0 auto;}
-  .sponsor-banner{display:grid; grid-template-columns:1fr 1fr; gap:10px 14px; width:100%; padding:14px;}
-  .sponsor-banner > .sponsor-eyebrow{grid-column:1/-1; margin:0; text-align:center;}
-  .sponsor-banner-partner{flex-direction:column; gap:7px; text-align:center;}
-  .sponsor-banner img{width:64px; height:64px;}
+  .sponsor-banner{gap:10px; width:100%; padding:14px;}
+  .sponsor-banner-partners{display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%;}
+  .sponsor-banner-partner{justify-content:center;}
+  .sponsor-banner img{width:72px; height:72px;}
   .sponsor-banner-divider{display:none;}
-  .sponsor-banner-name{font-size:0.9rem;}
   .about-grid{grid-template-columns:1fr;}
   section{padding:60px 20px;}
   .news-section{padding-top:36px; padding-bottom:10px;}
