@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Silicon Badgers — page behaviour
+   SiliconBadgers — page behaviour
    ==========================================================================
    Loaded with `defer`, so the DOM is fully parsed before any of this runs.
 
