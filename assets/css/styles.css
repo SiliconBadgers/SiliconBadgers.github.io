@@ -654,9 +654,9 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
   .sponsor-logo-panel{width:100%; max-width:280px; margin:0 auto;}
   .sponsor-feature-copy p{margin:0 auto;}
   .sponsor-banner{gap:10px; width:100%; padding:14px;}
-  .sponsor-banner-partners{display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%;}
+  .sponsor-banner-partners{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; width:100%;}
   .sponsor-banner-partner{justify-content:center;}
-  .sponsor-banner img{width:72px; height:72px;}
+  .sponsor-banner img{width:min(64px,19vw); height:min(64px,19vw);}
   .sponsor-banner-divider{display:none;}
   .about-grid{grid-template-columns:1fr;}
   section{padding:60px 20px;}
