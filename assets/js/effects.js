@@ -13,6 +13,7 @@
   let width = 0;
   let height = 0;
   let routes = [];
+  let pulseRoutes = [];
   const animatedSurfaces = document.querySelectorAll('.logo-wrap,.skill-card,.lead-card,.sponsor-feature');
   function enabled(){ return !paused && !preference.matches && !document.hidden; }
 
@@ -106,12 +107,38 @@
         }
       }
     }
+    // Prefer complete on-screen traces so each larger pulse is easy to follow.
+    pulseRoutes = routes.filter(route => route.segments.every(({start,point}) =>
+      [start,point].every(([x,y]) => x>=0 && x<width && y>=0 && y<height)));
+    if(!pulseRoutes.length) pulseRoutes = routes;
   }
   function pointAt(route,distance){
     const segment=route.segments.find(part => distance <= part.offset+part.size) || route.segments[route.segments.length-1];
     const t=Math.max(0,Math.min(1,(distance-segment.offset)/segment.size));
     return [segment.start[0]+(segment.point[0]-segment.start[0])*t,
       segment.start[1]+(segment.point[1]-segment.start[1])*t];
+  }
+  function drawCharge(route,distance,large=false){
+    context.globalAlpha=Math.min(1,distance/14,(route.length-distance)/14);
+    for(let tail=(large?11:7);tail>=0;tail--){
+      const end=distance-tail*(large?4.5:4);
+      if(end<=0) continue;
+      const start=Math.max(0,end-(large?4.5:4));
+      context.beginPath();
+      // Split each tail stroke at every bend; never draw a chord across a corner.
+      route.segments.forEach(segment => {
+        const from=Math.max(start,segment.offset), to=Math.min(end,segment.offset+segment.size);
+        if(to<=from) return;
+        const a=pointAt(route,from), b=pointAt(route,to);
+        context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
+      });
+      context.strokeStyle='rgba(255,85,75,'+(large?(12-tail)/13:(8-tail)/10)+')';
+      context.lineWidth=large?2.6:1.65;context.stroke();
+    }
+    const head=pointAt(route,distance);
+    context.beginPath();context.arc(head[0],head[1],large?3.2:2,0,Math.PI*2);
+    context.fillStyle=large?'#ffe3cc':'#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=large?18:12;
+    context.fill();context.shadowBlur=0;
   }
   function paint(now){
     if(!enabled() || !context){frame=0;return;}
@@ -124,27 +151,16 @@
     routes.forEach(route => {
       const distance=(clock*route.speed+route.phase*(route.length+90))%(route.length+90);
       if(distance>route.length) return;
-      context.globalAlpha=Math.min(1,distance/14,(route.length-distance)/14);
-      for(let tail=7;tail>=0;tail--){
-        const end=distance-tail*4;
-        if(end<=0) continue;
-        const start=Math.max(0,end-4);
-        context.beginPath();
-        // Split each tail stroke at every bend; never draw a chord across a corner.
-        route.segments.forEach(segment => {
-          const from=Math.max(start,segment.offset), to=Math.min(end,segment.offset+segment.size);
-          if(to<=from) return;
-          const a=pointAt(route,from), b=pointAt(route,to);
-          context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
-        });
-        context.strokeStyle='rgba(255,85,75,'+((8-tail)/10)+')';
-        context.lineWidth=1.65;context.stroke();
-      }
-      const head=pointAt(route,distance);
-      context.beginPath();context.arc(head[0],head[1],2,0,Math.PI*2);
-      context.fillStyle='#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=12;
-      context.fill();context.shadowBlur=0;
+      drawCharge(route,distance);
     });
+    // One larger charge every 0.8 seconds, with a short gap between passes.
+    // Use the animation clock so pause, hidden tabs and reduced motion also apply.
+    const pulseInterval=.8, pulseDuration=.68;
+    const pulseAge=clock%pulseInterval;
+    if(pulseRoutes.length && pulseAge<pulseDuration){
+      const route=pulseRoutes[Math.floor(clock/pulseInterval)%pulseRoutes.length];
+      drawCharge(route,route.length*pulseAge/pulseDuration,true);
+    }
     context.globalAlpha=1;
   }
   function sync(){
