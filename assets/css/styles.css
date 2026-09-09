@@ -281,8 +281,8 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 .btn:hover::before{left:120%;}
 .btn-primary{background:var(--uw-red); color:var(--white); box-shadow:0 4px 24px rgba(197,5,12,0.55);}
 .btn-primary:hover{background:#e0060e;}
-.btn-slack{background:#4A154B; color:var(--white);}
-.btn-slack:hover{background:#611f63;}
+.btn-discord{background:#5865f2; color:var(--white);}
+.btn-discord:hover{background:#4752c4;}
 
 
 /* ==========================================================================
@@ -976,7 +976,7 @@ html.effects-paused .ml-packet{display:none;}
 
 /* Feathered dark backing improves contrast without bringing back card boxes. */
 main > section{position:relative;isolation:isolate;}
-main > section:not(.hero)::after{content:"";position:absolute;inset:20px 16px;z-index:-1;pointer-events:none;background:rgba(5,3,3,.91);box-shadow:0 0 52px 36px rgba(5,3,3,.91);}
+main > section:not(.hero)::after{content:"";position:absolute;inset:20px 16px;z-index:-1;pointer-events:none;background:rgba(5,3,3,.82);box-shadow:0 0 52px 36px rgba(5,3,3,.82);}
 header{background:rgba(5,3,3,.96);}
 header::before{display:none;}
 footer{background:rgba(5,3,3,.94);}
