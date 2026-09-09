@@ -14,6 +14,34 @@
   let height = 0;
   let routes = [];
   let pulseRoutes = [];
+  let protectedAreas = [];
+  let textLayoutDirty = true;
+  let lastTextMeasure = -Infinity;
+  const protectedElements = [...document.querySelectorAll(
+    'header,footer,h1,h2,h3,h4,p,main li,main label,main input,main textarea,main select,main button,main a,main .btn,.stack-stage,.news-when'
+  )];
+  function invalidateTextLayout(){ textLayoutDirty=true; }
+  function measureTextAreas(now){
+    // Cache layout reads; scrolling and size changes invalidate immediately.
+    // Periodic refresh also follows reveal transforms and expanding FAQ answers.
+    if(!textLayoutDirty && now-lastTextMeasure<150) return;
+    textLayoutDirty=false;lastTextMeasure=now;
+    const padding=width<600?8:20;
+    protectedAreas=protectedElements.flatMap(element => {
+      if(element.matches('.stack-sr-title') || (element.closest('header')!==null && !element.matches('header'))) return [];
+      const rect=element.getBoundingClientRect();
+      if(rect.width<2 || rect.height<2 || rect.bottom<-padding || rect.top>height+padding) return [];
+      return [{x:rect.left-padding,y:rect.top-padding,width:rect.width+2*padding,height:rect.height+2*padding}];
+    });
+  }
+  function clearTextAreas(){
+    // Erase only the effects canvas, leaving the site's background untouched.
+    // Rectangles are unioned by compositing, so overlapping text areas stay clear.
+    context.save();context.globalAlpha=1;context.shadowBlur=0;
+    context.globalCompositeOperation='destination-out';context.fillStyle='#000';
+    protectedAreas.forEach(rect => context.fillRect(rect.x,rect.y,rect.width,rect.height));
+    context.restore();
+  }
   const animatedSurfaces = document.querySelectorAll('.logo-wrap,.skill-card,.lead-card,.sponsor-feature');
   function enabled(){ return !paused && !preference.matches && !document.hidden; }
 
@@ -111,15 +139,17 @@
       }
     }
 
-    // Continuous, visible traces for the larger edge-to-edge charges. The raster
-    // tile's short traces cannot carry a pulse across the entire viewport.
+    // Long charges stay in the open gutters. Alternate side-to-bottom and
+    // side-to-top passes, with 45-degree bends rather than horizontal bands.
     const margin=244;
+    const gutter=Math.max(8,Math.min(96,(width-1100)/2+12));
     pulseRoutes=Array.from({length:4},(_,index) => {
-      const y=height*(.16+index*.21);
-      const bend=Math.min(60,height*.045)*(index%2?-1:1);
-      const points=[[-margin,y],[width*.22,y],[width*.22+Math.abs(bend),y+bend],
-        [width*.68,y+bend],[width*.68+Math.abs(bend),y+2*bend],[width+margin,y+2*bend]];
-      if(index%2) points.reverse();
+      const lane=gutter*(index<2?.65:1);
+      const bend=Math.min(36,lane*.45);
+      const entry=height*(index<2?.22:.64);
+      let points=[[-margin,entry],[lane-bend,entry],[lane,entry+bend],
+        [lane,height*.78],[lane-bend,height*.78+bend],[lane-bend,height+margin]];
+      if(index%2) points=points.map(([x,y]) => [width-x,height-y]);
       let length=0;
       const segments=points.slice(1).map((point,i) => {
         const start=points[i],size=Math.hypot(point[0]-start[0],point[1]-start[1]);
@@ -129,6 +159,7 @@
       });
       return {segments,length};
     });
+    invalidateTextLayout();
   }
   function pointAt(route,distance){
     const segment=route.segments.find(part => distance <= part.offset+part.size) || route.segments[route.segments.length-1];
@@ -181,6 +212,7 @@
     if(lastPaint && now-lastPaint < 1000/30) return;
     clock += lastPaint ? Math.min(now-lastPaint,80)/1000 : 0;
     lastPaint=now;
+    measureTextAreas(now);
     context.clearRect(0,0,width,height);
     context.lineCap='round';
     // Keep the large charges on visible continuous traces, behind the small ones.
@@ -211,11 +243,12 @@
       drawCharge(route,distance);
     });
     context.globalAlpha=1;
+    clearTextAreas();
   }
   function sync(){
     cancelAnimationFrame(frame); frame=0; lastPaint=0;
     if(enabled() && context) frame=requestAnimationFrame(paint);
-    else if(preference.matches && context) context.clearRect(0,0,width,height);
+    else if((preference.matches || paused) && context) context.clearRect(0,0,width,height);
   }
   if(toggle){
     toggle.hidden=false;
@@ -228,6 +261,12 @@
     });
   }
   window.addEventListener('resize',resize,{passive:true});
+  window.addEventListener('scroll',invalidateTextLayout,{passive:true});
+  if(window.ResizeObserver){
+    const layoutObserver=new ResizeObserver(invalidateTextLayout);
+    layoutObserver.observe(document.body);
+  }
+  document.fonts?.ready.then(invalidateTextLayout);
   document.addEventListener('visibilitychange',sync);
   preference.addEventListener('change',sync);
   resize();sync();
