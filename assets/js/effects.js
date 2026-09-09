@@ -87,11 +87,13 @@
     const scale = (tileSize || 420) / 840;
     const tile = 840 * scale;
     routes = [];
+    pulseRoutes = [];
     for(let row=0; row*tile<height; row++){
       for(let column=0; column*tile<width; column++){
-        // A sparse pair per tile, staggered so they never flash in unison.
-        for(let slot=0; slot<2; slot++){
-          const index = (column*3 + row*5 + slot*4) % tracePaths.length;
+        const base = (column*3 + row*5) % tracePaths.length;
+        const smallIndices = [base,(base+4)%tracePaths.length];
+        for(let slot=0; slot<smallIndices.length; slot++){
+          const index = smallIndices[slot];
           let points = tracePaths[index].map(([x,y]) => [column*tile+x*scale,row*tile+y*scale]);
           if(!points.some(([x,y]) => x>=0 && x<width && y>=0 && y<height)) continue;
           if((column+row+slot)%2) points.reverse();
@@ -103,14 +105,30 @@
             length += size;
             return segment;
           });
-          routes.push({segments,length,speed:24+(index%4)*4,phase:((column*7+row*11+slot*13)*.137)%1});
+          const route = {segments,length,speed:24+(index%4)*4,phase:((column*7+row*11+slot*13)*.137)%1};
+          routes.push(route);
         }
       }
     }
-    // Prefer complete on-screen traces so each larger pulse is easy to follow.
-    pulseRoutes = routes.filter(route => route.segments.every(({start,point}) =>
-      [start,point].every(([x,y]) => x>=0 && x<width && y>=0 && y<height)));
-    if(!pulseRoutes.length) pulseRoutes = routes;
+
+    // Continuous, visible traces for the larger edge-to-edge charges. The raster
+    // tile's short traces cannot carry a pulse across the entire viewport.
+    const margin=244;
+    pulseRoutes=Array.from({length:4},(_,index) => {
+      const y=height*(.16+index*.21);
+      const bend=Math.min(60,height*.045)*(index%2?-1:1);
+      const points=[[-margin,y],[width*.22,y],[width*.22+Math.abs(bend),y+bend],
+        [width*.68,y+bend],[width*.68+Math.abs(bend),y+2*bend],[width+margin,y+2*bend]];
+      if(index%2) points.reverse();
+      let length=0;
+      const segments=points.slice(1).map((point,i) => {
+        const start=points[i],size=Math.hypot(point[0]-start[0],point[1]-start[1]);
+        const segment={start,point,size,offset:length};
+        length+=size;
+        return segment;
+      });
+      return {segments,length};
+    });
   }
   function pointAt(route,distance){
     const segment=route.segments.find(part => distance <= part.offset+part.size) || route.segments[route.segments.length-1];
@@ -119,11 +137,15 @@
       segment.start[1]+(segment.point[1]-segment.start[1])*t];
   }
   function drawCharge(route,distance,large=false){
-    context.globalAlpha=Math.min(1,distance/14,(route.length-distance)/14);
-    for(let tail=(large?11:7);tail>=0;tail--){
-      const end=distance-tail*(large?4.5:4);
-      if(end<=0) continue;
-      const start=Math.max(0,end-(large?4.5:4));
+    const tailLength=large?220:32;
+    context.globalAlpha=large
+      ? Math.min(1,distance/18,(route.length+tailLength-distance)/28)
+      : Math.min(1,distance/14,(route.length-distance)/14);
+    const steps=large?44:8, step=tailLength/steps;
+    for(let tail=steps-1;tail>=0;tail--){
+      const end=Math.min(route.length,distance-tail*step);
+      const start=Math.max(0,distance-(tail+1)*step);
+      if(end<=start) continue;
       context.beginPath();
       // Split each tail stroke at every bend; never draw a chord across a corner.
       route.segments.forEach(segment => {
@@ -132,14 +154,27 @@
         const a=pointAt(route,from), b=pointAt(route,to);
         context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
       });
-      context.strokeStyle='rgba(255,85,75,'+(large?(12-tail)/13:(8-tail)/10)+')';
-      context.lineWidth=large?2.6:1.65;context.stroke();
+      const strength=(steps-tail)/steps;
+      if(large){
+        context.strokeStyle='rgba(255,48,35,'+(strength*.85)+')';
+        context.lineWidth=5;context.shadowColor='#ff3024';context.shadowBlur=14;
+        context.stroke();context.shadowBlur=0;
+        context.strokeStyle='rgba(255,204,157,'+strength+')';
+        context.lineWidth=2.2;context.stroke();
+      }else{
+        context.strokeStyle='rgba(255,85,75,'+(strength*.8)+')';
+        context.lineWidth=1.65;context.stroke();
+      }
     }
-    const head=pointAt(route,distance);
-    context.beginPath();context.arc(head[0],head[1],large?3.2:2,0,Math.PI*2);
-    context.fillStyle=large?'#ffe3cc':'#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=large?18:12;
-    context.fill();context.shadowBlur=0;
+    // Let the long tail drain off the trace after its head has passed the endpoint.
+    if(distance<=route.length){
+      const head=pointAt(route,distance);
+      context.beginPath();context.arc(head[0],head[1],large?4.8:2,0,Math.PI*2);
+      context.fillStyle=large?'#fff1d5':'#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=large?24:12;
+      context.fill();context.shadowBlur=0;
+    }
   }
+
   function paint(now){
     if(!enabled() || !context){frame=0;return;}
     frame=requestAnimationFrame(paint);
@@ -148,19 +183,33 @@
     lastPaint=now;
     context.clearRect(0,0,width,height);
     context.lineCap='round';
+    // Keep the large charges on visible continuous traces, behind the small ones.
+    context.lineJoin='round';
+    context.strokeStyle='rgba(170,32,32,.25)';context.lineWidth=.8;
+    pulseRoutes.forEach(route => {
+      context.beginPath();
+      const first=route.segments[0].start;
+      context.moveTo(first[0],first[1]);
+      route.segments.forEach(segment => context.lineTo(segment.point[0],segment.point[1]));
+      context.stroke();
+    });
+    // Launch once a second. Each pass lasts 3.2s and starts/ends far enough
+    // outside the viewport for the complete 220px tail to enter and leave.
+    const pulseInterval=1, pulseDuration=3.2;
+    const cycle=Math.floor(clock/pulseInterval);
+    for(let previous=3;previous>=0;previous--){
+      const launch=cycle-previous;
+      if(launch<0) continue;
+      const age=clock-launch*pulseInterval;
+      if(age>=pulseDuration) continue;
+      const route=pulseRoutes[launch%pulseRoutes.length];
+      drawCharge(route,route.length*age/pulseDuration,true);
+    }
     routes.forEach(route => {
       const distance=(clock*route.speed+route.phase*(route.length+90))%(route.length+90);
       if(distance>route.length) return;
       drawCharge(route,distance);
     });
-    // One larger charge every 0.8 seconds, with a short gap between passes.
-    // Use the animation clock so pause, hidden tabs and reduced motion also apply.
-    const pulseInterval=.8, pulseDuration=.68;
-    const pulseAge=clock%pulseInterval;
-    if(pulseRoutes.length && pulseAge<pulseDuration){
-      const route=pulseRoutes[Math.floor(clock/pulseInterval)%pulseRoutes.length];
-      drawCharge(route,route.length*pulseAge/pulseDuration,true);
-    }
     context.globalAlpha=1;
   }
   function sync(){
