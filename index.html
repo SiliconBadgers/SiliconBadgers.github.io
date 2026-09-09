@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/styles.css?v=24">
-<link rel="stylesheet" href="assets/css/sponsors.css?v=2">
+<link rel="stylesheet" href="assets/css/sponsors.css?v=3">
 <script defer src="assets/js/main.js?v=9"></script>
 <script defer src="assets/js/effects.js?v=8"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
@@ -144,6 +144,14 @@
     <div class="hero-btns">
       <a class="btn btn-primary" href="join.html">Join the club</a>
     </div>
+    <svg class="sponsors-logo-filters" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="sponsors-tesla-cutout" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <!-- Render the red mark in white; white source pixels become transparent. -->
+          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 -1 0 0 1"/>
+        </filter>
+      </defs>
+    </svg>
     <a class="sponsors-mini" href="sponsors.html" aria-label="View our sponsors: OpenAI, Amazon Annapurna Labs, and Tesla">
       <span class="sponsors-mini-label">Sponsored by</span>
       <span class="sponsors-mini-logos">
