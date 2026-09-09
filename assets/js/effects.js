@@ -13,7 +13,6 @@
   let width = 0;
   let height = 0;
   let routes = [];
-  let pulseRoutes = [];
   let protectedAreas = [];
   let textLayoutDirty = true;
   let lastTextMeasure = -Infinity;
@@ -115,7 +114,6 @@
     const scale = (tileSize || 420) / 840;
     const tile = 840 * scale;
     routes = [];
-    pulseRoutes = [];
     for(let row=0; row*tile<height; row++){
       for(let column=0; column*tile<width; column++){
         const base = (column*3 + row*5) % tracePaths.length;
@@ -139,26 +137,6 @@
       }
     }
 
-    // Long charges stay in the open gutters. Alternate side-to-bottom and
-    // side-to-top passes, with 45-degree bends rather than horizontal bands.
-    const margin=244;
-    const gutter=Math.max(8,Math.min(96,(width-1100)/2+12));
-    pulseRoutes=Array.from({length:4},(_,index) => {
-      const lane=gutter*(index<2?.65:1);
-      const bend=Math.min(36,lane*.45);
-      const entry=height*(index<2?.22:.64);
-      let points=[[-margin,entry],[lane-bend,entry],[lane,entry+bend],
-        [lane,height*.78],[lane-bend,height*.78+bend],[lane-bend,height+margin]];
-      if(index%2) points=points.map(([x,y]) => [width-x,height-y]);
-      let length=0;
-      const segments=points.slice(1).map((point,i) => {
-        const start=points[i],size=Math.hypot(point[0]-start[0],point[1]-start[1]);
-        const segment={start,point,size,offset:length};
-        length+=size;
-        return segment;
-      });
-      return {segments,length};
-    });
     invalidateTextLayout();
   }
   function pointAt(route,distance){
@@ -167,12 +145,9 @@
     return [segment.start[0]+(segment.point[0]-segment.start[0])*t,
       segment.start[1]+(segment.point[1]-segment.start[1])*t];
   }
-  function drawCharge(route,distance,large=false){
-    const tailLength=large?220:32;
-    context.globalAlpha=large
-      ? Math.min(1,distance/18,(route.length+tailLength-distance)/28)
-      : Math.min(1,distance/14,(route.length-distance)/14);
-    const steps=large?44:8, step=tailLength/steps;
+  function drawCharge(route,distance){
+    const tailLength=32, steps=8, step=tailLength/steps;
+    context.globalAlpha=Math.min(1,distance/14,(route.length-distance)/14);
     for(let tail=steps-1;tail>=0;tail--){
       const end=Math.min(route.length,distance-tail*step);
       const start=Math.max(0,distance-(tail+1)*step);
@@ -186,24 +161,13 @@
         context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
       });
       const strength=(steps-tail)/steps;
-      if(large){
-        context.strokeStyle='rgba(255,48,35,'+(strength*.85)+')';
-        context.lineWidth=5;context.shadowColor='#ff3024';context.shadowBlur=14;
-        context.stroke();context.shadowBlur=0;
-        context.strokeStyle='rgba(255,204,157,'+strength+')';
-        context.lineWidth=2.2;context.stroke();
-      }else{
-        context.strokeStyle='rgba(255,85,75,'+(strength*.8)+')';
-        context.lineWidth=1.65;context.stroke();
-      }
+      context.strokeStyle='rgba(255,85,75,'+(strength*.8)+')';
+      context.lineWidth=1.65;context.stroke();
     }
-    // Let the long tail drain off the trace after its head has passed the endpoint.
-    if(distance<=route.length){
-      const head=pointAt(route,distance);
-      context.beginPath();context.arc(head[0],head[1],large?4.8:2,0,Math.PI*2);
-      context.fillStyle=large?'#fff1d5':'#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=large?24:12;
-      context.fill();context.shadowBlur=0;
-    }
+    const head=pointAt(route,distance);
+    context.beginPath();context.arc(head[0],head[1],2,0,Math.PI*2);
+    context.fillStyle='#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=12;
+    context.fill();context.shadowBlur=0;
   }
 
   function paint(now){
@@ -215,28 +179,6 @@
     measureTextAreas(now);
     context.clearRect(0,0,width,height);
     context.lineCap='round';
-    // Keep the large charges on visible continuous traces, behind the small ones.
-    context.lineJoin='round';
-    context.strokeStyle='rgba(170,32,32,.25)';context.lineWidth=.8;
-    pulseRoutes.forEach(route => {
-      context.beginPath();
-      const first=route.segments[0].start;
-      context.moveTo(first[0],first[1]);
-      route.segments.forEach(segment => context.lineTo(segment.point[0],segment.point[1]));
-      context.stroke();
-    });
-    // Launch once a second. Each pass lasts 3.2s and starts/ends far enough
-    // outside the viewport for the complete 220px tail to enter and leave.
-    const pulseInterval=1, pulseDuration=3.2;
-    const cycle=Math.floor(clock/pulseInterval);
-    for(let previous=3;previous>=0;previous--){
-      const launch=cycle-previous;
-      if(launch<0) continue;
-      const age=clock-launch*pulseInterval;
-      if(age>=pulseDuration) continue;
-      const route=pulseRoutes[launch%pulseRoutes.length];
-      drawCharge(route,route.length*age/pulseDuration,true);
-    }
     routes.forEach(route => {
       const distance=(clock*route.speed+route.phase*(route.length+90))%(route.length+90);
       if(distance>route.length) return;
