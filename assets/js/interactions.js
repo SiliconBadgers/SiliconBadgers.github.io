@@ -4,9 +4,10 @@
   const paused=()=>document.documentElement.classList.contains('effects-paused');
   const logo=document.querySelector('.logo-power-on');
   if(logo){
-    const settle=()=>logo.classList.add('is-powered');
+    const settle=()=>logo.classList.add('is-powered','pins-finished');
     logo.addEventListener('animationend',event=>{
-      if(event.animationName==='chip-power-on') settle();
+      if(event.animationName==='chip-power-on') logo.classList.add('is-powered');
+      if(event.animationName==='pin-orbit-fade') logo.classList.add('pins-finished');
     });
     document.querySelector('.effects-toggle')?.addEventListener('click',settle,{once:true});
     motion.addEventListener('change',()=>{if(motion.matches) settle();});

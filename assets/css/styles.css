@@ -843,8 +843,10 @@ html.effects-paused .logo-wrap{transform:none;}
 .logo-power-pins{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;fill:none;stroke:#ffb59f;stroke-width:7;stroke-linecap:butt;}
 .logo-power-pins path{opacity:0;}
 html.js-reveal .logo-power-on .logo{animation:chip-power-on 3.2s linear both;}
-html.js-reveal .logo-power-pins path{animation:pin-power-on .65s var(--pin-delay) ease-out both;}
-@keyframes pin-power-on{0%{opacity:0;}22%{opacity:1;filter:drop-shadow(0 0 5px #ff3c25);}55%{opacity:.7;}100%{opacity:0;}}
+html.js-reveal .logo-power-pins{animation:pin-orbit-fade 4.8s linear both;}
+html.js-reveal .logo-power-pins path{animation:pin-power-on 1.04s var(--pin-delay) linear infinite both;}
+@keyframes pin-power-on{0%{opacity:0;}8%{opacity:1;filter:drop-shadow(0 0 5px #ff3c25);}20%{opacity:.65;}38%,100%{opacity:0;}}
+@keyframes pin-orbit-fade{0%,25%{opacity:1;}60%{opacity:.5;}85%{opacity:.12;}100%{opacity:0;}}
 @keyframes chip-power-on{0%{filter:brightness(.3);}22%{filter:brightness(.32);}42%{filter:brightness(.45);}65%{filter:brightness(.7);}84%{filter:brightness(.9);}100%{filter:brightness(1);}}
 .hero h1,.hero-btns,.sponsor-banner{animation:none;}
 .sponsor-banner{background:none;border:0;border-radius:0;padding:8px 0;}
@@ -942,7 +944,7 @@ html.js-reveal .logo-power-pins path{animation:pin-power-on .65s var(--pin-delay
 /* Paused effects still allow static demonstrations and a fully readable logo. */
 html.effects-paused .is-demonstrating :is(.gate-signal,.wave-signal,.placement-block,.wave-cursor){animation:none!important;}
 html.js-reveal .logo-power-on.is-powered .logo{animation:none;filter:none;}
-.logo-power-on.is-powered .logo-power-pins{display:none;}
+.logo-power-on.pins-finished .logo-power-pins{display:none;}
 
 /* A forward pass, instruction stream, and completed result in one finite demo. */
 .ml-network circle{fill:#190909;}
