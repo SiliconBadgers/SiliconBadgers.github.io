@@ -2,7 +2,6 @@
 (function(){
   const root = document.documentElement;
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const toggle = document.querySelector('.effects-toggle');
   const canvas = document.querySelector('.circuit-signals');
   const context = canvas && canvas.getContext('2d');
@@ -17,7 +16,7 @@
   let textLayoutDirty = true;
   let lastTextMeasure = -Infinity;
   const protectedElements = [...document.querySelectorAll(
-    'header,footer,h1,h2,h3,h4,p,main li,main label,main input,main textarea,main select,main button,main a,main .btn,.stack-stage,.news-when'
+    'header,footer,h1,h2,h3,h4,p,main li,main label,main input,main textarea,main select,main button,main a,main .btn,.stack-stage,.notice-date,.notice-facts,.skill-row,.lead-card,.news-when'
   )];
   function invalidateTextLayout(){ textLayoutDirty=true; }
   function measureTextAreas(now){
@@ -41,49 +40,7 @@
     protectedAreas.forEach(rect => context.fillRect(rect.x,rect.y,rect.width,rect.height));
     context.restore();
   }
-  const animatedSurfaces = document.querySelectorAll('.logo-wrap,.skill-card,.lead-card,.sponsor-feature');
   function enabled(){ return !paused && !preference.matches && !document.hidden; }
-
-  animatedSurfaces.forEach(element => {
-    let pointerFrame = 0;
-    const isLogo = element.classList.contains('logo-wrap');
-    function reset(){
-      cancelAnimationFrame(pointerFrame);
-      ['--tilt-x','--tilt-y','--card-x','--card-y','--card-mx','--card-my'].forEach(name => element.style.removeProperty(name));
-    }
-    element.addEventListener('pointermove', event => {
-      if(!enabled() || !finePointer.matches || event.pointerType !== 'mouse') return;
-      cancelAnimationFrame(pointerFrame);
-      pointerFrame = requestAnimationFrame(() => {
-        if(!enabled()) return;
-        const rect = element.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        const amount = isLogo ? 12 : 5;
-        element.style.setProperty(isLogo ? '--tilt-x' : '--card-x', ((.5-y)*amount)+'deg');
-        element.style.setProperty(isLogo ? '--tilt-y' : '--card-y', ((x-.5)*amount)+'deg');
-        element.style.setProperty('--card-mx', x*100+'%');
-        element.style.setProperty('--card-my', y*100+'%');
-      });
-    }, {passive:true});
-    element.addEventListener('pointerleave', reset);
-    preference.addEventListener('change', reset);
-    if(toggle) toggle.addEventListener('click', reset);
-  });
-
-  document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('pointerdown', event => {
-      if(!enabled()) return;
-      const rect = button.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      ripple.className = 'button-ripple';
-      ripple.setAttribute('aria-hidden','true');
-      ripple.style.left = (event.clientX-rect.left)+'px';
-      ripple.style.top = (event.clientY-rect.top)+'px';
-      button.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 700);
-    }, {passive:true});
-  });
 
   // Centerlines sampled from the actual 840 × 840 circuit.webp tile.
   // Coordinates stay in source pixels; repeat and scale with the CSS background.

@@ -109,7 +109,7 @@ setTimeout(checkRevealManually, 500);
   const headerEl = document.querySelector('header');
   const circuitGlowEl = document.querySelector('.circuit-glow');
   const glowEls = Array.from(document.querySelectorAll(
-    '.why-card, .lead-card, .news-card, .signup, footer'
+    '.why-card'
   ));
   let raf = null;
 

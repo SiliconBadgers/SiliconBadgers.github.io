@@ -27,9 +27,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=18">
-<script defer src="assets/js/main.js?v=8"></script>
-<script defer src="assets/js/effects.js?v=6"></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=22">
+<script defer src="assets/js/main.js?v=9"></script>
+<script defer src="assets/js/effects.js?v=8"></script>
+<script defer src="assets/js/interactions.js?v=2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,28 +82,59 @@
 <section id="skills" class="reveal page-section">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
       <h1 class="page-title">Skills You Can Build</h1>
-  <p class="section-intro">SiliconBadgers is designed to take you from the basics to contributing to a real chip-design project.</p>
-  <div class="skills-grid reveal-stagger">
-    <div class="skill-card">
-      <div class="skill-icon">01</div>
-      <h3>Digital Design</h3>
-      <p>Learn digital logic, computer architecture, SystemVerilog, and RTL—the hardware code used to design digital circuits.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">02</div>
-      <h3>Verification</h3>
-      <p>Create testbenches, find bugs, and make sure hardware designs work correctly through simulation and debugging.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">03</div>
-      <h3>Physical Design</h3>
-      <p>Turn digital designs into chip layouts, learning floorplanning, placement, routing, and timing analysis.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">04</div>
-      <h3>Software &amp; Machine Learning</h3>
-      <p>Work on instruction-set design, Python tools, compilers, and machine-learning models that run on our accelerator.</p>
-    </div>
+  <p class="section-intro">Start with a small working design, then follow it from code to hardware.</p>
+  <div class="skill-rows">
+    <article class="skill-row" data-skill="0">
+      <div class="skill-heading"><h2>Digital Design</h2><p class="skill-tools">SystemVerilog · logic</p></div>
+      <p class="skill-description">Write your first SystemVerilog module. Connect logic gates, build a small datapath, and see what changes on each clock cycle.</p>
+      <button class="schematic-demo" type="button" aria-label="Try the gate" aria-describedby="skill-example-0">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path d="M8 25H48M8 59H48M92 42H133"/><path d="M48 13H65A29 29 0 0 1 65 71H48Z"/><g class="gate-signal"><path d="M8 25H48M8 59H48M92 42H133"/><circle cx="10" cy="25" r="3"/><circle cx="10" cy="59" r="3"/><circle cx="128" cy="42" r="4"/></g></svg>
+        <span>Try the gate <span aria-hidden="true">↗</span></span>
+      </button>
+      <p class="skill-example" id="skill-example-0">Both inputs high → output high.</p>
+    </article>
+    <article class="skill-row" data-skill="1">
+      <div class="skill-heading"><h2>Verification</h2><p class="skill-tools">Testbenches · waveforms</p></div>
+      <p class="skill-description">Write a testbench, inspect a waveform, and track a failing test back to the line of hardware code that caused it.</p>
+      <button class="schematic-demo" type="button" aria-label="Run the waveform" aria-describedby="skill-example-1">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path d="M10 68H135M10 12V68" opacity=".3"/><path d="M14 53H28V24H48V53H69V24H90V53H110V24H130"/><path class="wave-signal" pathLength="100" d="M14 53H28V24H48V53H69V24H90V53H110V24H130"/><path class="wave-cursor" d="M14 12V68"/></svg>
+        <span>Run the waveform <span aria-hidden="true">↗</span></span>
+      </button>
+      <p class="skill-example" id="skill-example-1">Follow a signal through three clock cycles.</p>
+    </article>
+    <article class="skill-row" data-skill="2">
+      <div class="skill-heading"><h2>Physical Design</h2><p class="skill-tools">Placement · routing</p></div>
+      <p class="skill-description">Place chip blocks, route the connections between them, and check whether signals arrive before the next clock edge.</p>
+      <button class="schematic-demo" type="button" aria-label="Place the blocks" aria-describedby="skill-example-2">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path class="placement-wires" d="M40 26H108V59H40V26M74 26V59"/><rect class="placement-block" x="27" y="15" width="26" height="22" style="--dx:-20px;--dy:-12px;--block-delay:0ms"/><rect class="placement-block" x="95" y="15" width="26" height="22" style="--dx:18px;--dy:-12px;--block-delay:100ms"/><rect class="placement-block" x="27" y="48" width="26" height="22" style="--dx:-20px;--dy:12px;--block-delay:200ms"/><rect class="placement-block" x="95" y="48" width="26" height="22" style="--dx:18px;--dy:12px;--block-delay:300ms"/></svg>
+        <span>Place the blocks <span aria-hidden="true">↗</span></span>
+      </button>
+      <p class="skill-example" id="skill-example-2">Four blocks settle into a connected layout.</p>
+    </article>
+    <article class="skill-row" data-skill="3">
+      <div class="skill-heading"><h2>Software &amp; Machine Learning</h2><p class="skill-tools">Python · compilers</p></div>
+      <p class="skill-description">Take a model operation, translate it into processor instructions, and compare the result in a simulator.</p>
+      <button class="schematic-demo ml-demo" type="button" aria-label="Run a tiny model" aria-describedby="skill-example-3">
+        <svg viewBox="0 0 160 112" aria-hidden="true">
+          <g class="ml-network"><path d="M16 24L62 40M16 24L62 72M16 56L62 40M16 56L62 72M16 88L62 40M16 88L62 72"/>
+            <path class="ml-network-signal" pathLength="100" d="M16 24L62 40M16 56L62 72M16 88L62 72"/>
+            <circle cx="16" cy="24" r="6"/><circle cx="16" cy="56" r="6"/><circle cx="16" cy="88" r="6"/>
+            <circle class="ml-neuron" cx="62" cy="40" r="7"/><circle class="ml-neuron" cx="62" cy="72" r="7"/>
+          </g>
+          <path d="M69 40L91 50M69 72L91 62M121 56H142"/>
+          <g class="ml-processor"><rect x="91" y="40" width="30" height="32" rx="2"/><path d="M96 34V40M106 34V40M116 34V40M96 72V78M106 72V78M116 72V78"/>
+            <path class="ml-accumulator" d="M111 48H101L108 56L101 64H111"/>
+          </g>
+          <g class="ml-instructions"><rect x="75" y="47" width="5" height="3" style="--code-delay:850ms"/><rect x="75" y="54" width="5" height="3" style="--code-delay:1050ms"/><rect x="75" y="61" width="5" height="3" style="--code-delay:1250ms"/></g>
+          <circle class="ml-packet ml-packet-top" cx="16" cy="24" r="3"/>
+          <circle class="ml-packet ml-packet-bottom" cx="16" cy="88" r="3"/>
+          <circle class="ml-result" cx="145" cy="56" r="10"/>
+          <path class="ml-check" d="M140 56L144 60L150 51"/>
+        </svg>
+        <span>Run a tiny model <span aria-hidden="true">↗</span></span>
+      </button>
+      <p class="skill-example" id="skill-example-3">A tiny network becomes instructions; the processor produces an output.</p>
+    </article>
   </div>
 </section>
 </main>

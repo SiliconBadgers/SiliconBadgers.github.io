@@ -25,7 +25,7 @@
     clearTimeout(timer);
     observer?.disconnect();
     animations.forEach(a => a.cancel());
-    stage.classList.remove('is-stacked');
+    stage.classList.remove('is-stacked', 'is-expanding');
     stage.style.height = '';
     clearInline();
     window.removeEventListener('resize', finish);
@@ -45,6 +45,7 @@
   function expand() {
     if (done) return;
     const oldHeight = stage.getBoundingClientRect().height;
+    stage.classList.add('is-expanding');
     stage.classList.remove('is-stacked');
     stage.style.height = '';
     clearInline();

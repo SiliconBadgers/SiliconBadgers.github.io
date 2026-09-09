@@ -27,9 +27,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=18">
-<script defer src="assets/js/main.js?v=8"></script>
-<script defer src="assets/js/effects.js?v=6"></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=22">
+<script defer src="assets/js/main.js?v=9"></script>
+<script defer src="assets/js/effects.js?v=8"></script>
+<script defer src="assets/js/interactions.js?v=2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,13 +81,67 @@
 <main id="main-content">
 <section class="hero section-full">
   <div class="hero-inner">
-    <div class="logo-wrap">
+    <div class="logo-wrap logo-power-on">
       <div class="logo-circuit-dense"></div>
       <img class="logo" src="assets/img/logo.png" width="320" height="320" alt="SiliconBadgers logo">
+      <svg class="logo-power-pins" viewBox="0 0 640 640" aria-hidden="true">
+        <path d="M148.0 73V101" style="--pin-delay:0ms"/>
+        <path d="M177.2 73V101" style="--pin-delay:14ms"/>
+        <path d="M206.4 73V101" style="--pin-delay:28ms"/>
+        <path d="M235.6 73V101" style="--pin-delay:42ms"/>
+        <path d="M264.8 73V101" style="--pin-delay:56ms"/>
+        <path d="M294.0 73V101" style="--pin-delay:70ms"/>
+        <path d="M323.2 73V101" style="--pin-delay:84ms"/>
+        <path d="M352.4 73V101" style="--pin-delay:98ms"/>
+        <path d="M381.6 73V101" style="--pin-delay:112ms"/>
+        <path d="M410.8 73V101" style="--pin-delay:126ms"/>
+        <path d="M440.0 73V101" style="--pin-delay:140ms"/>
+        <path d="M469.2 73V101" style="--pin-delay:154ms"/>
+        <path d="M498.4 73V101" style="--pin-delay:168ms"/>
+        <path d="M540 148.0H570" style="--pin-delay:182ms"/>
+        <path d="M540 177.2H570" style="--pin-delay:196ms"/>
+        <path d="M540 206.4H570" style="--pin-delay:210ms"/>
+        <path d="M540 235.6H570" style="--pin-delay:224ms"/>
+        <path d="M540 264.8H570" style="--pin-delay:238ms"/>
+        <path d="M540 294.0H570" style="--pin-delay:252ms"/>
+        <path d="M540 323.2H570" style="--pin-delay:266ms"/>
+        <path d="M540 352.4H570" style="--pin-delay:280ms"/>
+        <path d="M540 381.6H570" style="--pin-delay:294ms"/>
+        <path d="M540 410.8H570" style="--pin-delay:308ms"/>
+        <path d="M540 440.0H570" style="--pin-delay:322ms"/>
+        <path d="M540 469.2H570" style="--pin-delay:336ms"/>
+        <path d="M540 498.4H570" style="--pin-delay:350ms"/>
+        <path d="M499.0 550V578" style="--pin-delay:364ms"/>
+        <path d="M469.8 550V578" style="--pin-delay:378ms"/>
+        <path d="M440.6 550V578" style="--pin-delay:392ms"/>
+        <path d="M411.4 550V578" style="--pin-delay:406ms"/>
+        <path d="M382.2 550V578" style="--pin-delay:420ms"/>
+        <path d="M353.0 550V578" style="--pin-delay:434ms"/>
+        <path d="M323.8 550V578" style="--pin-delay:448ms"/>
+        <path d="M294.6 550V578" style="--pin-delay:462ms"/>
+        <path d="M265.4 550V578" style="--pin-delay:476ms"/>
+        <path d="M236.2 550V578" style="--pin-delay:490ms"/>
+        <path d="M207.0 550V578" style="--pin-delay:504ms"/>
+        <path d="M177.8 550V578" style="--pin-delay:518ms"/>
+        <path d="M148.6 550V578" style="--pin-delay:532ms"/>
+        <path d="M75 499.0H106" style="--pin-delay:546ms"/>
+        <path d="M75 469.8H106" style="--pin-delay:560ms"/>
+        <path d="M75 440.6H106" style="--pin-delay:574ms"/>
+        <path d="M75 411.4H106" style="--pin-delay:588ms"/>
+        <path d="M75 382.2H106" style="--pin-delay:602ms"/>
+        <path d="M75 353.0H106" style="--pin-delay:616ms"/>
+        <path d="M75 323.8H106" style="--pin-delay:630ms"/>
+        <path d="M75 294.6H106" style="--pin-delay:644ms"/>
+        <path d="M75 265.4H106" style="--pin-delay:658ms"/>
+        <path d="M75 236.2H106" style="--pin-delay:672ms"/>
+        <path d="M75 207.0H106" style="--pin-delay:686ms"/>
+        <path d="M75 177.8H106" style="--pin-delay:700ms"/>
+        <path d="M75 148.6H106" style="--pin-delay:714ms"/>
+      </svg>
     </div>
     <h1>UW-Madison's First Chip Design Club</h1>
     <div class="hero-btns">
-      <a class="btn btn-primary" href="join.html">Sign Up Now</a>
+      <a class="btn btn-primary" href="join.html">Join the club</a>
     </div>
     <a class="sponsor-banner" href="sponsors.html" aria-label="View our sponsors">
       <span class="sponsor-eyebrow">Sponsored by</span>
@@ -108,19 +163,18 @@
 </section>
 <section class="reveal news-section home-announcement" aria-labelledby="latest-heading">
   <h2 id="latest-heading">Announcements</h2>
-  <div class="news-card">
-    <div class="news-body">
-      <span class="news-tag">Upcoming</span>
-      <h3>First Kickoff Meeting Wednesday!</h3>
-      <p>Come meet the team, hear what we&rsquo;re building this year, and find out how to get involved.</p>
+  <article class="meeting-notice" aria-labelledby="meeting-title">
+    <time class="notice-date" datetime="2026-09-09"><span>SEP</span><strong>09</strong><span>WEDNESDAY · 2026</span></time>
+    <div class="notice-copy">
+      <h2 id="meeting-title">First club meeting</h2>
+      <p>Meet the team, hear about our FPGA accelerator project, and find out how to join. No chip-design experience needed.</p>
+      <dl class="notice-facts">
+        <div><dt>Time</dt><dd>7:00–9:00 PM</dd></div>
+        <div><dt>Place</dt><dd>Morgridge Hall, Room 2516</dd></div>
+      </dl>
       <a class="page-link" href="announcements.html">Meeting details <span aria-hidden="true">&rarr;</span></a>
     </div>
-    <div class="news-when">
-      <div><span class="news-label">Date</span><span class="news-value">Wed, Sept 9</span></div>
-      <div><span class="news-label">Time</span><span class="news-value">7:00 &ndash; 9:00 PM</span></div>
-      <div><span class="news-label">Location</span><span class="news-value">Morgridge Hall<br>Room 2516</span></div>
-    </div>
-  </div>
+  </article>
 </section>
 </main>
 <footer>

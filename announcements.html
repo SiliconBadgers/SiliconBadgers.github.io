@@ -27,9 +27,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=18">
-<script defer src="assets/js/main.js?v=8"></script>
-<script defer src="assets/js/effects.js?v=6"></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=22">
+<script defer src="assets/js/main.js?v=9"></script>
+<script defer src="assets/js/effects.js?v=8"></script>
+<script defer src="assets/js/interactions.js?v=2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,28 +82,18 @@
 <section id="announcements" class="reveal news-section page-section">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
       <h1 class="page-title">Announcements</h1>
-  <div class="news-card">
-    <div class="news-body">
-      <span class="news-tag">Upcoming</span>
-      <h3>First Kickoff Meeting Wednesday!</h3>
-      <p>Come meet the team, hear what we&rsquo;re building this year, and find out how to get involved. No prior experience needed! Every major and class year is welcome.</p>
-      <p class="news-note">Please fill out <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">this form</a> if you're interested.</p>
+  <article class="meeting-notice" aria-labelledby="meeting-title">
+    <time class="notice-date" datetime="2026-09-09"><span>SEP</span><strong>09</strong><span>WEDNESDAY · 2026</span></time>
+    <div class="notice-copy">
+      <h2 id="meeting-title">First club meeting</h2>
+      <p>Meet the team, hear about our FPGA accelerator project, and find out how to join. No chip-design experience needed.</p>
+      <dl class="notice-facts">
+        <div><dt>Time</dt><dd>7:00–9:00 PM</dd></div>
+        <div><dt>Place</dt><dd>Morgridge Hall, Room 2516</dd></div>
+      </dl>
+      <p class="notice-note">Interested? <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Add your name to the interest form</a>. All majors and years are welcome.</p>
     </div>
-    <div class="news-when">
-      <div>
-        <span class="news-label">Date</span>
-        <span class="news-value">Wed, Sept 9</span>
-      </div>
-      <div>
-        <span class="news-label">Time</span>
-        <span class="news-value">7:00 &ndash; 9:00 PM</span>
-      </div>
-      <div>
-        <span class="news-label">Location</span>
-        <span class="news-value">Morgridge Hall<br>Room 2516</span>
-      </div>
-    </div>
-  </div>
+  </article>
 </section>
 </main>
 <footer>
