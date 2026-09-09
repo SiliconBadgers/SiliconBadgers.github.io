@@ -393,6 +393,8 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 .sponsor-logo-panel img{display:block; width:100%; max-height:100%; object-fit:contain;}
 .sponsor-logo-panel-tesla{padding:4px; overflow:hidden;}
 .sponsor-logo-panel-tesla img{transform:scale(1.15);}
+.sponsor-logo-panel-amazon{overflow:hidden;}
+.sponsor-logo-panel-amazon img{transform:scale(1.25);}
 .sponsor-feature-copy h3{font-size:clamp(1.1rem,2vw,1.4rem); line-height:1.25; color:var(--white); margin-bottom:0;}
 .sponsor-feature-copy p{font-size:1rem; color:#d3bdbd; max-width:520px;}
 .sponsor-invitation{max-width:780px; margin:28px 0 0; text-align:left; font-size:1rem; color:#d3bdbd;}
