@@ -244,6 +244,8 @@ nav{
 .sponsor-banner-partners{display:flex; align-items:center; gap:18px;}
 .sponsor-banner-partner{display:flex; align-items:center; gap:12px;}
 .sponsor-banner img{width:82px; height:82px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:6px;}
+.sponsor-banner-partner-tesla{width:82px; height:82px; overflow:hidden; border-radius:6px; background:#fff; justify-self:center;}
+.sponsor-banner-partner-tesla img{object-fit:cover;}
 .sponsor-banner-divider{width:1px; height:50px; background:var(--border);}
 .sponsor-eyebrow{display:block; color:var(--muted); font-family:var(--mono); font-size:0.875rem; margin-bottom:5px;}
 
@@ -378,28 +380,29 @@ h2{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:800; margin-bottom:16px; le
 
 /* ---- sponsors ---- */
 .sponsor-thanks{max-width:780px; margin:0 0 28px; color:#d3bdbd; font-size:1rem;}
-.sponsor-list{display:grid; gap:24px;}
+.sponsor-list{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px;}
 .sponsor-feature{
   text-decoration:none; transition:border-color .2s ease;
-  display:grid; grid-template-columns:280px minmax(0,1fr); gap:40px; align-items:center;
-  padding:32px; background:rgba(13,8,8,0.85);
+  display:flex; flex-direction:column; gap:20px; text-align:center; min-width:0;
+  padding:20px; background:rgba(13,8,8,0.85);
   border:1px solid var(--border); border-radius:14px;
 }
 .sponsor-feature:hover{border-color:var(--uw-red-bright);}
 .sponsor-feature:focus-visible{outline:2px solid var(--white); outline-offset:5px;}
-.sponsor-logo-panel{display:flex; align-items:center; justify-content:center; height:250px; background:#fff; border-radius:10px; padding:16px;}
+.sponsor-logo-panel{display:flex; align-items:center; justify-content:center; width:100%; height:180px; background:#fff; border-radius:10px; padding:16px;}
 .sponsor-logo-panel img{display:block; width:100%; max-height:100%; object-fit:contain;}
-.sponsor-feature-copy h3{font-size:clamp(1.5rem,3vw,2rem); line-height:1.25; color:var(--white); margin-bottom:16px;}
+.sponsor-logo-panel-tesla{padding:4px; overflow:hidden;}
+.sponsor-logo-panel-tesla img{transform:scale(1.15);}
+.sponsor-feature-copy h3{font-size:clamp(1.1rem,2vw,1.4rem); line-height:1.25; color:var(--white); margin-bottom:0;}
 .sponsor-feature-copy p{font-size:1rem; color:#d3bdbd; max-width:520px;}
 .sponsor-invitation{max-width:780px; margin:28px 0 0; text-align:left; font-size:1rem; color:#d3bdbd;}
 .sponsor-invitation a{color:var(--white); text-decoration:underline; text-underline-offset:3px;}
 .sponsor-invitation a:hover{color:var(--uw-red-bright);}
 
 /* ---- leadership ---- */
-/* 240px min: narrow enough for 4-up on a wide screen, wide enough that
-   'Co-Founder / Vice President' still fits the badge on one line. Below
-   that the grid drops to 3 columns, which are wider still. */
-.lead-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
+.lead-grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:22px;}
+.lead-grid > .lead-card{grid-column:span 2;}
+.lead-grid > .lead-card:nth-child(4){grid-column:2 / span 2;}
 .lead-card{
   display:flex; flex-direction:column;
   text-align:center; background:rgba(13,8,8,0.3); border:1px solid var(--border);
@@ -650,13 +653,18 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
 }
 
 @media(max-width:760px){
-  .sponsor-feature{grid-template-columns:1fr; gap:26px; padding:24px; text-align:center;}
+  .lead-grid{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));}
+  .lead-grid > .lead-card,
+  .lead-grid > .lead-card:nth-child(4){grid-column:auto;}
+  .sponsor-list{grid-template-columns:1fr;}
+  .sponsor-feature{gap:20px; padding:20px;}
   .sponsor-logo-panel{width:100%; max-width:280px; margin:0 auto;}
   .sponsor-feature-copy p{margin:0 auto;}
   .sponsor-banner{gap:10px; width:100%; padding:14px;}
   .sponsor-banner-partners{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; width:100%;}
   .sponsor-banner-partner{justify-content:center;}
   .sponsor-banner img{width:min(64px,19vw); height:min(64px,19vw);}
+  .sponsor-banner-partner-tesla{width:min(64px,19vw); height:min(64px,19vw);}
   .sponsor-banner-divider{display:none;}
   .about-grid{grid-template-columns:1fr;}
   section{padding:60px 20px;}
