@@ -28,6 +28,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/styles.css?v=22">
+<link rel="stylesheet" href="assets/css/sponsors.css?v=2">
 <script defer src="assets/js/main.js?v=9"></script>
 <script defer src="assets/js/effects.js?v=8"></script>
 <script defer src="assets/js/interactions.js?v=2"></script>
@@ -143,21 +144,17 @@
     <div class="hero-btns">
       <a class="btn btn-primary" href="join.html">Join the club</a>
     </div>
-    <a class="sponsor-banner" href="sponsors.html" aria-label="View our sponsors">
-      <span class="sponsor-eyebrow">Sponsored by</span>
-      <span class="sponsor-banner-partners">
-        <span class="sponsor-banner-partner">
-          <img src="assets/img/openai-logo.svg" width="809" height="763" alt="OpenAI">
-        </span>
-        <span class="sponsor-banner-divider" aria-hidden="true"></span>
-        <span class="sponsor-banner-partner">
-          <img src="assets/img/amazon-annapurna-labs.png" width="1250" height="1250" alt="Amazon Annapurna Labs">
-        </span>
-        <span class="sponsor-banner-divider" aria-hidden="true"></span>
-        <span class="sponsor-banner-partner sponsor-banner-partner-tesla">
-          <img src="assets/img/tesla-logo.png" width="547" height="365" alt="Tesla">
-        </span>
+    <a class="sponsors-mini" href="sponsors.html" aria-label="View our sponsors: OpenAI, Amazon Annapurna Labs, and Tesla">
+      <span class="sponsors-mini-label">Sponsored by</span>
+      <span class="sponsors-mini-logos">
+        <span class="sponsors-mini-mark"><img src="assets/img/openai-logo.svg" width="809" height="763" alt="OpenAI"></span>
+        <span class="sponsors-mini-mark sponsors-mini-amazon"><img src="assets/img/amazon-annapurna-labs.png" width="1250" height="1250" alt="Amazon Annapurna Labs"></span>
+        <span class="sponsors-mini-mark sponsors-mini-tesla"><img src="assets/img/tesla-logo.png" width="547" height="365" alt="Tesla"></span>
       </span>
+      <svg class="sponsors-mini-circuit" viewBox="0 0 360 24" aria-hidden="true">
+        <path class="sponsors-trace-base" d="M0 4H40L54 18H306L320 4H360M60 0V18M180 0V18M300 0V18"/>
+        <path class="sponsors-trace-live" pathLength="100" d="M0 4H40L54 18H306L320 4H360"/>
+      </svg>
     </a>
   </div>
 </section>
