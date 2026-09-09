@@ -7,18 +7,18 @@
 <script>document.documentElement.classList.add("js-reveal");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — SiliconBadgers</title>
-<meta name="description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<link rel="canonical" href="https://siliconbadgers.com/contact.html">
+<title>Skills — SiliconBadgers</title>
+<meta name="description" content="Build skills in digital design, verification, physical design, software, and machine learning.">
+<link rel="canonical" href="https://siliconbadgers.com/skills.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact — SiliconBadgers">
-<meta property="og:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<meta property="og:url" content="https://siliconbadgers.com/contact.html">
+<meta property="og:title" content="Skills — SiliconBadgers">
+<meta property="og:description" content="Build skills in digital design, verification, physical design, software, and machine learning.">
+<meta property="og:url" content="https://siliconbadgers.com/skills.html">
 <meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <meta property="og:site_name" content="SiliconBadgers">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact — SiliconBadgers">
-<meta name="twitter:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
+<meta name="twitter:title" content="Skills — SiliconBadgers">
+<meta name="twitter:description" content="Build skills in digital design, verification, physical design, software, and machine learning.">
 <meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -67,35 +67,42 @@
     <ul class="navlinks" id="navLinks">
       <li><a href="announcements.html">Announcements</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="skills.html">Skills</a></li>
+      <li><a href="skills.html" aria-current="page">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="leadership.html">Leadership</a></li>
       <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
   </nav>
 </header>
 <main id="main-content">
-<section id="contact" class="reveal page-section">
+<section id="skills" class="reveal page-section">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
-      <h1 class="page-title">Contact</h1>
-  <form id="contactForm" class="contact-form">
-    <div class="form-row">
-      <label for="contactName">Name</label>
-      <input type="text" id="contactName" name="name" required>
+      <h1 class="page-title">Skills You Can Build</h1>
+  <p class="section-intro">SiliconBadgers is designed to take you from the basics to contributing to a real chip-design project.</p>
+  <div class="skills-grid reveal-stagger">
+    <div class="skill-card">
+      <div class="skill-icon">01</div>
+      <h3>Digital Design</h3>
+      <p>Learn digital logic, computer architecture, SystemVerilog, and RTL—the hardware code used to design digital circuits.</p>
     </div>
-    <div class="form-row">
-      <label for="contactEmail">Email <span class="optional">(if you're a UW-Madison student, please use your school email)</span></label>
-      <input type="email" id="contactEmail" name="email" required>
+    <div class="skill-card">
+      <div class="skill-icon">02</div>
+      <h3>Verification</h3>
+      <p>Create testbenches, find bugs, and make sure hardware designs work correctly through simulation and debugging.</p>
     </div>
-    <div class="form-row">
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" name="message" rows="5" required></textarea>
+    <div class="skill-card">
+      <div class="skill-icon">03</div>
+      <h3>Physical Design</h3>
+      <p>Turn digital designs into chip layouts, learning floorplanning, placement, routing, and timing analysis.</p>
     </div>
-    <button type="submit" class="btn btn-primary" id="contactSubmit">Send</button>
-    <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-  </form>
+    <div class="skill-card">
+      <div class="skill-icon">04</div>
+      <h3>Software &amp; Machine Learning</h3>
+      <p>Work on instruction-set design, Python tools, compilers, and machine-learning models that run on our accelerator.</p>
+    </div>
+  </div>
 </section>
 </main>
 <footer>

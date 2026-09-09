@@ -7,18 +7,18 @@
 <script>document.documentElement.classList.add("js-reveal");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — SiliconBadgers</title>
-<meta name="description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<link rel="canonical" href="https://siliconbadgers.com/contact.html">
+<title>About — SiliconBadgers</title>
+<meta name="description" content="Learn about SiliconBadgers and our open-source FPGA accelerator project.">
+<link rel="canonical" href="https://siliconbadgers.com/about.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact — SiliconBadgers">
-<meta property="og:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<meta property="og:url" content="https://siliconbadgers.com/contact.html">
+<meta property="og:title" content="About — SiliconBadgers">
+<meta property="og:description" content="Learn about SiliconBadgers and our open-source FPGA accelerator project.">
+<meta property="og:url" content="https://siliconbadgers.com/about.html">
 <meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <meta property="og:site_name" content="SiliconBadgers">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact — SiliconBadgers">
-<meta name="twitter:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
+<meta name="twitter:title" content="About — SiliconBadgers">
+<meta name="twitter:description" content="Learn about SiliconBadgers and our open-source FPGA accelerator project.">
 <meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -66,36 +66,26 @@
     </label>
     <ul class="navlinks" id="navLinks">
       <li><a href="announcements.html">Announcements</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="leadership.html">Leadership</a></li>
       <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
   </nav>
 </header>
 <main id="main-content">
-<section id="contact" class="reveal page-section">
+<section id="about" class="reveal about-compact page-section">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
-      <h1 class="page-title">Contact</h1>
-  <form id="contactForm" class="contact-form">
-    <div class="form-row">
-      <label for="contactName">Name</label>
-      <input type="text" id="contactName" name="name" required>
+      <h1 class="page-title">What We Do</h1>
+  <div class="about-grid about-grid-single">
+    <div class="about-text">
+      <p>Chip design is one of the world’s most important and fastest-growing fields, yet it has a high barrier to entry that makes hands-on experience difficult to get in college. SiliconBadgers will make chip design accessible to students of all experience levels. We will teach the fundamentals of digital design, verification, and the chip-development process, while bringing in guest speakers from companies like NVIDIA, Apple, AMD, and Intel to share their experiences in the industry and help members build connections.</p>
+      <p>Our first major project is a small open-source LLM inference accelerator: an open-weight language model running on an FPGA, with a custom instruction set, compiler, simulator, and Python runtime built around it.</p>
     </div>
-    <div class="form-row">
-      <label for="contactEmail">Email <span class="optional">(if you're a UW-Madison student, please use your school email)</span></label>
-      <input type="email" id="contactEmail" name="email" required>
-    </div>
-    <div class="form-row">
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" name="message" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" id="contactSubmit">Send</button>
-    <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-  </form>
+  </div>
 </section>
 </main>
 <footer>

@@ -7,18 +7,18 @@
 <script>document.documentElement.classList.add("js-reveal");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — SiliconBadgers</title>
-<meta name="description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<link rel="canonical" href="https://siliconbadgers.com/contact.html">
+<title>FAQ — SiliconBadgers</title>
+<meta name="description" content="Answers to common questions about joining SiliconBadgers at UW-Madison.">
+<link rel="canonical" href="https://siliconbadgers.com/faq.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact — SiliconBadgers">
-<meta property="og:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
-<meta property="og:url" content="https://siliconbadgers.com/contact.html">
+<meta property="og:title" content="FAQ — SiliconBadgers">
+<meta property="og:description" content="Answers to common questions about joining SiliconBadgers at UW-Madison.">
+<meta property="og:url" content="https://siliconbadgers.com/faq.html">
 <meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <meta property="og:site_name" content="SiliconBadgers">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact — SiliconBadgers">
-<meta name="twitter:description" content="Get in touch with SiliconBadgers, UW-Madison's chip design club.">
+<meta name="twitter:title" content="FAQ — SiliconBadgers">
+<meta name="twitter:description" content="Answers to common questions about joining SiliconBadgers at UW-Madison.">
 <meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -44,7 +44,46 @@
   ]
 }
 </script>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need prior experience to join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at all. Our goal is to take students who may not even know what a chip is and teach them the skills needed to eventually contribute to designing and verifying one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this open to all majors and class years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. While the material draws on electrical/computer engineering and computer science concepts, we welcome students from any major and any year, undergrad or grad, who are interested in chip design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fill out the Google Form and join the Slack."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who do I contact if I have questions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the contact form."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -70,32 +109,34 @@
       <li><a href="skills.html">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="leadership.html">Leadership</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="faq.html" aria-current="page">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
   </nav>
 </header>
 <main id="main-content">
-<section id="contact" class="reveal page-section">
+<section id="faq" class="reveal page-section">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
-      <h1 class="page-title">Contact</h1>
-  <form id="contactForm" class="contact-form">
-    <div class="form-row">
-      <label for="contactName">Name</label>
-      <input type="text" id="contactName" name="name" required>
+      <h1 class="page-title">FAQ</h1>
+  <div class="faq-list reveal-stagger">
+    <div class="faq-item">
+      <div class="faq-q">Do I need prior experience to join? <span class="plus">+</span></div>
+      <div class="faq-a">Not at all. Our goal is to take students who may not even know what a chip is and teach them the skills needed to eventually contribute to designing and verifying one.</div>
     </div>
-    <div class="form-row">
-      <label for="contactEmail">Email <span class="optional">(if you're a UW-Madison student, please use your school email)</span></label>
-      <input type="email" id="contactEmail" name="email" required>
+    <div class="faq-item">
+      <div class="faq-q">Is this open to all majors and class years? <span class="plus">+</span></div>
+      <div class="faq-a">Yes. While the material draws on electrical/computer engineering and computer science concepts, we welcome students from any major and any year — undergrad or grad — who are interested in chip design.</div>
     </div>
-    <div class="form-row">
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" name="message" rows="5" required></textarea>
+    <div class="faq-item">
+      <div class="faq-q">How do I join? <span class="plus">+</span></div>
+      <div class="faq-a">Fill out the <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Google Form</a> and join the <a href="https://join.slack.com/t/siliconbadgers/shared_invite/zt-46j2l5hxg-tshFe~ZOkyUS9zIEYGOkJg" target="_blank" rel="noopener">Slack</a>.</div>
     </div>
-    <button type="submit" class="btn btn-primary" id="contactSubmit">Send</button>
-    <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-  </form>
+    <div class="faq-item">
+      <div class="faq-q">Who do I contact if I have questions? <span class="plus">+</span></div>
+      <div class="faq-a">Use the <a href="contact.html">contact form</a>.</div>
+    </div>
+  </div>
 </section>
 </main>
 <footer>
