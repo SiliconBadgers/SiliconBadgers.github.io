@@ -741,7 +741,7 @@ main{min-height:calc(100vh - 350px);}
 
 .circuit-signals{
   position:fixed; inset:0; width:100%; height:100%; z-index:-1;
-  pointer-events:none; opacity:.7;
+  pointer-events:none; opacity:.82;
 }
 .logo-wrap{
   transform:perspective(800px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));

@@ -57,6 +57,22 @@
     }, {passive:true});
   });
 
+  // Centerlines sampled from the actual 840 × 840 circuit.webp tile.
+  // Coordinates stay in source pixels; repeat and scale with the CSS background.
+  const tracePaths = [
+    [[422,175],[422,279],[480,338],[497,339],[506,348],[506,390],[532,414],[536,415]],
+    [[411,494],[414,496],[415,576],[401,591],[400,665],[438,703],[437,792],[472,827],[472,838]],
+    [[479,531],[457,552],[456,577],[440,594],[440,630],[479,669],[479,755],[525,802],[525,839]],
+    [[273,472],[355,472],[395,512],[396,568],[394,572],[386,580],[386,650]],
+    [[603,176],[651,177],[669,195],[679,208],[725,253],[800,252],[839,214]],
+    [[181,424],[204,401],[210,400],[266,400],[274,408],[322,408],[342,389],[342,362]],
+    [[309,737],[343,703],[344,641],[358,627],[359,624],[359,525]],
+    [[570,1],[570,39],[536,71],[536,147],[586,196],[619,196]],
+    [[280,736],[321,694],[320,631],[343,608],[343,525]],
+    [[422,114],[445,137],[444,267],[457,280],[463,284],[468,283],[477,290],[511,290]],
+    [[16,348],[46,318],[78,317],[86,308],[86,247],[143,191],[173,191]]
+  ];
+
   function resize(){
     if(!context) return;
     width = window.innerWidth;
@@ -65,23 +81,31 @@
     canvas.width = Math.round(width*ratio);
     canvas.height = Math.round(height*ratio);
     context.setTransform(ratio,0,0,ratio,0,0);
-    // Right-angle traces, with staggered packet speeds rather than random flicker.
-    routes = Array.from({length:width < 700 ? 6 : 10}, (_,i) => {
-      const y = height * ((i+.5)/(width < 700 ? 6 : 10));
-      const bend = (i%2 ? 1 : -1) * (34+(i%3)*18);
-      let points = [[-60,y],[width*.23,y],[width*.23+bend,y+bend],
-        [width*.67,y+bend],[width*.67+Math.abs(bend),y],[width+60,y]];
-      if(i%2) points.reverse();
-      let length=0;
-      const segments = points.slice(1).map((point,j) => {
-        const start = points[j];
-        const size = Math.hypot(point[0]-start[0],point[1]-start[1]);
-        const segment = {start,point,size,offset:length};
-        length += size;
-        return segment;
-      });
-      return {points,segments,length,speed:28+i*4,phase:i*.137};
-    });
+    const background = document.querySelector('.circuit-bg');
+    const tileSize = background ? parseFloat(getComputedStyle(background).backgroundSize) : 420;
+    const scale = (tileSize || 420) / 840;
+    const tile = 840 * scale;
+    routes = [];
+    for(let row=0; row*tile<height; row++){
+      for(let column=0; column*tile<width; column++){
+        // A sparse pair per tile, staggered so they never flash in unison.
+        for(let slot=0; slot<2; slot++){
+          const index = (column*3 + row*5 + slot*4) % tracePaths.length;
+          let points = tracePaths[index].map(([x,y]) => [column*tile+x*scale,row*tile+y*scale]);
+          if(!points.some(([x,y]) => x>=0 && x<width && y>=0 && y<height)) continue;
+          if((column+row+slot)%2) points.reverse();
+          let length=0;
+          const segments = points.slice(1).map((point,j) => {
+            const start = points[j];
+            const size = Math.hypot(point[0]-start[0],point[1]-start[1]);
+            const segment = {start,point,size,offset:length};
+            length += size;
+            return segment;
+          });
+          routes.push({segments,length,speed:24+(index%4)*4,phase:((column*7+row*11+slot*13)*.137)%1});
+        }
+      }
+    }
   }
   function pointAt(route,distance){
     const segment=route.segments.find(part => distance <= part.offset+part.size) || route.segments[route.segments.length-1];
@@ -96,21 +120,32 @@
     clock += lastPaint ? Math.min(now-lastPaint,80)/1000 : 0;
     lastPaint=now;
     context.clearRect(0,0,width,height);
+    context.lineCap='round';
     routes.forEach(route => {
-      const distance=(clock*route.speed+route.phase*route.length)%route.length;
-      for(let tail=8;tail>=0;tail--){
-        const end=distance-tail*5;
-        if(end<0) continue;
-        const a=pointAt(route,Math.max(0,end-5)), b=pointAt(route,end);
-        context.beginPath();context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
-        context.strokeStyle='rgba(255,65,65,'+((9-tail)/14)+')';
-        context.lineWidth=1.5;context.stroke();
+      const distance=(clock*route.speed+route.phase*(route.length+90))%(route.length+90);
+      if(distance>route.length) return;
+      context.globalAlpha=Math.min(1,distance/14,(route.length-distance)/14);
+      for(let tail=7;tail>=0;tail--){
+        const end=distance-tail*4;
+        if(end<=0) continue;
+        const start=Math.max(0,end-4);
+        context.beginPath();
+        // Split each tail stroke at every bend; never draw a chord across a corner.
+        route.segments.forEach(segment => {
+          const from=Math.max(start,segment.offset), to=Math.min(end,segment.offset+segment.size);
+          if(to<=from) return;
+          const a=pointAt(route,from), b=pointAt(route,to);
+          context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
+        });
+        context.strokeStyle='rgba(255,85,75,'+((8-tail)/10)+')';
+        context.lineWidth=1.65;context.stroke();
       }
       const head=pointAt(route,distance);
-      context.beginPath();context.arc(head[0],head[1],1.7,0,Math.PI*2);
-      context.fillStyle='#ffb4a7';context.shadowColor='#ff2424';context.shadowBlur=10;
+      context.beginPath();context.arc(head[0],head[1],2,0,Math.PI*2);
+      context.fillStyle='#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=12;
       context.fill();context.shadowBlur=0;
     });
+    context.globalAlpha=1;
   }
   function sync(){
     cancelAnimationFrame(frame); frame=0; lastPaint=0;
