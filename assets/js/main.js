@@ -12,7 +12,7 @@
 (function(){
   if(!/(?:^|\/)index\.html$/.test(location.pathname) && !location.pathname.endsWith('/')) return;
   const pages = {
-    announcements:'announcements.html',about:'about.html',skills:'skills.html',
+    about:'about.html',skills:'skills.html',
     sponsors:'sponsors.html',leadership:'leadership.html',faq:'faq.html',signup:'join.html'
   };
   function followLegacyLink(){

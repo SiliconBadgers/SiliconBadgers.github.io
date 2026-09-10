@@ -882,7 +882,6 @@ html.js-reveal .logo-power-pins path{animation:pin-power-on .416s var(--pin-dela
 .skill-description{font-size:1rem;line-height:1.75;max-width:50ch;}
 .schematic-demo{align-self:center;display:block;width:160px;border:0;background:transparent;color:var(--muted);font: .875rem/1.4 var(--sans);cursor:pointer;padding:6px;}
 .schematic-demo > svg{display:block;width:100%;height:auto;fill:none;stroke:#935050;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-.schematic-demo > span{display:block;margin-top:8px;}
 .schematic-demo:hover,.schematic-demo:focus-visible{color:var(--white);}
 .schematic-demo:focus-visible{outline:2px solid var(--uw-red-bright);outline-offset:5px;}
 .skill-example{grid-column:2 / -1;font-size:.875rem;line-height:1.5;color:var(--muted);}
