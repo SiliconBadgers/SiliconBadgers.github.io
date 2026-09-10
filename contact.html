@@ -27,8 +27,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=25">
-<script defer src="assets/js/main.js?v=9"></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=27">
+<link rel="stylesheet" href="assets/css/contact.css?v=2">
+<script defer src="assets/js/main.js?v=10"></script>
 <script defer src="assets/js/effects.js?v=8"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
 <script type="application/ld+json">
@@ -71,32 +72,42 @@
       <li><a href="skills.html">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="leadership.html">Leadership</a></li>
-      <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
   </nav>
 </header>
 <main id="main-content">
-<section id="contact" class="reveal page-section">
+<section id="contact" class="reveal page-section contact-page">
   <p class="page-back"><a href="index.html">&larr; Home</a></p>
-      <h1 class="page-title">Contact</h1>
-  <form id="contactForm" class="contact-form">
-    <div class="form-row">
-      <label for="contactName">Name</label>
-      <input type="text" id="contactName" name="name" required>
+  <div class="contact-layout">
+    <div class="contact-intro">
+      <p class="contact-eyebrow">SiliconBadgers / Contact</p>
+      <h1>Good things<br>start with<br><span>hello.</span></h1>
+      <p class="contact-deck">Have a question, an idea, or something you want to build with us? We’d love to hear it.</p>
+      <div class="contact-alternatives">
+        <a href="https://discord.gg/MFdBms4J9z" target="_blank" rel="noopener"><span><strong>Find us on Discord</strong><small>Meet the club and join the conversation.</small></span><span aria-hidden="true">↗</span></a>
+      </div>
     </div>
-    <div class="form-row">
-      <label for="contactEmail">Email <span class="optional">(if you're a UW-Madison student, please use your school email)</span></label>
-      <input type="email" id="contactEmail" name="email" required>
-    </div>
-    <div class="form-row">
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" name="message" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" id="contactSubmit">Send</button>
-    <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-  </form>
+    <form id="contactForm" class="contact-form">
+      <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Joining, projects, sponsorships, or anything else.</p></div>
+      <div class="form-row">
+        <label for="contactName"><span class="field-number" aria-hidden="true">01</span> Your name</label>
+        <input type="text" id="contactName" name="name" placeholder="What should we call you?" autocomplete="name" maxlength="200" required>
+      </div>
+      <div class="form-row">
+        <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
+        <input type="email" id="contactEmail" name="email" placeholder="you@example.com" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
+        <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
+      </div>
+      <div class="form-row">
+        <label for="contactMessage"><span class="field-number" aria-hidden="true">03</span> What’s on your mind?</label>
+        <textarea id="contactMessage" name="message" rows="5" maxlength="4000" placeholder="Tell us a little about what you have in mind…" required></textarea>
+      </div>
+      <div class="contact-send-row"><p>We’ll reply to the email above.</p><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
+      <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </section>
 </main>
 <footer>

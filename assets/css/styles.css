@@ -1,3 +1,6 @@
+@font-face{font-family:'Space Grotesk';src:url('../fonts/SpaceGrotesk[wght].ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('../fonts/DMSans[opsz,wght].ttf') format('truetype');font-weight:100 1000;font-style:normal;font-display:swap;}
+@font-face{font-family:'IBM Plex Mono';src:url('../fonts/IBMPlexMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
 /* ==========================================================================
    SiliconBadgers — UW-Madison Chip Design Club
    ==========================================================================
@@ -32,8 +35,12 @@
   --muted:#b89a9a;
   --line:rgba(197,5,12,0.35);
   --border:rgba(197,5,12,0.28);
-  --mono: 'JetBrains Mono','Consolas','SFMono-Regular',Menlo,monospace;
-  --sans: 'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --heading:'Space Grotesk',sans-serif;
+  --sans:'DM Sans',sans-serif;
+  --page-heading-size:clamp(2.75rem,6vw,5rem);
+  --page-heading-weight:700;
+  --page-heading-spacing:-.055em;
 }
 
 
@@ -113,17 +120,17 @@ nav{
 }
 .brand{
   display:flex; align-items:center; gap:12px;
-  color:var(--white); font-family:var(--mono); font-weight:700;
+  color:var(--white); font-family:var(--heading); font-weight:700;
   letter-spacing:0.5px; font-size:1.05rem;
   text-decoration:none;
 }
 .brand img{height:60px; width:60px; border-radius:6px;}
 
-.navlinks{display:flex; gap:26px; list-style:none;}
+.navlinks{display:flex; align-items:center; gap:26px; list-style:none;}
 .navlinks a{
   position:relative;
   color:#e8c9c9; text-decoration:none; font-size:0.9rem;
-  font-family:var(--mono); letter-spacing:0.3px;
+  font-family:var(--sans); font-weight:500; letter-spacing:0;
   padding:6px 2px; border-bottom:2px solid transparent;
   transition:all .15s ease;
 }
@@ -136,12 +143,15 @@ nav{
 }
 .navlinks a:hover::after{width:100%;}
 
-.nav-cta{
+.navlinks a.nav-cta{
+  display:inline-flex;align-items:center;justify-content:center;min-width:102px;min-height:42px;
   background:var(--uw-red); color:var(--white)!important;
-  padding:8px 16px; border-radius:4px; font-weight:600;
+  padding:10px 18px; border-radius:4px; font-weight:600;
   border-bottom:none!important;
 }
-.nav-cta:hover{background:#e0060e!important;}
+.navlinks a.nav-cta:hover{background:var(--uw-red-dark)!important;}
+.navlinks a.nav-cta::after{display:none;}
+.navlinks a.nav-cta:focus-visible{outline:2px solid var(--white);outline-offset:4px;}
 
 /* Mobile menu is driven by this visually-hidden checkbox, so it opens and
    closes with pure CSS even when JavaScript is unavailable. */
@@ -690,8 +700,8 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
     display:block; padding:16px 24px; border-bottom:1px solid var(--border);
     font-size:1rem;
   }
-  .nav-cta{
-    border-radius:0; text-align:center;
+  .navlinks a.nav-cta{
+    display:flex;margin:10px 24px 18px;border-radius:4px;text-align:center;
   }
 }
 
@@ -721,7 +731,7 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
 main{min-height:calc(100vh - 350px);}
 .page-section{padding-top:60px;padding-bottom:80px;}
 .page-title{
-  font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.7px;
+  font-size:var(--page-heading-size);font-weight:var(--page-heading-weight);letter-spacing:var(--page-heading-spacing);
   color:var(--white);margin-bottom:26px;line-height:1.2;
 }
 .page-back{font:13px var(--mono);margin-bottom:18px;color:var(--muted);}
@@ -985,3 +995,10 @@ footer{background:rgba(5,3,3,.94);}
 .avatar-simon img{position:absolute;width:165%;height:auto;max-width:none;left:50%;top:50%;transform:translate(-57%,-29%);border-radius:0;}
 
 .stack-item:focus-visible{outline:1px solid var(--uw-red-bright);outline-offset:8px;}
+
+/* Native controls use the same family as surrounding content. */
+button,input,textarea,select{font-family:var(--sans);}
+
+/* Three font roles: titles, reading/UI text, and secondary labels. */
+h1,h2,h3,h4,h5,h6,.stack-label,.notice-date strong{font-family:var(--heading);}
+small,.fine,.field-hint,.join-footnote,.signup-note,.sponsors-subtitle,.skill-example,.lead-email,.contact-send-row p{font-family:var(--mono);}

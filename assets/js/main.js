@@ -13,7 +13,7 @@
   if(!/(?:^|\/)index\.html$/.test(location.pathname) && !location.pathname.endsWith('/')) return;
   const pages = {
     about:'about.html',skills:'skills.html',
-    sponsors:'sponsors.html',leadership:'leadership.html',faq:'faq.html',signup:'join.html'
+    sponsors:'sponsors.html',leadership:'leadership.html',signup:'join.html'
   };
   function followLegacyLink(){
     const destination = pages[location.hash.slice(1)];
@@ -260,11 +260,11 @@ setTimeout(checkRevealManually, 500);
       statusEl.textContent = "Sent! Thanks for reaching out.";
       statusEl.className = "form-status success";
     }catch(err){
-      statusEl.textContent = "Something went wrong -- please try again or email us directly.";
+      statusEl.textContent = "Something went wrong. Please try again or reach us on Discord.";
       statusEl.className = "form-status error";
     }finally{
       submitBtn.disabled = false;
-      submitBtn.textContent = "Send";
+      submitBtn.textContent = "Send message";
     }
   });
 })();
