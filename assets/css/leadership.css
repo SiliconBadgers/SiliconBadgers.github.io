@@ -5,31 +5,31 @@
 .team-intro h1{font-size:var(--page-heading-size);line-height:1.05;letter-spacing:var(--page-heading-spacing);color:var(--white);font-weight:var(--page-heading-weight);}
 .team-intro h1 span{color:var(--uw-red-bright);}
 .team-intro > p{font-size:1rem;line-height:1.8;color:var(--muted);padding-bottom:4px;}
-.leadership-page .lead-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #58302e;}
-.leadership-page .lead-card{grid-column:auto;padding:28px 24px 32px;border:0;border-bottom:1px solid #362020;border-radius:0;background:transparent;box-shadow:none;overflow:visible;cursor:default;align-items:center;}
-.leadership-page .lead-card:not(:nth-child(3n)){border-right:1px solid #362020;}
-.leadership-page .lead-card:is(:hover,:focus-within){transform:none;box-shadow:none;border-color:#58302e;}
+.leadership-page .lead-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--border);}
+.leadership-page .lead-card{grid-column:auto;padding:28px 24px 32px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent;box-shadow:none;overflow:visible;cursor:default;align-items:center;}
+.leadership-page .lead-card:not(:nth-child(3n)){border-right:1px solid var(--border);}
+.leadership-page .lead-card:is(:hover,:focus-within){transform:none;box-shadow:none;border-color:var(--border);}
 .leadership-page .lead-card::before{display:none;}
 .portrait-frame{position:relative;width:100%;max-width:320px;aspect-ratio:320/250;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
-.leadership-page .avatar{width:clamp(120px,12vw,145px);height:clamp(120px,12vw,145px);margin:0 0 20px;border:1px solid #9f5550;box-shadow:0 0 0 7px #100a0a,0 0 0 8px #422523;background:#160d0d;flex-shrink:0;}
-.leadership-page .lead-card:is(:hover,:focus-within) .avatar{box-shadow:0 0 0 7px #100a0a,0 0 0 8px #ad5149;}
+.leadership-page .avatar{width:clamp(120px,12vw,145px);height:clamp(120px,12vw,145px);margin:0 0 20px;border:1px solid var(--uw-red);box-shadow:0 0 0 7px var(--surface),0 0 0 8px var(--border);background:var(--surface);flex-shrink:0;}
+.leadership-page .lead-card:is(:hover,:focus-within) .avatar{box-shadow:0 0 0 7px var(--surface),0 0 0 8px var(--uw-red);}
 .team-circuit{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;}
-.team-trace-base{stroke:#582422;stroke-width:.8;}
-.team-trace-live{stroke:#ff6650;stroke-width:1.3;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .8s ease;}
-.team-contact{fill:#70413c;transition:fill .3s;}
+.team-trace-base{stroke:var(--border);stroke-width:.8;}
+.team-trace-live{stroke:var(--uw-red);stroke-width:1.3;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .8s ease;}
+.team-contact{fill:var(--border);transition:fill .3s;}
 .lead-card:is(:hover,:focus-within) .team-trace-live{stroke-dashoffset:0;}
-.lead-card:is(:hover,:focus-within) .team-contact{fill:#ffc0a3;}
+.lead-card:is(:hover,:focus-within) .team-contact{fill:var(--ink);}
 .leadership-page .lead-card h2{font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.25;letter-spacing:-.035em;color:var(--white);margin:0 0 8px;}
-.leadership-page .role-badge{font:.75rem/1.6 var(--mono);color:#df9791;border:0;border-radius:0;background:none;padding:0;margin:0;}
+.leadership-page .role-badge{font:.75rem/1.6 var(--mono);color:var(--muted);border:0;border-radius:0;background:none;padding:0;margin:0;}
 .leadership-page .lead-email{font-size:.8125rem;padding-top:22px;}
 .leadership-page .lead-email a{display:inline-flex;gap:8px;align-items:center;color:var(--muted);padding:5px 0;text-decoration:none;border-bottom:1px solid transparent;}
-.leadership-page .lead-email a:is(:hover,:focus-visible){color:var(--white);border-color:#df9791;}
+.leadership-page .lead-email a:is(:hover,:focus-visible){color:var(--white);border-color:var(--muted);}
 .leadership-page .lead-email a:focus-visible{outline:2px solid var(--uw-red-bright);outline-offset:5px;}
 @media(max-width:850px){
   .team-intro{grid-template-columns:1fr;gap:22px;margin-bottom:36px;}
   .leadership-page .lead-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .leadership-page .lead-card:not(:nth-child(3n)){border-right:0;}
-  .leadership-page .lead-card:nth-child(odd){border-right:1px solid #362020;}
+  .leadership-page .lead-card:nth-child(odd){border-right:1px solid var(--border);}
   .leadership-page .avatar{width:140px;height:140px;}
 }
 @media(max-width:520px){

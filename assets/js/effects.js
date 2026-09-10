@@ -1,6 +1,10 @@
 /* Optional motion effects; core navigation and cursor glow load independently. */
 (function(){
   const root = document.documentElement;
+  const palette = getComputedStyle(root);
+  const accent = palette.getPropertyValue('--uw-red').trim();
+  const accentRgb = palette.getPropertyValue('--uw-red-rgb').trim().split(/\s+/).join(',');
+  const ink = palette.getPropertyValue('--ink').trim();
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const toggle = document.querySelector('.effects-toggle');
   const canvas = document.querySelector('.circuit-signals');
@@ -12,6 +16,115 @@
   let width = 0;
   let height = 0;
   let routes = [];
+  const joinButton = document.querySelector('.hero-btns .btn');
+  const hero = document.querySelector('.hero-inner');
+  const firstWord = document.querySelector('.hero-first');
+  const joinPulse = joinButton && firstWord ? document.createElementNS('http://www.w3.org/2000/svg','svg') : null;
+  let joinRoute = null;
+  let joinTrace = null;
+  let joinFinished = false;
+  let joinStart = 2.15;
+  let joinReadyAt = Infinity;
+  if(joinPulse){
+    joinPulse.classList.add('join-charge');
+    joinPulse.setAttribute('aria-hidden','true');
+    joinPulse.innerHTML='<path class="join-charge-tail"/><circle class="join-charge-head" r="2.5"/>';
+    joinTrace=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    joinTrace.classList.add('join-circuit');
+    joinTrace.setAttribute('aria-hidden','true');
+    joinTrace.innerHTML='<path class="join-circuit-bed"/><path class="join-circuit-copper"/>';
+    hero.append(joinTrace,joinPulse);
+    new ResizeObserver(selectJoinRoute).observe(hero);
+    hero.querySelector('.logo-wrap').addEventListener('pointerenter',event=>{
+      // Ignore re-entry until the charge and its arrival glow have settled.
+      if(event.pointerType==='touch' || !enabled() || !joinFinished || clock<joinReadyAt) return;
+      selectJoinRoute();
+      joinStart=clock;
+      joinFinished=false;
+      firstWord.style.setProperty('--first-energy','0');
+      joinButton.classList.remove('join-reached');
+      paintJoinPulse();
+    });
+  }
+  function selectJoinRoute(){
+    if(!joinPulse) return;
+    const bounds=hero.getBoundingClientRect();
+    const logo=hero.querySelector('.logo').getBoundingClientRect();
+    const word=firstWord.getBoundingClientRect();
+    const button=joinButton.getBoundingClientRect();
+    const chipX=logo.left+logo.width*.505-bounds.left;
+    // The bottom-center package pin in the supplied 640px logo ends at y=578.
+    const chipY=logo.top+logo.height*(578/640)-bounds.top;
+    const wordX=word.left+word.width/2-bounds.left;
+    const wordTop=word.top-bounds.top, wordBottom=word.bottom-bounds.top;
+    const buttonX=button.left+button.width/2-bounds.left, buttonY=button.top-bounds.top;
+    // Long octilinear runs mirror the copper artwork instead of a rectangular
+    // connector with tiny clipped corners. Cross First on a full diagonal.
+    const wordDiagonal=Math.min(word.height,word.width*.7);
+    const wordEntryX=wordX-wordDiagonal/2;
+    const wordExitX=wordX+wordDiagonal/2;
+    const points=[[chipX,chipY]];
+    function connectDiagonal(x,y){
+      const [sx,sy]=points[points.length-1];
+      const dx=x-sx,dy=y-sy;
+      const diagonal=Math.min(Math.abs(dx),Math.abs(dy));
+      const bend=[x-Math.sign(dx)*diagonal,y-Math.sign(dy)*diagonal];
+      if(Math.hypot(bend[0]-sx,bend[1]-sy)>.01) points.push(bend);
+      if(Math.hypot(x-bend[0],y-bend[1])>.01) points.push([x,y]);
+    }
+    connectDiagonal(wordEntryX,wordTop);
+    connectDiagonal(wordExitX,wordBottom);
+    connectDiagonal(buttonX,buttonY);
+    let length=0,wordEntry=Infinity;
+    const segments=[];
+    points.slice(1).forEach((point,i)=>{
+      const start=points[i],size=Math.hypot(point[0]-start[0],point[1]-start[1]);
+      if(size>0){
+        segments.push({start,point,size,offset:length});
+        if(start[1]<=wordTop && point[1]>=wordTop && point[1]>start[1]){
+          const t=(wordTop-start[1])/(point[1]-start[1]);
+          const x=start[0]+(point[0]-start[0])*t;
+          if(x>=word.left-bounds.left && x<=word.right-bounds.left) wordEntry=Math.min(wordEntry,length+size*t);
+        }
+      }
+      length+=size;
+    });
+    joinRoute={segments,length,wordEntry,wordSpan:Math.hypot(wordDiagonal,word.height)};
+    const pathData=points.map((p,i)=>(i?'L':'M')+p.join(' ')).join(' ');
+    // Background copper and the traveling charge always use identical geometry.
+    [joinTrace,joinPulse].forEach(svg=>{
+      svg.setAttribute('viewBox',`0 0 ${bounds.width} ${bounds.height}`);
+      svg.querySelectorAll('path').forEach(path=>path.setAttribute('d',pathData));
+    });
+  }
+  function paintJoinPulse(){
+    if(!joinPulse || joinFinished || !joinRoute || clock<joinStart) return;
+    // One head traverses the whole route; events follow its actual position.
+    const elapsed=(clock-joinStart)/1.4;
+    const progress=Math.min(1,elapsed);
+    // A gentle ease at departure and arrival, with continuous motion in between.
+    const travel=progress*progress*(3-2*progress);
+    const distance=travel*joinRoute.length;
+    const [x,y]=pointAt(joinRoute,distance);
+    const tail=joinPulse.querySelector('path');
+    const head=joinPulse.querySelector('circle');
+    const tailLength=Math.min(24,distance);
+    tail.style.strokeDasharray=`0 ${Math.max(0,distance-tailLength)} ${tailLength} ${joinRoute.length+24}`;
+    head.setAttribute('cx',x);head.setAttribute('cy',y);
+    joinPulse.style.opacity='1';
+    // Keep the head visually behind the letters while First receives the charge.
+    const smooth=value=>{const t=Math.max(0,Math.min(1,value));return t*t*(3-2*t);};
+    const rise=smooth((distance-joinRoute.wordEntry+16)/28);
+    const fall=1-smooth((distance-joinRoute.wordEntry-joinRoute.wordSpan)/42);
+    firstWord.style.setProperty('--first-energy',String(rise*fall));
+    if(progress===1){
+      joinFinished=true;
+      joinReadyAt=clock+1.2;
+      joinButton.classList.add('join-reached');
+      firstWord.style.setProperty('--first-energy','0');
+      joinPulse.style.opacity='0';
+    }
+  }
   let protectedAreas = [];
   let textLayoutDirty = true;
   let lastTextMeasure = -Infinity;
@@ -36,7 +149,7 @@
     // Erase only the effects canvas, leaving the site's background untouched.
     // Rectangles are unioned by compositing, so overlapping text areas stay clear.
     context.save();context.globalAlpha=1;context.shadowBlur=0;
-    context.globalCompositeOperation='destination-out';context.fillStyle='#000';
+    context.globalCompositeOperation='destination-out';context.fillStyle=ink;
     protectedAreas.forEach(rect => context.fillRect(rect.x,rect.y,rect.width,rect.height));
     context.restore();
   }
@@ -95,6 +208,7 @@
     }
 
     invalidateTextLayout();
+    selectJoinRoute();
   }
   function pointAt(route,distance){
     const segment=route.segments.find(part => distance <= part.offset+part.size) || route.segments[route.segments.length-1];
@@ -118,12 +232,12 @@
         context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);
       });
       const strength=(steps-tail)/steps;
-      context.strokeStyle='rgba(255,85,75,'+(strength*.8)+')';
+      context.strokeStyle='rgba('+accentRgb+','+(strength*.8)+')';
       context.lineWidth=1.65;context.stroke();
     }
     const head=pointAt(route,distance);
     context.beginPath();context.arc(head[0],head[1],2,0,Math.PI*2);
-    context.fillStyle='#ffd0bd';context.shadowColor='#ff3830';context.shadowBlur=12;
+    context.fillStyle=ink;context.shadowColor=accent;context.shadowBlur=12;
     context.fill();context.shadowBlur=0;
   }
 
@@ -143,9 +257,11 @@
     });
     context.globalAlpha=1;
     clearTextAreas();
+    paintJoinPulse();
   }
   function sync(){
     cancelAnimationFrame(frame); frame=0; lastPaint=0;
+    if(joinPulse && !enabled()) joinPulse.style.opacity='0';
     if(enabled() && context) frame=requestAnimationFrame(paint);
     else if((preference.matches || paused) && context) context.clearRect(0,0,width,height);
   }
@@ -160,12 +276,12 @@
     });
   }
   window.addEventListener('resize',resize,{passive:true});
-  window.addEventListener('scroll',invalidateTextLayout,{passive:true});
+  window.addEventListener('scroll',()=>{invalidateTextLayout();selectJoinRoute();},{passive:true});
   if(window.ResizeObserver){
     const layoutObserver=new ResizeObserver(invalidateTextLayout);
     layoutObserver.observe(document.body);
   }
-  document.fonts?.ready.then(invalidateTextLayout);
+  document.fonts?.ready.then(()=>{invalidateTextLayout();selectJoinRoute();});
   document.addEventListener('visibilitychange',sync);
   preference.addEventListener('change',sync);
   resize();sync();

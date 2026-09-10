@@ -1,0 +1,27 @@
+/* Keep navigation clear of decorative underlines. */
+.navlinks a::after{display:none;}
+/* A faint copper connection is part of the hero background artwork.
+   The dark bed separates crossings from the tiled traces beneath it. */
+.join-circuit{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0;fill:none;}
+.join-circuit-bed{stroke:var(--bg);stroke-width:6;stroke-opacity:.7;}
+.join-circuit-copper{stroke:var(--uw-red);stroke-width:1;stroke-opacity:.24;}
+.hero h1,.hero-btns{position:relative;z-index:3;}
+.join-charge{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2;opacity:0;fill:none;}
+.join-charge-tail{stroke:var(--signal);stroke-width:2;stroke-linecap:round;filter:drop-shadow(0 0 4px var(--uw-red));}
+.join-charge-head{fill:var(--ink);filter:drop-shadow(0 0 5px var(--signal));}
+.hero-first{position:relative;z-index:3;white-space:nowrap;--first-energy:0;color:color-mix(in srgb,var(--ink),var(--signal) calc(var(--first-energy) * 65%));text-shadow:0 0 14px rgb(var(--signal-rgb) / calc(var(--first-energy) * .45));transition:color .08s linear,text-shadow .18s ease-out;}
+.hero-btns .btn.join-reached{animation:join-arrival 1.1s ease-out both;}
+@keyframes join-arrival{
+  0%{box-shadow:0 0 0 1px rgb(var(--signal-rgb) / .65),0 0 12px rgb(var(--signal-rgb) / .3),0 0 28px rgb(var(--uw-red-rgb) / .2);}
+  18%,32%{box-shadow:0 0 0 1px var(--signal),0 0 18px rgb(var(--signal-rgb) / .55),0 0 36px rgb(var(--uw-red-rgb) / .4);}
+  100%{box-shadow:0 0 0 1px transparent,0 0 18px transparent,0 0 36px transparent;}
+}
+html.effects-paused .join-charge{display:none;}
+html.effects-paused .hero-first{color:inherit;text-shadow:none;}
+html.effects-paused .hero-btns .btn.join-reached{animation:none;}
+@media(prefers-reduced-motion:reduce){.join-charge{display:none;}.hero-first{transition:none;color:inherit;text-shadow:none;}.hero-btns .btn.join-reached{animation:none;}}
+
+/* Brighten the whole chip without interfering with its initial power-on. */
+.hero .logo-wrap{transition:filter .2s ease;}
+@media(hover:hover){.hero .logo-wrap:hover{filter:brightness(1.12) drop-shadow(0 0 10px rgb(var(--uw-red-rgb) / .3));}}
+@media(prefers-reduced-motion:reduce){.hero .logo-wrap{transition:none;}}
