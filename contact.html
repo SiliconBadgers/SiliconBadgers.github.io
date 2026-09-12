@@ -93,16 +93,16 @@
       <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Joining, projects, sponsorships, or anything else.</p></div>
       <div class="form-row">
         <label for="contactName"><span class="field-number" aria-hidden="true">01</span> Your name</label>
-        <input type="text" id="contactName" name="name" placeholder="What should we call you?" autocomplete="name" maxlength="200" required>
+        <input type="text" id="contactName" name="name" autocomplete="name" maxlength="200" required>
       </div>
       <div class="form-row">
         <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
-        <input type="email" id="contactEmail" name="email" placeholder="you@example.com" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
+        <input type="email" id="contactEmail" name="email" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
         <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
       </div>
       <div class="form-row">
         <label for="contactMessage"><span class="field-number" aria-hidden="true">03</span> What’s on your mind?</label>
-        <textarea id="contactMessage" name="message" rows="5" maxlength="4000" placeholder="Tell us a little about what you have in mind…" required></textarea>
+        <textarea id="contactMessage" name="message" rows="5" maxlength="4000" required></textarea>
       </div>
       <div class="contact-send-row"><p>We’ll reply to the email above.</p><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
       <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
