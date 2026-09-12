@@ -4,7 +4,7 @@
 .contact-eyebrow{font:.8125rem/1.6 var(--mono);color:var(--muted);letter-spacing:.06em;margin-bottom:28px;}
 .contact-intro h1{font-size:var(--page-heading-size);line-height:1.02;letter-spacing:var(--page-heading-spacing);color:var(--white);font-weight:var(--page-heading-weight);}
 .contact-intro h1 > span{color:var(--uw-red);}
-.contact-deck{font-size:1.05rem;line-height:1.8;max-width:34ch;color:var(--muted);margin-top:28px;}
+.contact-intro .contact-deck{font-size:clamp(1.5rem,2.7vw,2.1rem);line-height:1.45;letter-spacing:-.02em;font-weight:500;max-width:34ch;color:var(--white);margin-top:0;}
 .contact-alternatives{margin-top:44px;max-width:370px;border-top:1px solid var(--border);}
 .contact-alternatives a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;}
 .contact-alternatives strong{display:block;font-size:.95rem;font-weight:550;color:var(--white);}
