@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/styles.css?v=30">
-<link rel="stylesheet" href="assets/css/contact.css?v=4">
+<link rel="stylesheet" href="assets/css/contact.css?v=5">
 <script defer src="assets/js/main.js?v=10"></script>
 <script defer src="assets/js/effects.js?v=18"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
@@ -87,18 +87,21 @@
       <h1 class="contact-deck">Have a question, an idea, or something you want to build with us? We’d love to hear it.</h1>
       <div class="contact-alternatives">
         <a href="https://discord.gg/YP7TMagWwN" target="_blank" rel="noopener"><span><strong>Find us on Discord</strong><small>Meet the club and join the conversation.</small></span><span aria-hidden="true">↗</span></a>
+        <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener"><span><strong>Wanna join?</strong><small>Sign up form</small></span><span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <form id="contactForm" class="contact-form">
-      <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Joining, projects, sponsorships, or anything else.</p></div>
+      <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Sponsorships, projects, ideas, questions, or anything else.</p></div>
       <div class="form-row">
         <label for="contactName"><span class="field-number" aria-hidden="true">01</span> Your name</label>
         <input type="text" id="contactName" name="name" autocomplete="name" maxlength="200" required>
       </div>
       <div class="form-row">
-        <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
+        <div class="field-label-row">
+          <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
+          <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
+        </div>
         <input type="email" id="contactEmail" name="email" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
-        <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
       </div>
       <div class="form-row">
         <label for="contactMessage"><span class="field-number" aria-hidden="true">03</span> What’s on your mind?</label>
