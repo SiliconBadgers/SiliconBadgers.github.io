@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/styles.css?v=33">
 <link rel="stylesheet" href="assets/css/sponsors.css?v=6">
-<script defer src="assets/js/main.js?v=12"></script>
+<script defer src="assets/js/main.js?v=13"></script>
 <script defer src="assets/js/effects.js?v=18"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
 <script type="application/ld+json">
@@ -49,6 +49,7 @@
 </script>
 
 <link rel="stylesheet" href="assets/css/chip-demos.css?v=9">
+<script defer src="assets/js/stack.js?v=2"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -70,9 +71,9 @@
     </label>
     <ul class="navlinks" id="navLinks">
       <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="project.html">Project</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="leadership.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
@@ -180,6 +181,141 @@
     </div>
   </article>
 </section>
+
+<section id="about" class="reveal about-compact page-section">
+      <h2 class="page-title">About SiliconBadgers</h2>
+  <div class="about-grid about-grid-single">
+    <div class="about-text">
+      <p>We’re a student chip-design club at UW–Madison. Learn digital logic, write and test hardware code, and work toward a chip design with other students. You can join without prior experience.</p>
+      <p>Our first project is an AI-inference accelerator that can run Qwen3.5. We plan on taping it out next year.</p>
+    </div>
+  </div>
+</section>
+<section id="technology-stack" class="technology-stack" aria-labelledby="stack-heading">
+  <h2 id="stack-heading">From AI to Silicon</h2>
+  <div class="stack-stage">
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-0">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-0">
+        <title id="stack-svg-title-0">AI Model diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-55 -40L-18 -55" opacity=".42"/><path d="M-55 -40L-18 -18" opacity=".42"/><path d="M-55 -40L-18 18" opacity=".42"/><path d="M-55 -40L-18 55" opacity=".42"/><path d="M-55 0L-18 -55" opacity=".42"/><path d="M-55 0L-18 -18" opacity=".42"/><path d="M-55 0L-18 18" opacity=".42"/><path d="M-55 0L-18 55" opacity=".42"/><path d="M-55 40L-18 -55" opacity=".42"/><path d="M-55 40L-18 -18" opacity=".42"/><path d="M-55 40L-18 18" opacity=".42"/><path d="M-55 40L-18 55" opacity=".42"/><path d="M-18 -55L20 -40" opacity=".42"/><path d="M-18 -55L20 0" opacity=".42"/><path d="M-18 -55L20 40" opacity=".42"/><path d="M-18 -18L20 -40" opacity=".42"/><path d="M-18 -18L20 0" opacity=".42"/><path d="M-18 -18L20 40" opacity=".42"/><path d="M-18 18L20 -40" opacity=".42"/><path d="M-18 18L20 0" opacity=".42"/><path d="M-18 18L20 40" opacity=".42"/><path d="M-18 55L20 -40" opacity=".42"/><path d="M-18 55L20 0" opacity=".42"/><path d="M-18 55L20 40" opacity=".42"/><path d="M20 -40L56 -22" opacity=".42"/><path d="M20 -40L56 22" opacity=".42"/><path d="M20 0L56 -22" opacity=".42"/><path d="M20 0L56 22" opacity=".42"/><path d="M20 40L56 -22" opacity=".42"/><path d="M20 40L56 22" opacity=".42"/><circle class="stack-node" cx="-55" cy="-40" r="4"/><circle class="stack-node" cx="-55" cy="0" r="4"/><circle class="stack-node" cx="-55" cy="40" r="4"/><circle class="stack-node" cx="-18" cy="-55" r="4"/><circle class="stack-node" cx="-18" cy="-18" r="4"/><circle class="stack-node" cx="-18" cy="18" r="4"/><circle class="stack-node" cx="-18" cy="55" r="4"/><circle class="stack-node" cx="20" cy="-40" r="4"/><circle class="stack-node" cx="20" cy="0" r="4"/><circle class="stack-node" cx="20" cy="40" r="4"/><circle class="stack-node" cx="56" cy="-22" r="4"/><circle class="stack-node" cx="56" cy="22" r="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">AI Model</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-0">AI Model</h3>
+      <p>Defines the neural network and its computations.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-1">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-1">
+        <title id="stack-svg-title-1">Compiler diagram</title><defs><marker id="stack-flow-head" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="currentColor"/></marker></defs>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><g marker-end="url(#stack-flow-head)"><path d="M0 -47V-26M-10 -15H-45V12M10 -15H45V12M-45 32V52H-12M45 32V52H12"/></g><circle cx="0" cy="-57" r="10"/><rect x="-10" y="-26" width="20" height="20"/><circle cx="-45" cy="22" r="10"/><rect x="35" y="12" width="20" height="20"/><circle cx="0" cy="52" r="11"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">Compiler</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-1">Compiler</h3>
+      <p>Translates the model into hardware-targeted instructions.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-2">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-2">
+        <title id="stack-svg-title-2">ISA diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-56 -48h12M-32 -48h30M10 -48h25" stroke-width="4"/><path d="M-56 -29h12M-32 -29h19M-1 -29h36" stroke-width="4"/><path d="M-56 -10h12M-32 -10h42M22 -10h16" stroke-width="4"/><path d="M-56 9h12M-32 9h25M5 9h31" stroke-width="4"/><path d="M-56 28h12M-32 28h36M16 28h20" stroke-width="4"/><path d="M-56 47h12M-32 47h18M-2 47h35" stroke-width="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">ISA</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-2">ISA</h3>
+      <p>Defines the instructions the processor can execute.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-3">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-3">
+        <title id="stack-svg-title-3">RTL diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-70 -48H-48M-70 -28H-48M-70 28H-48M-70 48H-48M-10 -38H12V-10H30M-8 38H12V10H30M65 0H78"/><path d="M-48 -58H-30A20 20 0 0 1 -30 -18H-48ZM-48 18L-14 38L-48 58ZM30 -20H45A20 20 0 0 1 45 20H30Z"/><circle cx="-10" cy="38" r="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">RTL</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-3">RTL</h3>
+      <p>Describes the digital logic that implements the processor.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-4">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-4">
+        <title id="stack-svg-title-4">CHIP diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><rect x="-25" y="-25" width="50" height="50"/><rect x="-18" y="-18" width="36" height="36" opacity=".45"/><rect x="-69" y="-69" width="10" height="10" opacity=".7"/><rect x="-69" y="-53" width="10" height="10" opacity=".7"/><rect x="-69" y="-37" width="10" height="10" opacity=".7"/><rect x="-69" y="-21" width="10" height="10" opacity=".7"/><rect x="-69" y="-5" width="10" height="10" opacity=".7"/><rect x="-69" y="11" width="10" height="10" opacity=".7"/><rect x="-69" y="27" width="10" height="10" opacity=".7"/><rect x="-69" y="43" width="10" height="10" opacity=".7"/><rect x="-69" y="59" width="10" height="10" opacity=".7"/><rect x="-53" y="-69" width="10" height="10" opacity=".7"/><rect x="-53" y="-53" width="10" height="10" opacity=".7"/><rect x="-53" y="-37" width="10" height="10" opacity=".7"/><rect x="-53" y="-21" width="10" height="10" opacity=".7"/><rect x="-53" y="-5" width="10" height="10" opacity=".7"/><rect x="-53" y="11" width="10" height="10" opacity=".7"/><rect x="-53" y="27" width="10" height="10" opacity=".7"/><rect x="-53" y="43" width="10" height="10" opacity=".7"/><rect x="-53" y="59" width="10" height="10" opacity=".7"/><rect x="-37" y="-69" width="10" height="10" opacity=".7"/><rect x="-37" y="-53" width="10" height="10" opacity=".7"/><rect x="-37" y="-37" width="10" height="10" opacity=".7"/><rect x="-37" y="-21" width="10" height="10" opacity=".7"/><rect x="-37" y="-5" width="10" height="10" opacity=".7"/><rect x="-37" y="11" width="10" height="10" opacity=".7"/><rect x="-37" y="27" width="10" height="10" opacity=".7"/><rect x="-37" y="43" width="10" height="10" opacity=".7"/><rect x="-37" y="59" width="10" height="10" opacity=".7"/><rect x="-21" y="-69" width="10" height="10" opacity=".7"/><rect x="-21" y="-53" width="10" height="10" opacity=".7"/><rect x="-21" y="-37" width="10" height="10" opacity=".7"/><rect x="-21" y="27" width="10" height="10" opacity=".7"/><rect x="-21" y="43" width="10" height="10" opacity=".7"/><rect x="-21" y="59" width="10" height="10" opacity=".7"/><rect x="-5" y="-69" width="10" height="10" opacity=".7"/><rect x="-5" y="-53" width="10" height="10" opacity=".7"/><rect x="-5" y="-37" width="10" height="10" opacity=".7"/><rect x="-5" y="27" width="10" height="10" opacity=".7"/><rect x="-5" y="43" width="10" height="10" opacity=".7"/><rect x="-5" y="59" width="10" height="10" opacity=".7"/><rect x="11" y="-69" width="10" height="10" opacity=".7"/><rect x="11" y="-53" width="10" height="10" opacity=".7"/><rect x="11" y="-37" width="10" height="10" opacity=".7"/><rect x="11" y="27" width="10" height="10" opacity=".7"/><rect x="11" y="43" width="10" height="10" opacity=".7"/><rect x="11" y="59" width="10" height="10" opacity=".7"/><rect x="27" y="-69" width="10" height="10" opacity=".7"/><rect x="27" y="-53" width="10" height="10" opacity=".7"/><rect x="27" y="-37" width="10" height="10" opacity=".7"/><rect x="27" y="-21" width="10" height="10" opacity=".7"/><rect x="27" y="-5" width="10" height="10" opacity=".7"/><rect x="27" y="11" width="10" height="10" opacity=".7"/><rect x="27" y="27" width="10" height="10" opacity=".7"/><rect x="27" y="43" width="10" height="10" opacity=".7"/><rect x="27" y="59" width="10" height="10" opacity=".7"/><rect x="43" y="-69" width="10" height="10" opacity=".7"/><rect x="43" y="-53" width="10" height="10" opacity=".7"/><rect x="43" y="-37" width="10" height="10" opacity=".7"/><rect x="43" y="-21" width="10" height="10" opacity=".7"/><rect x="43" y="-5" width="10" height="10" opacity=".7"/><rect x="43" y="11" width="10" height="10" opacity=".7"/><rect x="43" y="27" width="10" height="10" opacity=".7"/><rect x="43" y="43" width="10" height="10" opacity=".7"/><rect x="43" y="59" width="10" height="10" opacity=".7"/><rect x="59" y="-69" width="10" height="10" opacity=".7"/><rect x="59" y="-53" width="10" height="10" opacity=".7"/><rect x="59" y="-37" width="10" height="10" opacity=".7"/><rect x="59" y="-21" width="10" height="10" opacity=".7"/><rect x="59" y="-5" width="10" height="10" opacity=".7"/><rect x="59" y="11" width="10" height="10" opacity=".7"/><rect x="59" y="27" width="10" height="10" opacity=".7"/><rect x="59" y="43" width="10" height="10" opacity=".7"/><rect x="59" y="59" width="10" height="10" opacity=".7"/><path d="M-18 -34v9M-18 25v9M-34 -18h9M25 -18h9"/><path d="M-12 -34v9M-12 25v9M-34 -12h9M25 -12h9"/><path d="M-6 -34v9M-6 25v9M-34 -6h9M25 -6h9"/><path d="M0 -34v9M0 25v9M-34 0h9M25 0h9"/><path d="M6 -34v9M6 25v9M-34 6h9M25 6h9"/><path d="M12 -34v9M12 25v9M-34 12h9M25 12h9"/><path d="M18 -34v9M18 25v9M-34 18h9M25 18h9"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">CHIP</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-4">CHIP</h3>
+      <p>The physical silicon that executes the computations.</p>
+    </article>
+  </div>
+</section>
+
+<section id="skills" class="reveal page-section">
+      <h2 class="page-title">Skills You Can Build</h2>
+  <p class="section-intro">Start with a small working design, then follow it from code to hardware.</p>
+  <div class="skill-rows">
+    <article class="skill-row" data-skill="0">
+      <div class="skill-heading"><h3>Digital Design</h3><p class="skill-tools">SystemVerilog · logic</p></div>
+      <p class="skill-description">Write your first SystemVerilog module. Connect logic gates, build a small datapath, and see what changes on each clock cycle.</p>
+      <button class="schematic-demo" type="button" aria-label="Try the gate" aria-describedby="skill-example-0">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path d="M8 25H48M8 59H48M92 42H133"/><path d="M48 13H65A29 29 0 0 1 65 71H48Z"/><g class="gate-signal"><path d="M8 25H48M8 59H48M92 42H133"/><circle cx="10" cy="25" r="3"/><circle cx="10" cy="59" r="3"/><circle cx="128" cy="42" r="4"/></g></svg>
+      </button>
+      <p class="skill-example" id="skill-example-0">Both inputs high → output high.</p>
+    </article>
+    <article class="skill-row" data-skill="1">
+      <div class="skill-heading"><h3>Verification</h3><p class="skill-tools">Testbenches · waveforms</p></div>
+      <p class="skill-description">Write a testbench, inspect a waveform, and track a failing test back to the line of hardware code that caused it.</p>
+      <button class="schematic-demo" type="button" aria-label="Run the waveform" aria-describedby="skill-example-1">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path d="M10 68H135M10 12V68" opacity=".3"/><path d="M14 53H28V24H48V53H69V24H90V53H110V24H130"/><path class="wave-signal" pathLength="100" d="M14 53H28V24H48V53H69V24H90V53H110V24H130"/><path class="wave-cursor" d="M14 12V68"/></svg>
+      </button>
+      <p class="skill-example" id="skill-example-1">Follow a signal through three clock cycles.</p>
+    </article>
+    <article class="skill-row" data-skill="2">
+      <div class="skill-heading"><h3>Physical Design</h3><p class="skill-tools">Placement · routing</p></div>
+      <p class="skill-description">Place chip blocks, route the connections between them, and check whether signals arrive before the next clock edge.</p>
+      <button class="schematic-demo" type="button" aria-label="Place the blocks" aria-describedby="skill-example-2">
+        <svg viewBox="0 0 144 84" aria-hidden="true"><path class="placement-wires" d="M40 26H108V59H40V26M74 26V59"/><rect class="placement-block" x="27" y="15" width="26" height="22" style="--dx:-20px;--dy:-12px;--block-delay:0ms"/><rect class="placement-block" x="95" y="15" width="26" height="22" style="--dx:18px;--dy:-12px;--block-delay:100ms"/><rect class="placement-block" x="27" y="48" width="26" height="22" style="--dx:-20px;--dy:12px;--block-delay:200ms"/><rect class="placement-block" x="95" y="48" width="26" height="22" style="--dx:18px;--dy:12px;--block-delay:300ms"/></svg>
+      </button>
+      <p class="skill-example" id="skill-example-2">Four blocks settle into a connected layout.</p>
+    </article>
+    <article class="skill-row" data-skill="3">
+      <div class="skill-heading"><h3>Software &amp; Machine Learning</h3><p class="skill-tools">Python · compilers</p></div>
+      <p class="skill-description">Take a model operation, translate it into processor instructions, and compare the result in a simulator.</p>
+      <button class="schematic-demo ml-demo" type="button" aria-label="Run a tiny model" aria-describedby="skill-example-3">
+        <svg viewBox="0 0 160 112" aria-hidden="true">
+          <g class="ml-network"><path d="M16 24L62 40M16 24L62 72M16 56L62 40M16 56L62 72M16 88L62 40M16 88L62 72"/>
+            <path class="ml-network-signal" pathLength="100" d="M16 24L62 40M16 56L62 72M16 88L62 72"/>
+            <circle cx="16" cy="24" r="6"/><circle cx="16" cy="56" r="6"/><circle cx="16" cy="88" r="6"/>
+            <circle class="ml-neuron" cx="62" cy="40" r="7"/><circle class="ml-neuron" cx="62" cy="72" r="7"/>
+          </g>
+          <path d="M69 40L91 50M69 72L91 62M121 56H142"/>
+          <g class="ml-processor"><rect x="91" y="40" width="30" height="32" rx="2"/><path d="M96 34V40M106 34V40M116 34V40M96 72V78M106 72V78M116 72V78"/>
+            <path class="ml-accumulator" d="M111 48H101L108 56L101 64H111"/>
+          </g>
+          <g class="ml-instructions"><rect x="75" y="47" width="5" height="3" style="--code-delay:850ms"/><rect x="75" y="54" width="5" height="3" style="--code-delay:1050ms"/><rect x="75" y="61" width="5" height="3" style="--code-delay:1250ms"/></g>
+          <circle class="ml-packet ml-packet-top" cx="16" cy="24" r="3"/>
+          <circle class="ml-packet ml-packet-bottom" cx="16" cy="88" r="3"/>
+          <circle class="ml-result" cx="145" cy="56" r="10"/>
+          <path class="ml-check" d="M140 56L144 60L150 51"/>
+        </svg>
+      </button>
+      <p class="skill-example" id="skill-example-3">A tiny network becomes instructions; the processor produces an output.</p>
+    </article>
+  </div>
+</section>
+
 </main>
 <footer>
   <a class="brand" href="index.html">
