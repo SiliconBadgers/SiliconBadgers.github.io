@@ -98,17 +98,21 @@ a{color:inherit;}
   50%{opacity:0.7;}
 }
 
-/* Same tile again, brightened and masked to a circle that follows the
-   cursor (--mx / --my are written by main.js). */
+/* Blend the cursor spotlight above section backings, cards, and navigation.
+   Screen blending keeps the tile's black background transparent and preserves
+   light text; pointer-events:none leaves every control clickable. */
 .circuit-glow{
-  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  position:fixed; inset:0; z-index:110; pointer-events:none;
+  mix-blend-mode:screen;
   background-image:url("../img/circuit.webp");
   background-repeat:repeat;
   background-size:420px 420px;
   filter:brightness(3) saturate(1.7) drop-shadow(0 0 10px rgb(var(--uw-red-rgb) / 0.9));
-  -webkit-mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,30%), black 0%, black 30%, transparent 72%);
-  mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,30%), black 0%, black 30%, transparent 72%);
-  opacity:0.95;
+  -webkit-mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,30%), black 0%, black 30%, transparent 72%), var(--portrait-cutouts, linear-gradient(black,black));
+  mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,30%), black 0%, black 30%, transparent 72%), var(--portrait-cutouts, linear-gradient(black,black));
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
+  opacity:0.65;
   transition:opacity 0.4s ease;
 }
 
@@ -902,7 +906,7 @@ html.js-reveal .logo-power-pins path{animation:pin-power-on .416s var(--pin-dela
 /* Skills read as a workshop list, with a small working example on each row. */
 .skill-rows{border-top:1px solid var(--border);}
 .skill-row{display:grid;grid-template-columns:minmax(180px,.85fr) minmax(0,1.2fr) 160px;gap:12px 40px;padding:32px 0;border-bottom:1px solid var(--border);align-items:center;}
-.skill-heading h2{font-size:1.4rem;line-height:1.25;margin:0 0 10px;letter-spacing:-.025em;}
+.skill-heading :is(h2,h3){font-size:1.4rem;line-height:1.25;margin:0 0 10px;letter-spacing:-.025em;}
 .skill-tools{font: .875rem/1.6 var(--mono);color:var(--muted);}
 .skill-description{font-size:1rem;line-height:1.75;max-width:50ch;}
 .schematic-demo{align-self:center;display:block;width:160px;border:0;background:transparent;color:var(--muted);font: .875rem/1.4 var(--sans);cursor:pointer;padding:6px;}

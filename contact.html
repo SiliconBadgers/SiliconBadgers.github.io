@@ -27,9 +27,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=30">
+<link rel="stylesheet" href="assets/css/styles.css?v=33">
 <link rel="stylesheet" href="assets/css/contact.css?v=5">
-<script defer src="assets/js/main.js?v=10"></script>
+<script defer src="assets/js/main.js?v=12"></script>
 <script defer src="assets/js/effects.js?v=18"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
 <script type="application/ld+json">
@@ -69,8 +69,8 @@
       <span></span><span></span><span></span>
     </label>
     <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="skills.html">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="leadership.html">Leadership</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
@@ -99,15 +99,14 @@
       <div class="form-row">
         <div class="field-label-row">
           <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
-          <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
         </div>
-        <input type="email" id="contactEmail" name="email" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
+        <input type="email" id="contactEmail" name="email" autocomplete="email" maxlength="200" required>
       </div>
       <div class="form-row">
         <label for="contactMessage"><span class="field-number" aria-hidden="true">03</span> What’s on your mind?</label>
         <textarea id="contactMessage" name="message" rows="5" maxlength="4000" required></textarea>
       </div>
-      <div class="contact-send-row"><p>We’ll reply to the email above.</p><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
+      <div class="contact-send-row"><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
       <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
