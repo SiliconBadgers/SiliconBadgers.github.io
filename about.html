@@ -1,8 +1,177 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<!-- Must stay inline and run before first paint: it arms the pre-animation
+     hidden state for .reveal elements. Content is visible without it, so the
+     fade-in stays progressive enhancement. Do not move to main.js. -->
+<script>document.documentElement.classList.add("js-reveal");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — SiliconBadgers</title>
-<link rel="canonical" href="https://siliconbadgers.com/">
-<meta http-equiv="refresh" content="0; url=index.html#about">
-</head><body><p>About is now on our <a href="index.html#about">Home page</a>.</p></body></html>
+<meta name="description" content="Our first project is an AI-inference accelerator that can run Qwen3.5, with plans to tape it out next year.">
+<link rel="canonical" href="https://siliconbadgers.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — SiliconBadgers">
+<meta property="og:description" content="Our first project is an AI-inference accelerator that can run Qwen3.5, with plans to tape it out next year.">
+<meta property="og:url" content="https://siliconbadgers.com/about.html">
+<meta property="og:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<meta property="og:site_name" content="SiliconBadgers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — SiliconBadgers">
+<meta name="twitter:description" content="Our first project is an AI-inference accelerator that can run Qwen3.5, with plans to tape it out next year.">
+<meta name="twitter:image" content="https://siliconbadgers.com/assets/img/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/styles.css?v=33">
+<script defer src="assets/js/main.js?v=16"></script>
+<script defer src="assets/js/effects.js?v=18"></script>
+<script defer src="assets/js/interactions.js?v=3"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SiliconBadgers",
+  "alternateName": "SiliconBadgers",
+  "url": "https://siliconbadgers.com/",
+  "logo": "https://siliconbadgers.com/assets/img/logo.png",
+  "description": "SiliconBadgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source LLM inference accelerator.",
+  "email": "rsharma232@wisc.edu",
+  "sameAs": [
+    "https://discord.gg/YP7TMagWwN"
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="assets/css/chip-demos.css?v=9">
+<script defer src="assets/js/stack.js?v=2"></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="circuit-bg"></div>
+<div class="circuit-glow"></div>
+<canvas class="circuit-signals" aria-hidden="true"></canvas>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" width="60" height="60" alt="SiliconBadgers logo">
+      SiliconBadgers
+    </a>
+    <input type="checkbox" id="navCheck" class="nav-check" aria-label="Open navigation menu" aria-controls="navLinks">
+    <label for="navCheck" class="navtoggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+      <li><a href="leadership.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="nav-cta" href="join.html">Join Us</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main-content">
+<section id="about" class="reveal page-section">
+  <p class="page-back"><a href="index.html">&larr; Home</a></p>
+  <h1 class="page-title">About SiliconBadgers</h1>
+  <div class="about-text">
+    <p>We’re a student chip-design club at UW–Madison. Learn digital logic, write and test hardware code, and work toward a chip design with other students. You can join without prior experience.</p>
+    <p>Our first project is an AI-inference accelerator that can run Qwen3.5, with plans to tape it out next year. More info coming soon...</p>
+  </div>
+</section>
+<section id="technology-stack" class="technology-stack" aria-labelledby="stack-heading">
+  <h2 id="stack-heading">From AI to Silicon</h2>
+  <div class="stack-stage">
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-0">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-0">
+        <title id="stack-svg-title-0">AI Model diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-55 -40L-18 -55" opacity=".42"/><path d="M-55 -40L-18 -18" opacity=".42"/><path d="M-55 -40L-18 18" opacity=".42"/><path d="M-55 -40L-18 55" opacity=".42"/><path d="M-55 0L-18 -55" opacity=".42"/><path d="M-55 0L-18 -18" opacity=".42"/><path d="M-55 0L-18 18" opacity=".42"/><path d="M-55 0L-18 55" opacity=".42"/><path d="M-55 40L-18 -55" opacity=".42"/><path d="M-55 40L-18 -18" opacity=".42"/><path d="M-55 40L-18 18" opacity=".42"/><path d="M-55 40L-18 55" opacity=".42"/><path d="M-18 -55L20 -40" opacity=".42"/><path d="M-18 -55L20 0" opacity=".42"/><path d="M-18 -55L20 40" opacity=".42"/><path d="M-18 -18L20 -40" opacity=".42"/><path d="M-18 -18L20 0" opacity=".42"/><path d="M-18 -18L20 40" opacity=".42"/><path d="M-18 18L20 -40" opacity=".42"/><path d="M-18 18L20 0" opacity=".42"/><path d="M-18 18L20 40" opacity=".42"/><path d="M-18 55L20 -40" opacity=".42"/><path d="M-18 55L20 0" opacity=".42"/><path d="M-18 55L20 40" opacity=".42"/><path d="M20 -40L56 -22" opacity=".42"/><path d="M20 -40L56 22" opacity=".42"/><path d="M20 0L56 -22" opacity=".42"/><path d="M20 0L56 22" opacity=".42"/><path d="M20 40L56 -22" opacity=".42"/><path d="M20 40L56 22" opacity=".42"/><circle class="stack-node" cx="-55" cy="-40" r="4"/><circle class="stack-node" cx="-55" cy="0" r="4"/><circle class="stack-node" cx="-55" cy="40" r="4"/><circle class="stack-node" cx="-18" cy="-55" r="4"/><circle class="stack-node" cx="-18" cy="-18" r="4"/><circle class="stack-node" cx="-18" cy="18" r="4"/><circle class="stack-node" cx="-18" cy="55" r="4"/><circle class="stack-node" cx="20" cy="-40" r="4"/><circle class="stack-node" cx="20" cy="0" r="4"/><circle class="stack-node" cx="20" cy="40" r="4"/><circle class="stack-node" cx="56" cy="-22" r="4"/><circle class="stack-node" cx="56" cy="22" r="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">AI Model</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-0">AI Model</h3>
+      <p>Defines the neural network and its computations.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-1">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-1">
+        <title id="stack-svg-title-1">Compiler diagram</title><defs><marker id="stack-flow-head" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="currentColor"/></marker></defs>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><g marker-end="url(#stack-flow-head)"><path d="M0 -47V-26M-10 -15H-45V12M10 -15H45V12M-45 32V52H-12M45 32V52H12"/></g><circle cx="0" cy="-57" r="10"/><rect x="-10" y="-26" width="20" height="20"/><circle cx="-45" cy="22" r="10"/><rect x="35" y="12" width="20" height="20"/><circle cx="0" cy="52" r="11"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">Compiler</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-1">Compiler</h3>
+      <p>Translates the model into hardware-targeted instructions.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-2">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-2">
+        <title id="stack-svg-title-2">ISA diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-56 -48h12M-32 -48h30M10 -48h25" stroke-width="4"/><path d="M-56 -29h12M-32 -29h19M-1 -29h36" stroke-width="4"/><path d="M-56 -10h12M-32 -10h42M22 -10h16" stroke-width="4"/><path d="M-56 9h12M-32 9h25M5 9h31" stroke-width="4"/><path d="M-56 28h12M-32 28h36M16 28h20" stroke-width="4"/><path d="M-56 47h12M-32 47h18M-2 47h35" stroke-width="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">ISA</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-2">ISA</h3>
+      <p>Defines the instructions the processor can execute.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-3">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-3">
+        <title id="stack-svg-title-3">RTL diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-70 -48H-48M-70 -28H-48M-70 28H-48M-70 48H-48M-10 -38H12V-10H30M-8 38H12V10H30M65 0H78"/><path d="M-48 -58H-30A20 20 0 0 1 -30 -18H-48ZM-48 18L-14 38L-48 58ZM30 -20H45A20 20 0 0 1 45 20H30Z"/><circle cx="-10" cy="38" r="4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">RTL</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-3">RTL</h3>
+      <p>Describes the digital logic that implements the processor.</p>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-4">
+      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-4">
+        <title id="stack-svg-title-4">CHIP diagram</title>
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><rect x="-25" y="-25" width="50" height="50"/><rect x="-18" y="-18" width="36" height="36" opacity=".45"/><rect x="-69" y="-69" width="10" height="10" opacity=".7"/><rect x="-69" y="-53" width="10" height="10" opacity=".7"/><rect x="-69" y="-37" width="10" height="10" opacity=".7"/><rect x="-69" y="-21" width="10" height="10" opacity=".7"/><rect x="-69" y="-5" width="10" height="10" opacity=".7"/><rect x="-69" y="11" width="10" height="10" opacity=".7"/><rect x="-69" y="27" width="10" height="10" opacity=".7"/><rect x="-69" y="43" width="10" height="10" opacity=".7"/><rect x="-69" y="59" width="10" height="10" opacity=".7"/><rect x="-53" y="-69" width="10" height="10" opacity=".7"/><rect x="-53" y="-53" width="10" height="10" opacity=".7"/><rect x="-53" y="-37" width="10" height="10" opacity=".7"/><rect x="-53" y="-21" width="10" height="10" opacity=".7"/><rect x="-53" y="-5" width="10" height="10" opacity=".7"/><rect x="-53" y="11" width="10" height="10" opacity=".7"/><rect x="-53" y="27" width="10" height="10" opacity=".7"/><rect x="-53" y="43" width="10" height="10" opacity=".7"/><rect x="-53" y="59" width="10" height="10" opacity=".7"/><rect x="-37" y="-69" width="10" height="10" opacity=".7"/><rect x="-37" y="-53" width="10" height="10" opacity=".7"/><rect x="-37" y="-37" width="10" height="10" opacity=".7"/><rect x="-37" y="-21" width="10" height="10" opacity=".7"/><rect x="-37" y="-5" width="10" height="10" opacity=".7"/><rect x="-37" y="11" width="10" height="10" opacity=".7"/><rect x="-37" y="27" width="10" height="10" opacity=".7"/><rect x="-37" y="43" width="10" height="10" opacity=".7"/><rect x="-37" y="59" width="10" height="10" opacity=".7"/><rect x="-21" y="-69" width="10" height="10" opacity=".7"/><rect x="-21" y="-53" width="10" height="10" opacity=".7"/><rect x="-21" y="-37" width="10" height="10" opacity=".7"/><rect x="-21" y="27" width="10" height="10" opacity=".7"/><rect x="-21" y="43" width="10" height="10" opacity=".7"/><rect x="-21" y="59" width="10" height="10" opacity=".7"/><rect x="-5" y="-69" width="10" height="10" opacity=".7"/><rect x="-5" y="-53" width="10" height="10" opacity=".7"/><rect x="-5" y="-37" width="10" height="10" opacity=".7"/><rect x="-5" y="27" width="10" height="10" opacity=".7"/><rect x="-5" y="43" width="10" height="10" opacity=".7"/><rect x="-5" y="59" width="10" height="10" opacity=".7"/><rect x="11" y="-69" width="10" height="10" opacity=".7"/><rect x="11" y="-53" width="10" height="10" opacity=".7"/><rect x="11" y="-37" width="10" height="10" opacity=".7"/><rect x="11" y="27" width="10" height="10" opacity=".7"/><rect x="11" y="43" width="10" height="10" opacity=".7"/><rect x="11" y="59" width="10" height="10" opacity=".7"/><rect x="27" y="-69" width="10" height="10" opacity=".7"/><rect x="27" y="-53" width="10" height="10" opacity=".7"/><rect x="27" y="-37" width="10" height="10" opacity=".7"/><rect x="27" y="-21" width="10" height="10" opacity=".7"/><rect x="27" y="-5" width="10" height="10" opacity=".7"/><rect x="27" y="11" width="10" height="10" opacity=".7"/><rect x="27" y="27" width="10" height="10" opacity=".7"/><rect x="27" y="43" width="10" height="10" opacity=".7"/><rect x="27" y="59" width="10" height="10" opacity=".7"/><rect x="43" y="-69" width="10" height="10" opacity=".7"/><rect x="43" y="-53" width="10" height="10" opacity=".7"/><rect x="43" y="-37" width="10" height="10" opacity=".7"/><rect x="43" y="-21" width="10" height="10" opacity=".7"/><rect x="43" y="-5" width="10" height="10" opacity=".7"/><rect x="43" y="11" width="10" height="10" opacity=".7"/><rect x="43" y="27" width="10" height="10" opacity=".7"/><rect x="43" y="43" width="10" height="10" opacity=".7"/><rect x="43" y="59" width="10" height="10" opacity=".7"/><rect x="59" y="-69" width="10" height="10" opacity=".7"/><rect x="59" y="-53" width="10" height="10" opacity=".7"/><rect x="59" y="-37" width="10" height="10" opacity=".7"/><rect x="59" y="-21" width="10" height="10" opacity=".7"/><rect x="59" y="-5" width="10" height="10" opacity=".7"/><rect x="59" y="11" width="10" height="10" opacity=".7"/><rect x="59" y="27" width="10" height="10" opacity=".7"/><rect x="59" y="43" width="10" height="10" opacity=".7"/><rect x="59" y="59" width="10" height="10" opacity=".7"/><path d="M-18 -34v9M-18 25v9M-34 -18h9M25 -18h9"/><path d="M-12 -34v9M-12 25v9M-34 -12h9M25 -12h9"/><path d="M-6 -34v9M-6 25v9M-34 -6h9M25 -6h9"/><path d="M0 -34v9M0 25v9M-34 0h9M25 0h9"/><path d="M6 -34v9M6 25v9M-34 6h9M25 6h9"/><path d="M12 -34v9M12 25v9M-34 12h9M25 12h9"/><path d="M18 -34v9M18 25v9M-34 18h9M25 18h9"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
+        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">CHIP</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="stack-title-4">CHIP</h3>
+      <p>The physical silicon that executes the computations.</p>
+    </article>
+  </div>
+</section>
+
+</main>
+<footer>
+  <a class="brand" href="index.html">
+    <img src="assets/img/logo.png" width="54" height="54" alt="SiliconBadgers logo">
+    SiliconBadgers
+  </a>
+  <div class="flinks">
+    <a href="contact.html">Contact Us</a>
+    <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Sign-Up Form</a>
+    <a href="https://discord.gg/YP7TMagWwN" target="_blank" rel="noopener">Discord</a>
+  </div>
+  <button class="effects-toggle" type="button" aria-pressed="false" hidden>Pause effects</button>
+  <p class="fine">© 2026 SiliconBadgers · UW-Madison Chip Design Club</p>
+</footer>
+</body>
+</html>

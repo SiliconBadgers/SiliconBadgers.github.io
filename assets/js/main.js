@@ -10,8 +10,17 @@
 /* Add depth and moving signal packets to the original circuit design. */
 // Preserve links shared before the homepage was split into separate pages.
 (function(){
+  if(location.pathname.endsWith('/project.html') && location.hash === '#technology-stack'){
+    location.replace('about.html#technology-stack');
+    return;
+  }
+  if(location.pathname.endsWith('/project.html') && location.hash === '#skills'){
+    location.replace('skills.html#skills');
+    return;
+  }
   if(!/(?:^|\/)index\.html$/.test(location.pathname) && !location.pathname.endsWith('/')) return;
   const pages = {
+    about:'about.html',skills:'skills.html','technology-stack':'about.html',
     sponsors:'sponsors.html',leadership:'leadership.html',signup:'join.html'
   };
   function followLegacyLink(){
