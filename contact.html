@@ -27,9 +27,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/styles.css?v=30">
-<link rel="stylesheet" href="assets/css/contact.css?v=3">
-<script defer src="assets/js/main.js?v=10"></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=33">
+<link rel="stylesheet" href="assets/css/contact.css?v=5">
+<script defer src="assets/js/main.js?v=16"></script>
 <script defer src="assets/js/effects.js?v=18"></script>
 <script defer src="assets/js/interactions.js?v=3"></script>
 <script type="application/ld+json">
@@ -43,7 +43,7 @@
   "description": "SiliconBadgers is UW-Madison's first chip design club, teaching digital design, verification, and FPGA development while building an open-source LLM inference accelerator.",
   "email": "rsharma232@wisc.edu",
   "sameAs": [
-    "https://discord.gg/MFdBms4J9z"
+    "https://discord.gg/YP7TMagWwN"
   ]
 }
 </script>
@@ -69,10 +69,11 @@
       <span></span><span></span><span></span>
     </label>
     <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="leadership.html">Team</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
       <li><a class="nav-cta" href="join.html">Join Us</a></li>
     </ul>
@@ -84,28 +85,29 @@
   <div class="contact-layout">
     <div class="contact-intro">
       <p class="contact-eyebrow">SiliconBadgers / Contact</p>
-      <h1>Good things<br>start with<br><span>hello.</span></h1>
-      <p class="contact-deck">Have a question, an idea, or something you want to build with us? We’d love to hear it.</p>
+      <h1 class="contact-deck">Have a question, an idea, or something you want to build with us? We’d love to hear it.</h1>
       <div class="contact-alternatives">
-        <a href="https://discord.gg/MFdBms4J9z" target="_blank" rel="noopener"><span><strong>Find us on Discord</strong><small>Meet the club and join the conversation.</small></span><span aria-hidden="true">↗</span></a>
+        <a href="https://discord.gg/YP7TMagWwN" target="_blank" rel="noopener"><span><strong>Find us on Discord</strong><small>Meet the club and join the conversation.</small></span><span aria-hidden="true">↗</span></a>
+        <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener"><span><strong>Wanna join?</strong><small>Sign up form</small></span><span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <form id="contactForm" class="contact-form">
-      <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Joining, projects, sponsorships, or anything else.</p></div>
+      <div class="contact-form-heading"><h2>Drop us a message<span>.</span></h2><p>Sponsorships, projects, ideas, questions, or anything else.</p></div>
       <div class="form-row">
         <label for="contactName"><span class="field-number" aria-hidden="true">01</span> Your name</label>
-        <input type="text" id="contactName" name="name" placeholder="What should we call you?" autocomplete="name" maxlength="200" required>
+        <input type="text" id="contactName" name="name" autocomplete="name" maxlength="200" required>
       </div>
       <div class="form-row">
-        <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
-        <input type="email" id="contactEmail" name="email" placeholder="you@example.com" autocomplete="email" maxlength="200" aria-describedby="emailHint" required>
-        <p class="field-hint" id="emailHint">UW–Madison student? Use your school email.</p>
+        <div class="field-label-row">
+          <label for="contactEmail"><span class="field-number" aria-hidden="true">02</span> Email address</label>
+        </div>
+        <input type="email" id="contactEmail" name="email" autocomplete="email" maxlength="200" required>
       </div>
       <div class="form-row">
         <label for="contactMessage"><span class="field-number" aria-hidden="true">03</span> What’s on your mind?</label>
-        <textarea id="contactMessage" name="message" rows="5" maxlength="4000" placeholder="Tell us a little about what you have in mind…" required></textarea>
+        <textarea id="contactMessage" name="message" rows="5" maxlength="4000" required></textarea>
       </div>
-      <div class="contact-send-row"><p>We’ll reply to the email above.</p><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
+      <div class="contact-send-row"><button type="submit" class="btn btn-primary" id="contactSubmit">Send message</button></div>
       <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -119,7 +121,7 @@
   <div class="flinks">
     <a href="contact.html">Contact Us</a>
     <a href="https://forms.gle/yjvHRH14iNGg6Zvt8" target="_blank" rel="noopener">Sign-Up Form</a>
-    <a href="https://discord.gg/MFdBms4J9z" target="_blank" rel="noopener">Discord</a>
+    <a href="https://discord.gg/YP7TMagWwN" target="_blank" rel="noopener">Discord</a>
   </div>
   <button class="effects-toggle" type="button" aria-pressed="false" hidden>Pause effects</button>
   <p class="fine">© 2026 SiliconBadgers · UW-Madison Chip Design Club</p>

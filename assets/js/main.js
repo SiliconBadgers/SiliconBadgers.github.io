@@ -10,9 +10,17 @@
 /* Add depth and moving signal packets to the original circuit design. */
 // Preserve links shared before the homepage was split into separate pages.
 (function(){
+  if(location.pathname.endsWith('/project.html') && location.hash === '#technology-stack'){
+    location.replace('about.html#technology-stack');
+    return;
+  }
+  if(location.pathname.endsWith('/project.html') && location.hash === '#skills'){
+    location.replace('skills.html#skills');
+    return;
+  }
   if(!/(?:^|\/)index\.html$/.test(location.pathname) && !location.pathname.endsWith('/')) return;
   const pages = {
-    about:'about.html',skills:'skills.html',
+    about:'about.html',skills:'skills.html','technology-stack':'about.html',
     sponsors:'sponsors.html',leadership:'leadership.html',signup:'join.html'
   };
   function followLegacyLink(){
@@ -108,6 +116,22 @@ setTimeout(checkRevealManually, 500);
   const logoWrap = document.querySelector('.logo-wrap');
   const headerEl = document.querySelector('header');
   const circuitGlowEl = document.querySelector('.circuit-glow');
+  const portraits = Array.from(document.querySelectorAll('.leadership-page .avatar'));
+  function updatePortraitCutouts(){
+    if(!circuitGlowEl || !portraits.length) return;
+    const cutouts = portraits.map(portrait => {
+      const rect = portrait.getBoundingClientRect();
+      if(!rect.width || !rect.height) return null;
+      return `radial-gradient(ellipse ${rect.width / 2}px ${rect.height / 2}px at ${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px, transparent 100%, black 100%)`;
+    }).filter(Boolean);
+    circuitGlowEl.style.setProperty('--portrait-cutouts', cutouts.join(', ') || 'linear-gradient(black,black)');
+  }
+  if(portraits.length){
+    window.addEventListener('scroll', updatePortraitCutouts, {passive:true});
+    window.addEventListener('resize', updatePortraitCutouts, {passive:true});
+    document.addEventListener('transitionend', updatePortraitCutouts);
+    updatePortraitCutouts();
+  }
   const glowEls = Array.from(document.querySelectorAll(
     '.why-card'
   ));
@@ -158,6 +182,7 @@ setTimeout(checkRevealManually, 500);
     if(circuitGlowEl) circuitGlowEl.style.opacity = '';
     root.style.setProperty('--mx', x + 'px');
     root.style.setProperty('--my', y + 'px');
+    updatePortraitCutouts();
     updateLogoFade(x, y);
     updateHeaderFade(x, y);
     updateGlowSurfaces(x, y);
