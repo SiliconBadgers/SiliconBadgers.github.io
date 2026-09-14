@@ -1024,3 +1024,9 @@ small,.fine,.field-hint,.join-footnote,.signup-note,.sponsors-subtitle,.skill-ex
 
 /* Small status text prioritizes contrast; the message carries its meaning. */
 .form-status.error{color:var(--ink);}
+
+/* First meeting photo on the home page. */
+.first-meeting{padding-top:24px;padding-bottom:64px;}
+.meeting-photo{max-width:820px;margin:0 auto;}
+.meeting-photo img{display:block;width:100%;height:auto;aspect-ratio:16 / 10;object-fit:cover;object-position:center 55%;border-radius:16px;border:1px solid rgba(255,255,255,.12);}
+.meeting-photo figcaption{text-align:center;margin-top:16px;font-size:1rem;color:var(--muted, #b8b8b8);}
