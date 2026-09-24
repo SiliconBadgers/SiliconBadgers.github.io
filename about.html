@@ -48,7 +48,8 @@
 </script>
 
 <link rel="stylesheet" href="assets/css/chip-demos.css?v=9">
-<script defer src="assets/js/stack.js?v=2"></script>
+<link rel="stylesheet" href="assets/css/inference.css?v=2">
+<script defer src="assets/js/stack.js?v=4"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -93,75 +94,187 @@
     <p>Our first project is an AI-inference accelerator that can run Qwen3.5, with plans to tape it out next year. More info coming soon...</p>
   </div>
 </section>
-<section id="technology-stack" class="technology-stack" aria-labelledby="stack-heading">
-  <h2 id="stack-heading">From AI to Silicon</h2>
-  <div class="stack-stage">
-    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-0">
-      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-0">
-        <title id="stack-svg-title-0">AI Model diagram</title>
-        <g class="stack-panel">
-          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
-          <g class="stack-symbols"><path d="M-55 -40L-18 -55" opacity=".42"/><path d="M-55 -40L-18 -18" opacity=".42"/><path d="M-55 -40L-18 18" opacity=".42"/><path d="M-55 -40L-18 55" opacity=".42"/><path d="M-55 0L-18 -55" opacity=".42"/><path d="M-55 0L-18 -18" opacity=".42"/><path d="M-55 0L-18 18" opacity=".42"/><path d="M-55 0L-18 55" opacity=".42"/><path d="M-55 40L-18 -55" opacity=".42"/><path d="M-55 40L-18 -18" opacity=".42"/><path d="M-55 40L-18 18" opacity=".42"/><path d="M-55 40L-18 55" opacity=".42"/><path d="M-18 -55L20 -40" opacity=".42"/><path d="M-18 -55L20 0" opacity=".42"/><path d="M-18 -55L20 40" opacity=".42"/><path d="M-18 -18L20 -40" opacity=".42"/><path d="M-18 -18L20 0" opacity=".42"/><path d="M-18 -18L20 40" opacity=".42"/><path d="M-18 18L20 -40" opacity=".42"/><path d="M-18 18L20 0" opacity=".42"/><path d="M-18 18L20 40" opacity=".42"/><path d="M-18 55L20 -40" opacity=".42"/><path d="M-18 55L20 0" opacity=".42"/><path d="M-18 55L20 40" opacity=".42"/><path d="M20 -40L56 -22" opacity=".42"/><path d="M20 -40L56 22" opacity=".42"/><path d="M20 0L56 -22" opacity=".42"/><path d="M20 0L56 22" opacity=".42"/><path d="M20 40L56 -22" opacity=".42"/><path d="M20 40L56 22" opacity=".42"/><circle class="stack-node" cx="-55" cy="-40" r="4"/><circle class="stack-node" cx="-55" cy="0" r="4"/><circle class="stack-node" cx="-55" cy="40" r="4"/><circle class="stack-node" cx="-18" cy="-55" r="4"/><circle class="stack-node" cx="-18" cy="-18" r="4"/><circle class="stack-node" cx="-18" cy="18" r="4"/><circle class="stack-node" cx="-18" cy="55" r="4"/><circle class="stack-node" cx="20" cy="-40" r="4"/><circle class="stack-node" cx="20" cy="0" r="4"/><circle class="stack-node" cx="20" cy="40" r="4"/><circle class="stack-node" cx="56" cy="-22" r="4"/><circle class="stack-node" cx="56" cy="22" r="4"/></g>
-        </g>
-        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
-        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">AI Model</text></g>
-      </svg>
-      <h3 class="stack-sr-title" id="stack-title-0">AI Model</h3>
-      <p>Defines the neural network and its computations.</p>
-    </article>
-    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-1">
-      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-1">
-        <title id="stack-svg-title-1">Compiler diagram</title><defs><marker id="stack-flow-head" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="currentColor"/></marker></defs>
-        <g class="stack-panel">
-          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
-          <g class="stack-symbols"><g marker-end="url(#stack-flow-head)"><path d="M0 -47V-26M-10 -15H-45V12M10 -15H45V12M-45 32V52H-12M45 32V52H12"/></g><circle cx="0" cy="-57" r="10"/><rect x="-10" y="-26" width="20" height="20"/><circle cx="-45" cy="22" r="10"/><rect x="35" y="12" width="20" height="20"/><circle cx="0" cy="52" r="11"/></g>
-        </g>
-        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
-        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">Compiler</text></g>
-      </svg>
-      <h3 class="stack-sr-title" id="stack-title-1">Compiler</h3>
-      <p>Translates the model into hardware-targeted instructions.</p>
-    </article>
-    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-2">
-      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-2">
-        <title id="stack-svg-title-2">ISA diagram</title>
-        <g class="stack-panel">
-          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
-          <g class="stack-symbols"><path d="M-56 -48h12M-32 -48h30M10 -48h25" stroke-width="4"/><path d="M-56 -29h12M-32 -29h19M-1 -29h36" stroke-width="4"/><path d="M-56 -10h12M-32 -10h42M22 -10h16" stroke-width="4"/><path d="M-56 9h12M-32 9h25M5 9h31" stroke-width="4"/><path d="M-56 28h12M-32 28h36M16 28h20" stroke-width="4"/><path d="M-56 47h12M-32 47h18M-2 47h35" stroke-width="4"/></g>
-        </g>
-        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
-        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">ISA</text></g>
-      </svg>
-      <h3 class="stack-sr-title" id="stack-title-2">ISA</h3>
-      <p>Defines the instructions the processor can execute.</p>
-    </article>
-    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-3">
-      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-3">
-        <title id="stack-svg-title-3">RTL diagram</title>
-        <g class="stack-panel">
-          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
-          <g class="stack-symbols"><path d="M-70 -48H-48M-70 -28H-48M-70 28H-48M-70 48H-48M-10 -38H12V-10H30M-8 38H12V10H30M65 0H78"/><path d="M-48 -58H-30A20 20 0 0 1 -30 -18H-48ZM-48 18L-14 38L-48 58ZM30 -20H45A20 20 0 0 1 45 20H30Z"/><circle cx="-10" cy="38" r="4"/></g>
-        </g>
-        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
-        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">RTL</text></g>
-      </svg>
-      <h3 class="stack-sr-title" id="stack-title-3">RTL</h3>
-      <p>Describes the digital logic that implements the processor.</p>
-    </article>
-    <article class="stack-item" tabindex="0" aria-labelledby="stack-title-4">
-      <svg class="stack-svg" viewBox="0 0 240 270" role="img" aria-labelledby="stack-svg-title-4">
-        <title id="stack-svg-title-4">CHIP diagram</title>
-        <g class="stack-panel">
-          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
-          <g class="stack-symbols"><rect x="-25" y="-25" width="50" height="50"/><rect x="-18" y="-18" width="36" height="36" opacity=".45"/><rect x="-69" y="-69" width="10" height="10" opacity=".7"/><rect x="-69" y="-53" width="10" height="10" opacity=".7"/><rect x="-69" y="-37" width="10" height="10" opacity=".7"/><rect x="-69" y="-21" width="10" height="10" opacity=".7"/><rect x="-69" y="-5" width="10" height="10" opacity=".7"/><rect x="-69" y="11" width="10" height="10" opacity=".7"/><rect x="-69" y="27" width="10" height="10" opacity=".7"/><rect x="-69" y="43" width="10" height="10" opacity=".7"/><rect x="-69" y="59" width="10" height="10" opacity=".7"/><rect x="-53" y="-69" width="10" height="10" opacity=".7"/><rect x="-53" y="-53" width="10" height="10" opacity=".7"/><rect x="-53" y="-37" width="10" height="10" opacity=".7"/><rect x="-53" y="-21" width="10" height="10" opacity=".7"/><rect x="-53" y="-5" width="10" height="10" opacity=".7"/><rect x="-53" y="11" width="10" height="10" opacity=".7"/><rect x="-53" y="27" width="10" height="10" opacity=".7"/><rect x="-53" y="43" width="10" height="10" opacity=".7"/><rect x="-53" y="59" width="10" height="10" opacity=".7"/><rect x="-37" y="-69" width="10" height="10" opacity=".7"/><rect x="-37" y="-53" width="10" height="10" opacity=".7"/><rect x="-37" y="-37" width="10" height="10" opacity=".7"/><rect x="-37" y="-21" width="10" height="10" opacity=".7"/><rect x="-37" y="-5" width="10" height="10" opacity=".7"/><rect x="-37" y="11" width="10" height="10" opacity=".7"/><rect x="-37" y="27" width="10" height="10" opacity=".7"/><rect x="-37" y="43" width="10" height="10" opacity=".7"/><rect x="-37" y="59" width="10" height="10" opacity=".7"/><rect x="-21" y="-69" width="10" height="10" opacity=".7"/><rect x="-21" y="-53" width="10" height="10" opacity=".7"/><rect x="-21" y="-37" width="10" height="10" opacity=".7"/><rect x="-21" y="27" width="10" height="10" opacity=".7"/><rect x="-21" y="43" width="10" height="10" opacity=".7"/><rect x="-21" y="59" width="10" height="10" opacity=".7"/><rect x="-5" y="-69" width="10" height="10" opacity=".7"/><rect x="-5" y="-53" width="10" height="10" opacity=".7"/><rect x="-5" y="-37" width="10" height="10" opacity=".7"/><rect x="-5" y="27" width="10" height="10" opacity=".7"/><rect x="-5" y="43" width="10" height="10" opacity=".7"/><rect x="-5" y="59" width="10" height="10" opacity=".7"/><rect x="11" y="-69" width="10" height="10" opacity=".7"/><rect x="11" y="-53" width="10" height="10" opacity=".7"/><rect x="11" y="-37" width="10" height="10" opacity=".7"/><rect x="11" y="27" width="10" height="10" opacity=".7"/><rect x="11" y="43" width="10" height="10" opacity=".7"/><rect x="11" y="59" width="10" height="10" opacity=".7"/><rect x="27" y="-69" width="10" height="10" opacity=".7"/><rect x="27" y="-53" width="10" height="10" opacity=".7"/><rect x="27" y="-37" width="10" height="10" opacity=".7"/><rect x="27" y="-21" width="10" height="10" opacity=".7"/><rect x="27" y="-5" width="10" height="10" opacity=".7"/><rect x="27" y="11" width="10" height="10" opacity=".7"/><rect x="27" y="27" width="10" height="10" opacity=".7"/><rect x="27" y="43" width="10" height="10" opacity=".7"/><rect x="27" y="59" width="10" height="10" opacity=".7"/><rect x="43" y="-69" width="10" height="10" opacity=".7"/><rect x="43" y="-53" width="10" height="10" opacity=".7"/><rect x="43" y="-37" width="10" height="10" opacity=".7"/><rect x="43" y="-21" width="10" height="10" opacity=".7"/><rect x="43" y="-5" width="10" height="10" opacity=".7"/><rect x="43" y="11" width="10" height="10" opacity=".7"/><rect x="43" y="27" width="10" height="10" opacity=".7"/><rect x="43" y="43" width="10" height="10" opacity=".7"/><rect x="43" y="59" width="10" height="10" opacity=".7"/><rect x="59" y="-69" width="10" height="10" opacity=".7"/><rect x="59" y="-53" width="10" height="10" opacity=".7"/><rect x="59" y="-37" width="10" height="10" opacity=".7"/><rect x="59" y="-21" width="10" height="10" opacity=".7"/><rect x="59" y="-5" width="10" height="10" opacity=".7"/><rect x="59" y="11" width="10" height="10" opacity=".7"/><rect x="59" y="27" width="10" height="10" opacity=".7"/><rect x="59" y="43" width="10" height="10" opacity=".7"/><rect x="59" y="59" width="10" height="10" opacity=".7"/><path d="M-18 -34v9M-18 25v9M-34 -18h9M25 -18h9"/><path d="M-12 -34v9M-12 25v9M-34 -12h9M25 -12h9"/><path d="M-6 -34v9M-6 25v9M-34 -6h9M25 -6h9"/><path d="M0 -34v9M0 25v9M-34 0h9M25 0h9"/><path d="M6 -34v9M6 25v9M-34 6h9M25 6h9"/><path d="M12 -34v9M12 25v9M-34 12h9M25 12h9"/><path d="M18 -34v9M18 25v9M-34 18h9M25 18h9"/></g>
-        </g>
-        <g class="stack-arrow"><path d="M240 110H282M277 106L282 110L277 114"/></g>
-        <g class="stack-label" aria-hidden="true"><text text-anchor="middle" dominant-baseline="middle">CHIP</text></g>
-      </svg>
-      <h3 class="stack-sr-title" id="stack-title-4">CHIP</h3>
-      <p>The physical silicon that executes the computations.</p>
-    </article>
+<section id="technology-stack" class="technology-stack inference" aria-labelledby="stack-heading">
+  <div class="inference-heading">
+    <div>
+      <h2 id="stack-heading">From AI to Silicon</h2>
+      <p>Follow a prompt through the system we’re building.</p>
+    </div>
+    <div class="inference-controls" hidden>
+      <button class="inference-replay" type="button" aria-label="Replay the animation"><span aria-hidden="true">↻</span> Replay</button>
+      <button class="inference-toggle" type="button" aria-label="Pause the animation" aria-pressed="false"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5 3v10M11 3v10"/></svg><span>Pause</span></button>
+    </div>
   </div>
+  <div class="stack-stage inference-stage">
+    <svg class="inference-svg" viewBox="0 0 1200 560" role="img" aria-labelledby="inference-title inference-description">
+      <title id="inference-title">A prompt travels from a computer through a RISC-V CPU and the Badger Processing Unit</title>
+      <desc id="inference-description">The RISC-V CPU runs llama.cpp and offloads selected computations to the accelerator inside the Badger Processing Unit. The accelerator exchanges data with external memory within the same package, then returns results to the CPU. The CPU sends the response back to the computer. This is a conceptual illustration.</desc>
+      <defs>
+        <linearGradient id="inference-glass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="var(--signal)" stop-opacity=".11"/>
+          <stop offset="1" stop-color="var(--uw-red)" stop-opacity=".025"/>
+        </linearGradient>
+        <radialGradient id="inference-halo">
+          <stop stop-color="var(--uw-red)" stop-opacity=".16"/>
+          <stop offset="1" stop-color="var(--uw-red)" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g class="inference-wires" aria-hidden="true">
+        <path data-route="prompt" d="M276 350H328L362 320H425"/>
+        <path data-route="reply" d="M425 330H366L332 360H276"/>
+        <path data-route="offload" d="M635 320H668L695 293H721L738 307"/>
+        <path data-route="return" d="M738 319H701L676 341H635"/>
+      </g>
+      <g class="inference-packets" aria-hidden="true">
+        <path data-packet="prompt" pathLength="100" d="M276 350H328L362 320H425"/>
+        <path data-packet="reply" pathLength="100" d="M425 330H366L332 360H276"/>
+        <path data-packet="offload" pathLength="100" d="M635 320H668L695 293H721L738 307"/>
+        <path data-packet="return" pathLength="100" d="M738 319H701L676 341H635"/>
+      </g>
+      <g class="inference-computer" transform="translate(45 315)" aria-hidden="true">
+        <g class="inference-drawing">
+          <path class="inference-side" d="M0 -142L7 -148L217 -131V16L210 22Z"/>
+          <g transform="matrix(1 .08 0 1 0 0)">
+            <rect class="inference-screen" x="0" y="-142" width="210" height="147" rx="5"/>
+            <path class="inference-faint" d="M0 -114H210"/>
+            <circle cx="13" cy="-128" r="2"/><circle cx="23" cy="-128" r="2" opacity=".5"/><circle cx="33" cy="-128" r="2" opacity=".25"/>
+            <text class="inference-terminal-label" x="194" y="-124" text-anchor="end">TERMINAL</text>
+            <g class="inference-terminal-text">
+              <text x="14" y="-84" class="inference-prompt">&gt; Say hello.</text>
+              <text x="14" y="-44" class="inference-response-first">Hello,</text>
+              <text x="14" y="-21" class="inference-response-last">SiliconBadgers.</text>
+              <path class="inference-caret" d="M16 -99v18"/>
+            </g>
+          </g>
+          <path class="inference-surface" d="M0 16L210 33L238 65L-20 44Z"/>
+          <path class="inference-side" d="M-20 44L238 65V70L-20 49Z"/>
+          <g class="inference-keyboard"><path d="M12 29l11 1M17 36l11 1M22 43l11 1"/><path d="M31 29l11 1M36 36l11 1M41 43l11 1"/><path d="M50 29l11 1M55 36l11 1M60 43l11 1"/><path d="M69 29l11 1M74 36l11 1M79 43l11 1"/><path d="M88 29l11 1M93 36l11 1M98 43l11 1"/><path d="M107 29l11 1M112 36l11 1M117 43l11 1"/><path d="M126 29l11 1M131 36l11 1M136 43l11 1"/><path d="M145 29l11 1M150 36l11 1M155 43l11 1"/><path d="M164 29l11 1M169 36l11 1M174 43l11 1"/><path d="M183 29l11 1M188 36l11 1M193 43l11 1"/></g>
+          <path class="inference-faint" d="M78 46l61 5 6 7-66-5Z"/>
+          <path class="inference-faint" d="M219 35H231M226 45H231"/>
+          <circle class="inference-port" cx="231" cy="35" r="3"/>
+        </g>
+        <text class="inference-label" x="106" y="178" text-anchor="middle">COMPUTER</text>
+        <text class="inference-sublabel" x="106" y="203" text-anchor="middle">Your prompt. Your response.</text>
+      </g>
+      <g class="inference-cpu" transform="translate(530 320)" aria-hidden="true">
+        <ellipse class="inference-cpu-halo" cy="12" rx="158" ry="96" fill="url(#inference-halo)"/>
+        <g class="inference-drawing">
+          <path class="inference-side" d="M-105 0L0 52L105 0V15L0 67L-105 15Z"/>
+          <g transform="matrix(.82 .4 -.82 .4 0 0)">
+            <rect class="inference-surface" x="-64" y="-64" width="128" height="128"/>
+            <g class="inference-pins"><path d="M-48 -64v-13M-48 64v13M-64 -48h-13M64 -48h13"/><path d="M-36 -64v-13M-36 64v13M-64 -36h-13M64 -36h13"/><path d="M-24 -64v-13M-24 64v13M-64 -24h-13M64 -24h13"/><path d="M-12 -64v-13M-12 64v13M-64 -12h-13M64 -12h13"/><path d="M0 -64v-13M0 64v13M-64 0h-13M64 0h13"/><path d="M12 -64v-13M12 64v13M-64 12h-13M64 12h13"/><path d="M24 -64v-13M24 64v13M-64 24h-13M64 24h13"/><path d="M36 -64v-13M36 64v13M-64 36h-13M64 36h13"/><path d="M48 -64v-13M48 64v13M-64 48h-13M64 48h13"/></g>
+            <path class="inference-faint" d="M-49-42H-32V-25M-49 0H-26M-49 42H-32V25M49-42H32V-25M49 0H26M49 42H32V25M-16-49V-28M16-49V-28M-16 49V28M16 49V28"/>
+            <rect class="inference-cpu-core" x="-27" y="-27" width="54" height="54"/>
+            <path class="inference-cpu-trace" pathLength="100" d="M-49 0H-27V-27H27V27H-27V0H49"/>
+            <path class="inference-faint" d="M-15-15H15V15H-15Z"/>
+            <text class="inference-die-text" text-anchor="middle" y="4">RV</text>
+          </g>
+          <circle class="inference-port" cx="-105" cy="0" r="3"/>
+          <circle class="inference-port" cx="105" cy="0" r="3"/>
+        </g>
+        <text class="inference-label" y="173" text-anchor="middle">RISC-V CPU</text>
+        <text class="inference-sublabel" y="198" text-anchor="middle">Running llama.cpp</text>
+      </g>
+      <g class="inference-package" transform="translate(955 320)" aria-hidden="true">
+        <ellipse class="inference-package-halo" cy="25" rx="270" ry="170" fill="url(#inference-halo)"/>
+        <g class="inference-drawing">
+          <path class="inference-side" d="M-234-14L29 114L234 14V31L29 131L-234 3Z"/>
+          <path class="inference-substrate" d="M-29-114L234 14L29 114L-234-14Z"/>
+          <g class="inference-internals" transform="matrix(.82 .4 -.82 .4 0 -8)">
+            <g class="inference-faint"><path d="M-144-88H-94V-70M-144 102H-94V83M144-88H99V-70M144 102H99V83M-142-30H-131M-142 30H-131M126-30H145M126 30H145"/></g>
+            <rect class="inference-chip-bed" x="-131" y="-69" width="122" height="139"/>
+            <g class="inference-compute-grid">              <rect class="inference-cell" data-wave="0" x="-121" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="1" x="-106" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="2" x="-91" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="3" x="-76" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="4" x="-61" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-46" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-31" y="-58" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="1" x="-121" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="2" x="-106" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="3" x="-91" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="4" x="-76" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-61" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-46" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-31" y="-43" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="2" x="-121" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="3" x="-106" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="4" x="-91" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-76" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-61" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-46" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-31" y="-28" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="3" x="-121" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="4" x="-106" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-91" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-76" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-61" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-46" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="9" x="-31" y="-13" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="4" x="-121" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-106" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-91" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-76" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-61" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="9" x="-46" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="10" x="-31" y="2" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="5" x="-121" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-106" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-91" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-76" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="9" x="-61" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="10" x="-46" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="11" x="-31" y="17" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="6" x="-121" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-106" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-91" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="9" x="-76" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="10" x="-61" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="11" x="-46" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="12" x="-31" y="32" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="7" x="-121" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="8" x="-106" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="9" x="-91" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="10" x="-76" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="11" x="-61" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="12" x="-46" y="47" width="11" height="11" rx="1"/>
+              <rect class="inference-cell" data-wave="13" x="-31" y="47" width="11" height="11" rx="1"/></g>
+            <rect class="inference-chip-bed" x="34" y="-69" width="99" height="139"/>
+            <g class="inference-memory">              <rect class="inference-bank" x="42" y="-61" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="-43" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="-25" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="-7" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="11" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="29" width="83" height="12" rx="1"/>
+              <rect class="inference-bank" x="42" y="47" width="83" height="12" rx="1"/></g>
+            <g class="inference-local-wires"><path d="M-9-37H7L20-50H34M-9-15H34M-9 8H34M-9 31H9L20 43H34"/></g>
+            <path class="inference-memory-packet" pathLength="100" d="M34-15H-9V8H34"/>
+            <text class="inference-component-label" x="-70" y="91" text-anchor="middle">ACCELERATOR</text>
+            <text class="inference-component-label" x="83" y="91" text-anchor="middle">EXTERNAL MEMORY</text>
+          </g>
+          <g class="inference-lid-guides"><path d="M-29-196V-114M234-68V14M29 32V114M-234-96V-14"/></g>
+          <g class="inference-lid" transform="translate(0 -82)">
+            <path class="inference-glass" d="M-29-114L234 14L29 114L-234-14Z"/>
+            <g transform="matrix(.82 .4 -.82 .4 0 0)">
+              <path class="inference-lid-detail" d="M-144-84V-109H-119M119-109H144V-84M144 84V109H119M-119 109H-144V84"/>
+              <g class="inference-lid-lettering">
+                <text class="inference-package-brand" text-anchor="middle" y="0">BADGER PROCESSING UNIT</text>
+                <text class="inference-lid-caption" text-anchor="middle" y="23">PACKAGE</text>
+              </g>
+            </g>
+          </g>
+          <circle class="inference-port" cx="-217" cy="-13" r="3"/>
+        </g>
+        <text class="inference-label" y="173" text-anchor="middle">BADGER PROCESSING UNIT</text>
+        <text class="inference-sublabel" y="198" text-anchor="middle">Accelerator + external memory</text>
+      </g>
+    </svg>
+  </div>
+  <div class="inference-caption">
+    <p class="inference-phase"><span class="inference-phase-number" aria-hidden="true">03 /</span> <span class="inference-phase-text">A little help from our silicon.</span></p>
+    <p class="inference-note">A conceptual look inside our system.</p>
+  </div>
+  <div class="inference-progress" aria-hidden="true"><span></span></div>
 </section>
 
 </main>
