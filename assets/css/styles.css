@@ -172,6 +172,17 @@ nav{
 .navlinks a.nav-cta::after{display:none;}
 .navlinks a.nav-cta:focus-visible{outline:2px solid var(--white);outline-offset:4px;}
 
+.navlinks .nav-actions{display:flex;align-items:center;gap:12px;}
+.navlinks a.nav-github{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;flex-shrink:0;padding:0;border:0;border-radius:4px;
+  opacity:.8;transition:opacity .15s ease,background-color .15s ease;
+}
+.navlinks a.nav-github img{display:block;}
+.navlinks a.nav-github:hover{opacity:1;background:rgb(255 255 255 / .08);}
+.navlinks a.nav-github::after{display:none;}
+.navlinks a.nav-github:focus-visible{opacity:1;outline:2px solid var(--white);outline-offset:4px;}
+
 /* Mobile menu is driven by this visually-hidden checkbox, so it opens and
    closes with pure CSS even when JavaScript is unavailable. */
 .nav-check{
@@ -720,8 +731,9 @@ html.js-reveal .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
     font-size:1rem;
   }
   .navlinks a.nav-cta{
-    display:flex;margin:10px 24px 18px;border-radius:4px;text-align:center;
+    display:flex;flex:1;margin:0;border-radius:4px;text-align:center;
   }
+  .navlinks .nav-actions{padding:10px 24px 18px;}
 }
 
 /* Touch-only fallback: works even with no JS at all. JS gives a smooth

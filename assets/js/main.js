@@ -117,20 +117,35 @@ setTimeout(checkRevealManually, 500);
   const headerEl = document.querySelector('header');
   const circuitGlowEl = document.querySelector('.circuit-glow');
   const portraits = Array.from(document.querySelectorAll('.leadership-page .avatar'));
-  function updatePortraitCutouts(){
-    if(!circuitGlowEl || !portraits.length) return;
+  const meetingPhoto = document.querySelector('.meeting-photo img');
+  function updateImageCutouts(){
+    if(!circuitGlowEl || (!portraits.length && !meetingPhoto)) return;
     const cutouts = portraits.map(portrait => {
       const rect = portrait.getBoundingClientRect();
       if(!rect.width || !rect.height) return null;
       return `radial-gradient(ellipse ${rect.width / 2}px ${rect.height / 2}px at ${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px, transparent 100%, black 100%)`;
     }).filter(Boolean);
     circuitGlowEl.style.setProperty('--portrait-cutouts', cutouts.join(', ') || 'linear-gradient(black,black)');
+
+    // Cut the rounded photo out of the viewport-wide glow, including when
+    // the cursor is near its edges. Keep the surrounding background lit.
+    if(meetingPhoto){
+      const {left, top, right, bottom, width, height} = meetingPhoto.getBoundingClientRect();
+      const radius = Math.min(parseFloat(getComputedStyle(meetingPhoto).borderTopLeftRadius) || 0, width / 2, height / 2);
+      const outline = `M0 0H${innerWidth}V${innerHeight}H0Z
+        M${left + radius} ${top}H${right - radius}
+        A${radius} ${radius} 0 0 1 ${right} ${top + radius}
+        V${bottom - radius}A${radius} ${radius} 0 0 1 ${right - radius} ${bottom}
+        H${left + radius}A${radius} ${radius} 0 0 1 ${left} ${bottom - radius}
+        V${top + radius}A${radius} ${radius} 0 0 1 ${left + radius} ${top}Z`;
+      circuitGlowEl.style.clipPath = `path(evenodd, "${outline.replace(/\s+/g, ' ')}")`;
+    }
   }
-  if(portraits.length){
-    window.addEventListener('scroll', updatePortraitCutouts, {passive:true});
-    window.addEventListener('resize', updatePortraitCutouts, {passive:true});
-    document.addEventListener('transitionend', updatePortraitCutouts);
-    updatePortraitCutouts();
+  if(portraits.length || meetingPhoto){
+    window.addEventListener('scroll', updateImageCutouts, {passive:true});
+    window.addEventListener('resize', updateImageCutouts, {passive:true});
+    document.addEventListener('transitionend', updateImageCutouts);
+    updateImageCutouts();
   }
   const glowEls = Array.from(document.querySelectorAll(
     '.why-card'
@@ -182,7 +197,7 @@ setTimeout(checkRevealManually, 500);
     if(circuitGlowEl) circuitGlowEl.style.opacity = '';
     root.style.setProperty('--mx', x + 'px');
     root.style.setProperty('--my', y + 'px');
-    updatePortraitCutouts();
+    updateImageCutouts();
     updateLogoFade(x, y);
     updateHeaderFade(x, y);
     updateGlowSurfaces(x, y);
