@@ -15,20 +15,12 @@
   const cpuHalo = get('cpu-halo'), packageHalo = get('package-halo');
   const memoryPacket = get('memory-packet');
   const prompt = get('prompt'), first = get('response-first'), last = get('response-last'), caret = get('caret');
-  const phaseNumber = get('phase-number'), phaseText = get('phase-text'), progress = get('progress').firstElementChild;
   const cells = [...section.querySelectorAll('.inference-cell')];
   const banks = [...section.querySelectorAll('.inference-bank')];
   const packets = Object.fromEntries([...section.querySelectorAll('[data-packet]')].map(path => [path.dataset.packet, path]));
   const toggle = get('toggle'), replay = get('replay');
   const duration = 14000;
-  const phases = [
-    [0, 'A prompt arrives.'],
-    [2, 'The CPU takes the lead.'],
-    [3.6, 'A little help from our silicon.'],
-    [10.8, 'The response comes together.'],
-    [12.7, 'Ready for the next idea.']
-  ];
-  let elapsed = 0, lastTime = null, frame = 0, visible = false, paused = false, previousPhase = -1;
+  let elapsed = 0, lastTime = null, frame = 0, visible = false, paused = false;
   const clamp = n => Math.max(0, Math.min(1, n));
   const ease = n => { const x = clamp(n); return x * x * (3 - 2 * x); };
   const windowLevel = (t, start, end, fade = .3) => ease((t - start) / fade) * (1 - ease((t - end) / fade));
@@ -111,14 +103,6 @@
     first.style.opacity = last.style.opacity = fade;
     caret.setAttribute('transform', `translate(${(typed + 2) * 9} 0)`);
     caret.style.opacity = t < 1.6 && Math.floor(t * 3) % 2 === 0 ? 1 : 0;
-    const phase = phases.findLastIndex(([start]) => t >= start);
-    if (phase !== previousPhase) {
-      phaseNumber.textContent = `0${phase + 1} /`;
-      phaseText.textContent = phases[phase][1];
-      section.dataset.phase = String(phase + 1);
-      previousPhase = phase;
-    }
-    progress.style.transform = `scaleX(${milliseconds / duration})`;
   }
 
   function shouldRun() {
@@ -144,9 +128,6 @@
     toggle.querySelector('path').setAttribute('d', paused ? 'M5 3l8 5-8 5Z' : 'M5 3v10M11 3v10');
     if (reducedMotion.matches) {
       render(12000);
-      phaseNumber.textContent = '';
-      phaseText.textContent = 'The CPU leads. Our silicon accelerates.';
-      previousPhase = -1;
     } else if (shouldRun()) {
       frame = requestAnimationFrame(tick);
     }

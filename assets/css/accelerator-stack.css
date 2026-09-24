@@ -1,0 +1,21 @@
+/* The original exploded-stack artwork, now showing the accelerator's blocks. */
+.accelerator-stack{padding-top:44px;padding-bottom:70px;scroll-margin-top:110px;}
+.accelerator-stack-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;border-top:1px solid var(--border);padding-top:40px;}
+.accelerator-stack-heading h2{margin-bottom:10px;}
+.accelerator-stack .stack-label{font-size:20px;}
+/* These are related functional blocks, not a five-step serial pipeline. */
+.accelerator-stack .stack-item::after{display:none;}
+.accelerator-stack-replay{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:4px 0;margin-top:12px;white-space:nowrap;background:none;border:0;color:var(--muted);font:.8rem var(--mono);cursor:pointer;}
+.accelerator-stack-replay[hidden]{display:none;}
+.accelerator-stack-replay > span{font-size:1.5rem;line-height:1;}
+.accelerator-stack-replay:hover{color:var(--ink);}
+.accelerator-stack-replay:focus-visible{outline:2px solid var(--signal);outline-offset:5px;border-radius:2px;}
+.accelerator-stack .stack-stage.is-stacked .stack-item{margin:0;}
+@media(max-width:700px){
+  .accelerator-stack-heading{display:block;}
+  .accelerator-stack-heading h2{font-size:clamp(1.6rem,7vw,2rem);}
+  .accelerator-stack-replay{margin-left:auto;}
+}
+@media(prefers-reduced-motion:reduce){
+  .accelerator-stack-replay{display:none;}
+}

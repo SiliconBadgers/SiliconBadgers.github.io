@@ -51,13 +51,7 @@
 .inference-svg .inference-component-label{font-size:10px;letter-spacing:.8px;fill:var(--signal);}
 .inference-svg .inference-package-brand{font-family:var(--heading);font-size:20px;letter-spacing:1.3px;fill:var(--signal);}
 .inference-svg .inference-lid-caption{font-size:8px;letter-spacing:1.5px;fill:var(--muted);}
-.inference-caption{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:18px 0;}
-.inference-phase{font-size:.95rem;}
-.inference-phase-number{font:.75rem var(--mono);color:var(--signal);margin-right:10px;}
-.inference-note{font:.7rem/1.7 var(--mono);color:var(--muted);text-align:right;}
-.inference-progress{height:1px;background:var(--border);overflow:hidden;}
-.inference-progress > span{display:block;height:100%;background:var(--signal);transform:scaleX(0);transform-origin:left;}
-/* Keep the controls and captions readable alongside the vertical scene. */
+/* Keep the controls readable alongside the vertical scene. */
 @media(max-width:700px){
   .inference{padding-top:12px;}
   .inference-heading{display:block;}
@@ -65,10 +59,7 @@
   .inference-heading p{max-width:30ch;font-size:.9rem;}
   .inference-controls{justify-content:flex-end;gap:24px;padding-top:8px;}
   .inference-stage.stack-stage{margin:0 -8px;}
-  .inference-caption{display:block;padding:20px 0;}
-  .inference-note{text-align:left;margin-top:10px;}
-  .inference-phase{font-size:.85rem;min-height:2.8em;}
 }
 @media(prefers-reduced-motion:reduce){
-  .inference-controls,.inference-progress{display:none;}
+  .inference-controls{display:none;}
 }

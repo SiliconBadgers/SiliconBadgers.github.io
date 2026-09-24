@@ -48,8 +48,10 @@
 </script>
 
 <link rel="stylesheet" href="assets/css/chip-demos.css?v=9">
-<link rel="stylesheet" href="assets/css/inference.css?v=2">
-<script defer src="assets/js/stack.js?v=4"></script>
+<link rel="stylesheet" href="assets/css/inference.css?v=3">
+<script defer src="assets/js/stack.js?v=5"></script>
+<link rel="stylesheet" href="assets/css/accelerator-stack.css?v=2">
+<script defer src="assets/js/accelerator-stack.js?v=2"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -270,11 +272,73 @@
       </g>
     </svg>
   </div>
-  <div class="inference-caption">
-    <p class="inference-phase"><span class="inference-phase-number" aria-hidden="true">03 /</span> <span class="inference-phase-text">A little help from our silicon.</span></p>
-    <p class="inference-note">A conceptual look inside our system.</p>
+
+</section>
+
+<section id="accelerator-stack" class="technology-stack accelerator-stack" aria-labelledby="accelerator-stack-heading">
+  <div class="accelerator-stack-heading">
+    <div>
+      <h2 id="accelerator-stack-heading">Inside the accelerator</h2>
+    </div>
+    <button class="accelerator-stack-replay" type="button" hidden><span aria-hidden="true">↻</span> Replay stack</button>
   </div>
-  <div class="inference-progress" aria-hidden="true"><span></span></div>
+  <div class="stack-stage">
+    <article class="stack-item" tabindex="0" aria-labelledby="accelerator-block-0">
+      <svg class="stack-svg" viewBox="0 0 240 270" aria-hidden="true">
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><rect x="-29" y="-46" width="58" height="92" rx="3"/><path d="M-66-20H-29M29-20H66M-66 20H-29M29 20H66M-12-60V-46M12-60V-46M-12 46V60M12 46V60"/><path d="M-15-17H15M7-25L15-17L7-9M15 18H-15M-7 10L-15 18L-7 26"/><circle class="stack-node" cx="-61" cy="-20" r="3"/><circle class="stack-node" cx="61" cy="20" r="3"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M246 110H280"/><circle cx="280" cy="110" r="2"/></g>
+        <g class="stack-label"><text text-anchor="middle" dominant-baseline="middle">Host Interface</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="accelerator-block-0">Host Interface</h3>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="accelerator-block-1">
+      <svg class="stack-svg" viewBox="0 0 240 270" aria-hidden="true">
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M0-23V1M-48 24V1H48V24M0 1V24"/><path d="M0-58L21-40L0-22L-21-40Z"/><rect x="-63" y="25" width="30" height="28" rx="2"/><rect x="-15" y="25" width="30" height="28" rx="2"/><rect x="33" y="25" width="30" height="28" rx="2"/><circle class="stack-node" cx="0" cy="-40" r="4"/><path d="M-54 39H-42M-6 39H6M42 39H54M0 53V65"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M246 110H280"/><circle cx="280" cy="110" r="2"/></g>
+        <g class="stack-label"><text text-anchor="middle" dominant-baseline="middle">Top-Level Controller</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="accelerator-block-1">Top-Level Controller</h3>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="accelerator-block-2">
+      <svg class="stack-svg" viewBox="0 0 240 270" aria-hidden="true">
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><rect x="-60" y="-22" width="32" height="44" rx="2"/><path d="M-70-10H-60M-70 10H-60M-28 0H-6M-6-43V43M-6-43H17M-6 0H17M-6 43H17"/><rect x="18" y="-56" width="48" height="26"/><rect x="18" y="-13" width="48" height="26"/><rect x="18" y="30" width="48" height="26"/><path d="M28-48V-38M39-48V-38M50-48V-38M28-5V5M39-5V5M50-5V5M28 38V48M39 38V48M50 38V48"/><circle class="stack-node" cx="-6" cy="0" r="3"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M246 110H280"/><circle cx="280" cy="110" r="2"/></g>
+        <g class="stack-label"><text text-anchor="middle" dominant-baseline="middle">Memory Controller</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="accelerator-block-2">Memory Controller</h3>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="accelerator-block-3">
+      <svg class="stack-svg" viewBox="0 0 240 270" aria-hidden="true">
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-65-64H65M-65 64H65M-64-65V65M64-65V65"/><rect x="-53" y="-53" width="12" height="12" opacity="0.95"/><rect x="-34" y="-53" width="12" height="12" opacity="0.4"/><rect x="-15" y="-53" width="12" height="12" opacity="0.4"/><rect x="4" y="-53" width="12" height="12" opacity="0.4"/><rect x="23" y="-53" width="12" height="12" opacity="0.95"/><rect x="42" y="-53" width="12" height="12" opacity="0.4"/><rect x="-53" y="-34" width="12" height="12" opacity="0.4"/><rect x="-34" y="-34" width="12" height="12" opacity="0.4"/><rect x="-15" y="-34" width="12" height="12" opacity="0.4"/><rect x="4" y="-34" width="12" height="12" opacity="0.95"/><rect x="23" y="-34" width="12" height="12" opacity="0.4"/><rect x="42" y="-34" width="12" height="12" opacity="0.4"/><rect x="-53" y="-15" width="12" height="12" opacity="0.4"/><rect x="-34" y="-15" width="12" height="12" opacity="0.4"/><rect x="-15" y="-15" width="12" height="12" opacity="0.95"/><rect x="4" y="-15" width="12" height="12" opacity="0.4"/><rect x="23" y="-15" width="12" height="12" opacity="0.4"/><rect x="42" y="-15" width="12" height="12" opacity="0.4"/><rect x="-53" y="4" width="12" height="12" opacity="0.4"/><rect x="-34" y="4" width="12" height="12" opacity="0.95"/><rect x="-15" y="4" width="12" height="12" opacity="0.4"/><rect x="4" y="4" width="12" height="12" opacity="0.4"/><rect x="23" y="4" width="12" height="12" opacity="0.4"/><rect x="42" y="4" width="12" height="12" opacity="0.95"/><rect x="-53" y="23" width="12" height="12" opacity="0.95"/><rect x="-34" y="23" width="12" height="12" opacity="0.4"/><rect x="-15" y="23" width="12" height="12" opacity="0.4"/><rect x="4" y="23" width="12" height="12" opacity="0.4"/><rect x="23" y="23" width="12" height="12" opacity="0.95"/><rect x="42" y="23" width="12" height="12" opacity="0.4"/><rect x="-53" y="42" width="12" height="12" opacity="0.4"/><rect x="-34" y="42" width="12" height="12" opacity="0.4"/><rect x="-15" y="42" width="12" height="12" opacity="0.4"/><rect x="4" y="42" width="12" height="12" opacity="0.95"/><rect x="23" y="42" width="12" height="12" opacity="0.4"/><rect x="42" y="42" width="12" height="12" opacity="0.4"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M246 110H280"/><circle cx="280" cy="110" r="2"/></g>
+        <g class="stack-label"><text text-anchor="middle" dominant-baseline="middle">SRAM</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="accelerator-block-3">SRAM</h3>
+    </article>
+    <article class="stack-item" tabindex="0" aria-labelledby="accelerator-block-4">
+      <svg class="stack-svg" viewBox="0 0 240 270" aria-hidden="true">
+        <g class="stack-panel">
+          <g class="stack-surface"><rect x="-80" y="-80" width="160" height="160"/></g>
+          <g class="stack-symbols"><path d="M-70 -39H-53M53 -39H70M-39-70V-53M-39 53V70"/><path d="M-70 -13H-53M53 -13H70M-13-70V-53M-13 53V70"/><path d="M-70 13H-53M53 13H70M13-70V-53M13 53V70"/><path d="M-70 39H-53M53 39H70M39-70V-53M39 53V70"/><rect x="-50" y="-50" width="22" height="22"/><path d="M-43 -43l8 8m0-8-8 8" opacity=".5"/><rect x="-24" y="-50" width="22" height="22"/><path d="M-17 -43l8 8m0-8-8 8" opacity=".5"/><rect x="2" y="-50" width="22" height="22"/><path d="M9 -43l8 8m0-8-8 8" opacity=".5"/><rect x="28" y="-50" width="22" height="22"/><path d="M35 -43l8 8m0-8-8 8" opacity=".5"/><rect x="-50" y="-24" width="22" height="22"/><path d="M-43 -17l8 8m0-8-8 8" opacity=".5"/><rect x="-24" y="-24" width="22" height="22"/><path d="M-17 -17l8 8m0-8-8 8" opacity=".5"/><rect x="2" y="-24" width="22" height="22"/><path d="M9 -17l8 8m0-8-8 8" opacity=".5"/><rect x="28" y="-24" width="22" height="22"/><path d="M35 -17l8 8m0-8-8 8" opacity=".5"/><rect x="-50" y="2" width="22" height="22"/><path d="M-43 9l8 8m0-8-8 8" opacity=".5"/><rect x="-24" y="2" width="22" height="22"/><path d="M-17 9l8 8m0-8-8 8" opacity=".5"/><rect x="2" y="2" width="22" height="22"/><path d="M9 9l8 8m0-8-8 8" opacity=".5"/><rect x="28" y="2" width="22" height="22"/><path d="M35 9l8 8m0-8-8 8" opacity=".5"/><rect x="-50" y="28" width="22" height="22"/><path d="M-43 35l8 8m0-8-8 8" opacity=".5"/><rect x="-24" y="28" width="22" height="22"/><path d="M-17 35l8 8m0-8-8 8" opacity=".5"/><rect x="2" y="28" width="22" height="22"/><path d="M9 35l8 8m0-8-8 8" opacity=".5"/><rect x="28" y="28" width="22" height="22"/><path d="M35 35l8 8m0-8-8 8" opacity=".5"/></g>
+        </g>
+        <g class="stack-arrow"><path d="M246 110H280"/><circle cx="280" cy="110" r="2"/></g>
+        <g class="stack-label"><text text-anchor="middle" dominant-baseline="middle">Compute Unit</text></g>
+      </svg>
+      <h3 class="stack-sr-title" id="accelerator-block-4">Compute Unit</h3>
+    </article>
+  </div>
 </section>
 
 </main>
